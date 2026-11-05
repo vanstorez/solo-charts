@@ -72,6 +72,10 @@ tradingview/runtime/
 # Local portable tooling (not part of the app)
 tools/
 
+# Legacy daily-archive workflow (needs the GitHub 'workflow' OAuth scope).
+# To enable it later: gh auth refresh -h github.com -s workflow, then remove this line.
+.github/workflows/
+
 # macOS
 .Spotlight-V100
 .Trashes
