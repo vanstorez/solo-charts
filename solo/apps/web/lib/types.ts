@@ -357,6 +357,8 @@ export interface AdvancedSeries {
   bb_lower: (number | null)[];
   rsi14: (number | null)[];
   macd_hist: (number | null)[];
+  stoch_k: (number | null)[];
+  stoch_d: (number | null)[];
 }
 
 export interface AdvancedAnalysisResponse {

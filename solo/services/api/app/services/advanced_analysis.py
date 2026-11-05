@@ -259,6 +259,8 @@ async def advanced_analysis(symbol_input: str = "NIFTY", interval_input: str = "
             "bb_lower": [_round_clean(v) for v in bb["lower"][-200:]],
             "rsi14": [_round_clean(v, 2) for v in rsi14[-200:]],
             "macd_hist": [_round_clean(v, 5) for v in macd_data["hist"][-200:]],
+            "stoch_k": [_round_clean(v, 2) for v in stoch["k"][-200:]],
+            "stoch_d": [_round_clean(v, 2) for v in stoch["d"][-200:]],
         },
         "note": (
             "All indicators are public formulas calculated locally. The signal score is a transparent "

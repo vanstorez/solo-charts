@@ -183,7 +183,7 @@ function CandleChartPanel({
 }
 
 export default function AnalysisPage() {
-  const symbols = useApi<{ key: string; name: string; short: string; exchange: string; type: string; currency: string }[]>(
+  const symbols = useApi<{ symbols: { key: string; name: string; short: string; exchange: string; type: string; currency: string }[] }>(
     "/api/symbols",
     0
   );
@@ -274,10 +274,11 @@ export default function AnalysisPage() {
   const bbLowerSeries = series.bb_lower.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
   const rsiSeries = series.rsi14.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
   const macdSeries = series.macd_hist.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
+  const stochSeries = (series.stoch_k ?? []).map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
 
   const signalColor = signal.bias === "bullish" ? "var(--positive)" : signal.bias === "bearish" ? "var(--negative)" : "var(--muted)";
 
-  const symbolOptions = (symbols.data ?? []).map((s) => ({
+  const symbolOptions = (symbols.data?.symbols ?? []).map((s) => ({
     value: s.key,
     label: `${s.short} (${s.exchange})`,
   }));
@@ -342,9 +343,9 @@ export default function AnalysisPage() {
             <div className="stat-foot"><span style={{ color: toneClass(change_pct) }}>{formatPct(change_pct)}</span></div>
           </div>
           <div className="stat-card">
-            <div className="stat-label">Last Updated</div>
-            <div className="stat-value">{generated_at ? timeAgo(generated_at) : "—"}</div>
-            <div className="stat-foot"><span>{input_provider}</span></div>
+            <div className="stat-label">Data As Of</div>
+            <div className="stat-value">{meta?.as_of ? timeAgo(meta.as_of) : generated_at ? timeAgo(generated_at) : "—"}</div>
+            <div className="stat-foot"><span>{input_provider}{meta?.freshness ? ` · ${meta.freshness}` : ""}</span></div>
           </div>
         </div>
         <div className="warning-box" style={{ marginTop: 8, padding: 8 }}>
@@ -368,7 +369,7 @@ export default function AnalysisPage() {
           />
           <LineChartPanel title="RSI (14)" color="#6ea8ff" height={110} data={rsiSeries} />
           <LineChartPanel title="MACD Histogram" color="#f4c95d" height={100} data={macdSeries} />
-          <LineChartPanel title="Stochastic %K / %D" color="#c4a7ff" height={100} data={rsiSeries} />
+          <LineChartPanel title="Stochastic %K" color="#c4a7ff" height={100} data={stochSeries} />
         </div>
       </Panel>
 
