@@ -1,0 +1,25 @@
+{
+  "_comment": "Human-readable copy of the universe. The source of truth is WATCHLIST in engine.mjs.",
+  "market": "india",
+  "benchmark": { "tv": "NSE:NIFTY", "yahoo": "^NSEI" },
+  "symbols": [
+    { "tv": "NSE:RELIANCE", "yahoo": "RELIANCE.NS", "name": "Reliance Industries" },
+    { "tv": "NSE:TCS", "yahoo": "TCS.NS", "name": "Tata Consultancy Services" },
+    { "tv": "NSE:HDFCBANK", "yahoo": "HDFCBANK.NS", "name": "HDFC Bank" },
+    { "tv": "NSE:ICICIBANK", "yahoo": "ICICIBANK.NS", "name": "ICICI Bank" },
+    { "tv": "NSE:INFY", "yahoo": "INFY.NS", "name": "Infosys" },
+    { "tv": "NSE:SBIN", "yahoo": "SBIN.NS", "name": "State Bank of India" },
+    { "tv": "NSE:BHARTIARTL", "yahoo": "BHARTIARTL.NS", "name": "Bharti Airtel" },
+    { "tv": "NSE:ITC", "yahoo": "ITC.NS", "name": "ITC" },
+    { "tv": "NSE:LT", "yahoo": "LT.NS", "name": "Larsen & Toubro" },
+    { "tv": "NSE:AXISBANK", "yahoo": "AXISBANK.NS", "name": "Axis Bank" },
+    { "tv": "NSE:KOTAKBANK", "yahoo": "KOTAKBANK.NS", "name": "Kotak Mahindra Bank" },
+    { "tv": "NSE:HINDUNILVR", "yahoo": "HINDUNILVR.NS", "name": "Hindustan Unilever" },
+    { "tv": "NSE:BAJFINANCE", "yahoo": "BAJFINANCE.NS", "name": "Bajaj Finance" },
+    { "tv": "NSE:MARUTI", "yahoo": "MARUTI.NS", "name": "Maruti Suzuki" },
+    { "tv": "NSE:SUNPHARMA", "yahoo": "SUNPHARMA.NS", "name": "Sun Pharma" },
+    { "tv": "NSE:TATASTEEL", "yahoo": "TATASTEEL.NS", "name": "Tata Steel" },
+    { "tv": "NSE:ADANIENT", "yahoo": "ADANIENT.NS", "name": "Adani Enterprises" },
+    { "tv": "NSE:TITAN", "yahoo": "TITAN.NS", "name": "Titan Company" }
+  ]
+}

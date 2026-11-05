@@ -1,0 +1,3737 @@
+{
+  "date": "2026-10-26",
+  "generatedAt": "2026-10-26T16:04:51.739Z",
+  "source": "Solo Trading Charts daily archive",
+  "disclaimer": "Research and paper trading only. Not investment advice.",
+  "snapshot": {
+    "asOf": "26 Oct 2026, 21:34:53 IST",
+    "asOfIso": "2026-10-26T16:04:53.253Z",
+    "marketOpen": false,
+    "quotes": [
+      {
+        "key": "NIFTY",
+        "label": "Nifty 50",
+        "ticker": "NSE:NIFTY",
+        "value": 22753.2,
+        "change": 0.6778761061946935,
+        "open": 22524.4,
+        "high": 22753.2,
+        "low": 22387.35,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "BANKNIFTY",
+        "label": "Bank Nifty",
+        "ticker": "NSE:BANKNIFTY",
+        "value": 54366.7,
+        "change": 0.14616664839967056,
+        "open": 54250.3,
+        "high": 54392.5,
+        "low": 53777.5,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "SENSEX",
+        "label": "Sensex",
+        "ticker": "BSE:SENSEX",
+        "value": 73606.75,
+        "change": 0.6604139854271832,
+        "open": 72990.04,
+        "high": 73606.75,
+        "low": 72514.57,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "INDIAVIX",
+        "label": "India VIX",
+        "ticker": "NSE:INDIAVIX",
+        "value": 17.16,
+        "change": 1.7793594306049865,
+        "open": 16.86,
+        "high": 18.0025,
+        "low": 16.86,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "GIFT",
+        "label": "GIFT Nifty",
+        "ticker": "NSEIX:NIFTY1!",
+        "value": 22672,
+        "change": 0.28308563340410475,
+        "open": 22558.5,
+        "high": 22795.5,
+        "low": 22452,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "BRENT",
+        "label": "Brent crude",
+        "ticker": "NYMEX:BZ1!",
+        "value": 116.84,
+        "change": 0.1028101439342054,
+        "open": 115.8,
+        "high": 116.84,
+        "low": 114,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "WTI",
+        "label": "WTI crude",
+        "ticker": "NYMEX:CL1!",
+        "value": 102.68,
+        "change": -0.5713179045221161,
+        "open": 102.61,
+        "high": 102.71,
+        "low": 100.33,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "USDINR",
+        "label": "USD / INR",
+        "ticker": "FX_IDC:USDINR",
+        "value": 95.175,
+        "change": 0.25808490466658623,
+        "open": 94.93,
+        "high": 95.26,
+        "low": 94.91,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "DXY",
+        "label": "Dollar index",
+        "ticker": "TVC:DXY",
+        "value": 101.995,
+        "change": 0.2398010830360387,
+        "open": 101.777,
+        "high": 102.056,
+        "low": 101.582,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "US10Y",
+        "label": "US 10-year",
+        "ticker": "TVC:US10Y",
+        "value": 4.982,
+        "change": -0.3400680136027098,
+        "open": 4.99,
+        "high": 5.011,
+        "low": 4.961,
+        "digits": 3,
+        "suffix": "%"
+      },
+      {
+        "key": "ES",
+        "label": "S&P futures",
+        "ticker": "CME_MINI:ES1!",
+        "value": 7721,
+        "change": 0.7996344528215673,
+        "open": 7690,
+        "high": 7739.5,
+        "low": 7651.75,
+        "digits": 2,
+        "suffix": ""
+      },
+      {
+        "key": "NQ",
+        "label": "Nasdaq futures",
+        "ticker": "CME_MINI:NQ1!",
+        "value": 29489.25,
+        "change": 1.2758540752633702,
+        "open": 29268,
+        "high": 29572,
+        "low": 29024.25,
+        "digits": 2,
+        "suffix": ""
+      }
+    ],
+    "indexes": {
+      "NIFTY": {
+        "spot": 22753.19921875,
+        "prevClose": 22600,
+        "change": 0.6778726493362752,
+        "date": "2026-10-26",
+        "ema20": 22831.86434780727,
+        "ema50": 23210.726650356944,
+        "ema200": 23943.682226032106,
+        "rsi14": 46.075855481377296,
+        "atr14": 300.7608037223294,
+        "atrPct": 1.3218396271698112,
+        "pivot": {
+          "p": 22631.249348958332,
+          "r1": 22875.149088541664,
+          "r2": 22997.098958333332,
+          "r3": 23240.998697916664,
+          "s1": 22509.299479166664,
+          "s2": 22265.399739583332,
+          "s3": 22143.449869791664
+        },
+        "high20": 23175.25,
+        "low20": 22179.900390625,
+        "high52": 26373.19921875,
+        "low52": 22179.900390625,
+        "spark": [
+          {
+            "t": 1787802300000,
+            "c": 24090.849609375
+          },
+          {
+            "t": 1787888700000,
+            "c": 24175.650390625
+          },
+          {
+            "t": 1788147900000,
+            "c": 24080.400390625
+          },
+          {
+            "t": 1788234300000,
+            "c": 24055.80078125
+          },
+          {
+            "t": 1788320700000,
+            "c": 23914.44921875
+          },
+          {
+            "t": 1788407100000,
+            "c": 23873.44921875
+          },
+          {
+            "t": 1788493500000,
+            "c": 23897.69921875
+          },
+          {
+            "t": 1788752700000,
+            "c": 23779.150390625
+          },
+          {
+            "t": 1788839100000,
+            "c": 23635.099609375
+          },
+          {
+            "t": 1788925500000,
+            "c": 23431.5
+          },
+          {
+            "t": 1789011900000,
+            "c": 23477.80078125
+          },
+          {
+            "t": 1789098300000,
+            "c": 23398.099609375
+          },
+          {
+            "t": 1789443900000,
+            "c": 23118.599609375
+          },
+          {
+            "t": 1789530300000,
+            "c": 23217.599609375
+          },
+          {
+            "t": 1789616700000,
+            "c": 23270.599609375
+          },
+          {
+            "t": 1789703100000,
+            "c": 23346.400390625
+          },
+          {
+            "t": 1789962300000,
+            "c": 23414.30078125
+          },
+          {
+            "t": 1790048700000,
+            "c": 23329
+          },
+          {
+            "t": 1790135100000,
+            "c": 23446.80078125
+          },
+          {
+            "t": 1790221500000,
+            "c": 23063.099609375
+          },
+          {
+            "t": 1790307900000,
+            "c": 23140.5
+          },
+          {
+            "t": 1790567100000,
+            "c": 22780.25
+          },
+          {
+            "t": 1790653500000,
+            "c": 22716.19921875
+          },
+          {
+            "t": 1790739900000,
+            "c": 22620.44921875
+          },
+          {
+            "t": 1790826300000,
+            "c": 22421.94921875
+          },
+          {
+            "t": 1791171900000,
+            "c": 22555.75
+          },
+          {
+            "t": 1791258300000,
+            "c": 22776.099609375
+          },
+          {
+            "t": 1791344700000,
+            "c": 22603.05078125
+          },
+          {
+            "t": 1791431100000,
+            "c": 22231.80078125
+          },
+          {
+            "t": 1791517500000,
+            "c": 22520.44921875
+          },
+          {
+            "t": 1791776700000,
+            "c": 22363.349609375
+          },
+          {
+            "t": 1791863100000,
+            "c": 22721.94921875
+          },
+          {
+            "t": 1791949500000,
+            "c": 22622.69921875
+          },
+          {
+            "t": 1792035900000,
+            "c": 22997.349609375
+          },
+          {
+            "t": 1792122300000,
+            "c": 23146.150390625
+          },
+          {
+            "t": 1792381500000,
+            "c": 22888.94921875
+          },
+          {
+            "t": 1792554300000,
+            "c": 22811.349609375
+          },
+          {
+            "t": 1792640700000,
+            "c": 22687.650390625
+          },
+          {
+            "t": 1792727100000,
+            "c": 22600
+          },
+          {
+            "t": 1792986300000,
+            "c": 22753.19921875
+          }
+        ],
+        "trend": "Below all key DMAs",
+        "levels": {
+          "supports": [
+            22500,
+            22250,
+            22200
+          ],
+          "resistances": [
+            22900,
+            23000,
+            23200,
+            26350
+          ]
+        },
+        "fromHigh52": -13.726055644498237,
+        "fromLow52": 2.5847673705844176
+      },
+      "BANKNIFTY": {
+        "spot": 54366.69921875,
+        "prevClose": 54287.3515625,
+        "change": 0.14616232688871023,
+        "date": "2026-10-26",
+        "ema20": 55201.22933099469,
+        "ema50": 55849.50885474124,
+        "ema200": 56358.162438736275,
+        "rsi14": 38.74422252490537,
+        "atr14": 718.5340379050479,
+        "atrPct": 1.3216436683307777,
+        "pivot": {
+          "p": 54178.899739583336,
+          "r1": 54580.29947916667,
+          "r2": 54793.899739583336,
+          "r3": 55195.29947916667,
+          "s1": 53965.29947916667,
+          "s2": 53563.899739583336,
+          "s3": 53350.29947916667
+        },
+        "high20": 56065.5,
+        "low20": 53777.5,
+        "high52": 61764.8515625,
+        "low52": 49954.8515625,
+        "spark": [
+          {
+            "t": 1787802300000,
+            "c": 57509.94921875
+          },
+          {
+            "t": 1787888700000,
+            "c": 57496.30078125
+          },
+          {
+            "t": 1788147900000,
+            "c": 58024.94921875
+          },
+          {
+            "t": 1788234300000,
+            "c": 57409.6015625
+          },
+          {
+            "t": 1788320700000,
+            "c": 57172
+          },
+          {
+            "t": 1788407100000,
+            "c": 57380.6015625
+          },
+          {
+            "t": 1788493500000,
+            "c": 57369.6484375
+          },
+          {
+            "t": 1788752700000,
+            "c": 57088.30078125
+          },
+          {
+            "t": 1788839100000,
+            "c": 56777.55078125
+          },
+          {
+            "t": 1788925500000,
+            "c": 56295.55078125
+          },
+          {
+            "t": 1789011900000,
+            "c": 56471.94921875
+          },
+          {
+            "t": 1789098300000,
+            "c": 56606.55078125
+          },
+          {
+            "t": 1789443900000,
+            "c": 55794.75
+          },
+          {
+            "t": 1789530300000,
+            "c": 56292.44921875
+          },
+          {
+            "t": 1789616700000,
+            "c": 56055.75
+          },
+          {
+            "t": 1789703100000,
+            "c": 56358.69921875
+          },
+          {
+            "t": 1789962300000,
+            "c": 56470.6484375
+          },
+          {
+            "t": 1790048700000,
+            "c": 56215.55078125
+          },
+          {
+            "t": 1790135100000,
+            "c": 56548.8984375
+          },
+          {
+            "t": 1790221500000,
+            "c": 55438.5
+          },
+          {
+            "t": 1790307900000,
+            "c": 55580.3984375
+          },
+          {
+            "t": 1790567100000,
+            "c": 54471.6484375
+          },
+          {
+            "t": 1790653500000,
+            "c": 54259.94921875
+          },
+          {
+            "t": 1790739900000,
+            "c": 54633.05078125
+          },
+          {
+            "t": 1790826300000,
+            "c": 54450.75
+          },
+          {
+            "t": 1791171900000,
+            "c": 54714.1015625
+          },
+          {
+            "t": 1791258300000,
+            "c": 55128.3984375
+          },
+          {
+            "t": 1791344700000,
+            "c": 55055.55078125
+          },
+          {
+            "t": 1791431100000,
+            "c": 54515.05078125
+          },
+          {
+            "t": 1791517500000,
+            "c": 55256.6484375
+          },
+          {
+            "t": 1791776700000,
+            "c": 54918
+          },
+          {
+            "t": 1791863100000,
+            "c": 55481.05078125
+          },
+          {
+            "t": 1791949500000,
+            "c": 55316
+          },
+          {
+            "t": 1792035900000,
+            "c": 55810.5
+          },
+          {
+            "t": 1792122300000,
+            "c": 55844
+          },
+          {
+            "t": 1792381500000,
+            "c": 55488.1015625
+          },
+          {
+            "t": 1792554300000,
+            "c": 54976.8984375
+          },
+          {
+            "t": 1792640700000,
+            "c": 54925.69921875
+          },
+          {
+            "t": 1792727100000,
+            "c": 54287.3515625
+          },
+          {
+            "t": 1792986300000,
+            "c": 54366.69921875
+          }
+        ],
+        "trend": "Below all key DMAs",
+        "levels": {
+          "supports": [
+            54000,
+            53800,
+            53600,
+            50000
+          ],
+          "resistances": [
+            54500,
+            54600,
+            54800,
+            56100,
+            61800
+          ]
+        },
+        "fromHigh52": -11.977932685977223,
+        "fromLow52": 8.83167003455152
+      },
+      "SENSEX": {
+        "spot": 73606.75,
+        "prevClose": 73123.828125,
+        "change": 0.6604165665047956,
+        "date": "2026-10-26",
+        "ema20": 73497.38696488162,
+        "ema50": 74477.34089232137,
+        "ema200": 77028.1579906219,
+        "rsi14": 49.19682085576952,
+        "atr14": 964.3769081095713,
+        "atrPct": 1.3101745534337155,
+        "pivot": {
+          "p": 73242.69010416667,
+          "r1": 73970.80989583334,
+          "r2": 74334.86979166667,
+          "r3": 75062.98958333334,
+          "s1": 72878.63020833334,
+          "s2": 72150.51041666667,
+          "s3": 71786.45052083334
+        },
+        "high20": 74849.75,
+        "low20": 71292.8828125,
+        "high52": 86159.0234375,
+        "low52": 71292.8828125,
+        "spark": [
+          {
+            "t": 1787802300000,
+            "c": 76933.59375
+          },
+          {
+            "t": 1787888700000,
+            "c": 77264.5078125
+          },
+          {
+            "t": 1788147900000,
+            "c": 76957.2734375
+          },
+          {
+            "t": 1788234300000,
+            "c": 76944.28125
+          },
+          {
+            "t": 1788320700000,
+            "c": 76570.3515625
+          },
+          {
+            "t": 1788407100000,
+            "c": 76152.859375
+          },
+          {
+            "t": 1788493500000,
+            "c": 76515.4296875
+          },
+          {
+            "t": 1788752700000,
+            "c": 76132.8125
+          },
+          {
+            "t": 1788839100000,
+            "c": 75577.578125
+          },
+          {
+            "t": 1788925500000,
+            "c": 74764.2265625
+          },
+          {
+            "t": 1789011900000,
+            "c": 74902.59375
+          },
+          {
+            "t": 1789098300000,
+            "c": 74781.7578125
+          },
+          {
+            "t": 1789443900000,
+            "c": 74003.8203125
+          },
+          {
+            "t": 1789530300000,
+            "c": 74336.453125
+          },
+          {
+            "t": 1789616700000,
+            "c": 74314.59375
+          },
+          {
+            "t": 1789703100000,
+            "c": 74294.9609375
+          },
+          {
+            "t": 1789962300000,
+            "c": 74858.9921875
+          },
+          {
+            "t": 1790048700000,
+            "c": 74529.078125
+          },
+          {
+            "t": 1790135100000,
+            "c": 74828.25
+          },
+          {
+            "t": 1790221500000,
+            "c": 73580.5390625
+          },
+          {
+            "t": 1790307900000,
+            "c": 73895.7421875
+          },
+          {
+            "t": 1790567100000,
+            "c": 72771.71875
+          },
+          {
+            "t": 1790653500000,
+            "c": 72529.0703125
+          },
+          {
+            "t": 1790739900000,
+            "c": 72480.2890625
+          },
+          {
+            "t": 1790826300000,
+            "c": 71909.703125
+          },
+          {
+            "t": 1791171900000,
+            "c": 72382.46875
+          },
+          {
+            "t": 1791258300000,
+            "c": 73067.8125
+          },
+          {
+            "t": 1791344700000,
+            "c": 72638.703125
+          },
+          {
+            "t": 1791431100000,
+            "c": 71593.2421875
+          },
+          {
+            "t": 1791517500000,
+            "c": 72472.328125
+          },
+          {
+            "t": 1791776700000,
+            "c": 71924.6796875
+          },
+          {
+            "t": 1791863100000,
+            "c": 73033.78125
+          },
+          {
+            "t": 1791949500000,
+            "c": 72781.890625
+          },
+          {
+            "t": 1792035900000,
+            "c": 74315.609375
+          },
+          {
+            "t": 1792122300000,
+            "c": 74729.2734375
+          },
+          {
+            "t": 1792381500000,
+            "c": 73852.8984375
+          },
+          {
+            "t": 1792554300000,
+            "c": 73709.6875
+          },
+          {
+            "t": 1792640700000,
+            "c": 73249.390625
+          },
+          {
+            "t": 1792727100000,
+            "c": 73123.828125
+          },
+          {
+            "t": 1792986300000,
+            "c": 73606.75
+          }
+        ],
+        "trend": "above 20D · below 50D · below 200D",
+        "levels": {
+          "supports": [
+            73500,
+            72900,
+            72200,
+            71300
+          ],
+          "resistances": [
+            74000,
+            74300,
+            74800,
+            86200
+          ]
+        },
+        "fromHigh52": -14.568727611688237,
+        "fromLow52": 3.245579497164486
+      }
+    },
+    "bias": "Bearish",
+    "score": -2,
+    "regime": {
+      "vix": {
+        "value": 17.15999984741211,
+        "label": "Normal"
+      },
+      "oil": {
+        "value": 116.84,
+        "label": "Oil shock"
+      }
+    },
+    "source": "TradingView scanner · Yahoo Finance daily candles",
+    "warnings": []
+  },
+  "quotes": [
+    {
+      "key": "NIFTY",
+      "name": "Nifty 50",
+      "short": "Nifty 50",
+      "exchange": "NSE",
+      "tv": "NSE:NIFTY",
+      "yahoo": "^NSEI",
+      "type": "index",
+      "currency": "INR",
+      "sector": null,
+      "value": 22753.2,
+      "change": 0.6778761061946935,
+      "rsi": 46.07587136000214,
+      "rating": -0.2,
+      "volume": 310215880
+    },
+    {
+      "key": "BANKNIFTY",
+      "name": "Bank Nifty",
+      "short": "Bank Nifty",
+      "exchange": "NSE",
+      "tv": "NSE:BANKNIFTY",
+      "yahoo": "^NSEBANK",
+      "type": "index",
+      "currency": "INR",
+      "sector": null,
+      "value": 54366.7,
+      "change": 0.14616664839967056,
+      "rsi": 38.74425038450405,
+      "rating": -0.5363636363636364,
+      "volume": 262914141
+    },
+    {
+      "key": "SENSEX",
+      "name": "Sensex",
+      "short": "Sensex",
+      "exchange": "BSE",
+      "tv": "BSE:SENSEX",
+      "yahoo": "^BSESN",
+      "type": "index",
+      "currency": "INR",
+      "sector": null,
+      "value": 73606.75,
+      "change": 0.6604139854271832,
+      "rsi": 49.194927975670176,
+      "rating": -0.045454545454545456,
+      "volume": 10867545
+    },
+    {
+      "key": "INDIAVIX",
+      "name": "India VIX",
+      "short": "India VIX",
+      "exchange": "NSE",
+      "tv": "NSE:INDIAVIX",
+      "yahoo": "^INDIAVIX",
+      "type": "index",
+      "currency": "INR",
+      "sector": null,
+      "value": 17.16,
+      "change": 1.7793594306049865,
+      "rsi": 67.64707028878836,
+      "rating": 0.5097402597402597,
+      "volume": null
+    },
+    {
+      "key": "BRENT",
+      "name": "Brent crude",
+      "short": "BRENT",
+      "exchange": "NYMEX",
+      "tv": "NYMEX:BZ1!",
+      "yahoo": "BZ=F",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": 116.84,
+      "change": 0.1028101439342054,
+      "rsi": 72.15147935895621,
+      "rating": 0.5121212121212121,
+      "volume": 13609
+    },
+    {
+      "key": "WTI",
+      "name": "WTI crude",
+      "short": "WTI",
+      "exchange": "NYMEX",
+      "tv": "NYMEX:CL1!",
+      "yahoo": "CL=F",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": 102.68,
+      "change": -0.5713179045221161,
+      "rsi": 66.52327423085453,
+      "rating": 0.4212121212121212,
+      "volume": 165976
+    },
+    {
+      "key": "USDINR",
+      "name": "USD / INR",
+      "short": "USDINR",
+      "exchange": "FX",
+      "tv": "FX_IDC:USDINR",
+      "yahoo": "INR=X",
+      "type": "global",
+      "currency": "INR",
+      "sector": null,
+      "value": 95.175,
+      "change": 0.25808490466658623,
+      "rsi": 45.20523597270929,
+      "rating": -0.10714285714285714,
+      "volume": 0
+    },
+    {
+      "key": "DXY",
+      "name": "Dollar index",
+      "short": "DXY",
+      "exchange": "ICE",
+      "tv": "TVC:DXY",
+      "yahoo": "DX-Y.NYB",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": 101.995,
+      "change": 0.2398010830360387,
+      "rsi": 58.12035817684192,
+      "rating": 0.41883116883116883,
+      "volume": null
+    },
+    {
+      "key": "US10Y",
+      "name": "US 10-year yield",
+      "short": "US10Y",
+      "exchange": "CBOT",
+      "tv": "TVC:US10Y",
+      "yahoo": "^TNX",
+      "type": "global",
+      "currency": "%",
+      "sector": null,
+      "value": 4.982,
+      "change": -0.3400680136027098,
+      "rsi": null,
+      "rating": null,
+      "volume": null
+    },
+    {
+      "key": "SPX",
+      "name": "S&P 500",
+      "short": "SPX",
+      "exchange": "SP",
+      "tv": "TVC:SPX",
+      "yahoo": "^GSPC",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": null,
+      "change": null,
+      "rsi": null,
+      "rating": null,
+      "volume": null
+    },
+    {
+      "key": "NDX",
+      "name": "Nasdaq 100",
+      "short": "NDX",
+      "exchange": "NASDAQ",
+      "tv": "TVC:NDX",
+      "yahoo": "^NDX",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": null,
+      "change": null,
+      "rsi": null,
+      "rating": null,
+      "volume": null
+    },
+    {
+      "key": "GOLD",
+      "name": "Gold futures",
+      "short": "GOLD",
+      "exchange": "COMEX",
+      "tv": "COMEX:GC1!",
+      "yahoo": "GC=F",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": 4030.6,
+      "change": 0.5663813967414311,
+      "rsi": 33.77942030160909,
+      "rating": -0.35454545454545455,
+      "volume": 96969
+    },
+    {
+      "key": "BTCUSD",
+      "name": "Bitcoin",
+      "short": "BTCUSD",
+      "exchange": "Crypto",
+      "tv": "BITSTAMP:BTCUSD",
+      "yahoo": "BTC-USD",
+      "type": "global",
+      "currency": "USD",
+      "sector": null,
+      "value": 80249.01,
+      "change": 0.2711415095035099,
+      "rsi": 42.645696310592704,
+      "rating": 0.003030303030303022,
+      "volume": 1462.60274448
+    }
+  ],
+  "macro": {
+    "generatedAt": "2026-10-26T16:04:53.381Z",
+    "regime": "Event-driven / mixed",
+    "summary": "Event-driven / mixed. Bank Nifty–Nifty correlation is 0.83 with beta 0.92. The rupee is stabilising (1M -1.03%), Brent is $116.84 and the war-risk gauge is 52/100 (Watch).",
+    "market": {
+      "nifty": {
+        "key": "NIFTY",
+        "name": "Nifty 50",
+        "short": "Nifty 50",
+        "exchange": "NSE",
+        "tv": "NSE:NIFTY",
+        "yahoo": "^NSEI",
+        "type": "index",
+        "currency": "INR",
+        "sector": null,
+        "value": 22753.2,
+        "change": 0.6778761061946935,
+        "rsi": 46.07587136000214,
+        "rating": -0.2,
+        "volume": 310215880
+      },
+      "bankNifty": {
+        "key": "BANKNIFTY",
+        "name": "Bank Nifty",
+        "short": "Bank Nifty",
+        "exchange": "NSE",
+        "tv": "NSE:BANKNIFTY",
+        "yahoo": "^NSEBANK",
+        "type": "index",
+        "currency": "INR",
+        "sector": null,
+        "value": 54366.7,
+        "change": 0.14616664839967056,
+        "rsi": 38.74425038450405,
+        "rating": -0.5363636363636364,
+        "volume": 262914141
+      },
+      "sensex": {
+        "key": "SENSEX",
+        "name": "Sensex",
+        "short": "Sensex",
+        "exchange": "BSE",
+        "tv": "BSE:SENSEX",
+        "yahoo": "^BSESN",
+        "type": "index",
+        "currency": "INR",
+        "sector": null,
+        "value": 73606.75,
+        "change": 0.6604139854271832,
+        "rsi": 49.194927975670176,
+        "rating": -0.045454545454545456,
+        "volume": 10867545
+      },
+      "vix": {
+        "key": "INDIAVIX",
+        "name": "India VIX",
+        "short": "India VIX",
+        "exchange": "NSE",
+        "tv": "NSE:INDIAVIX",
+        "yahoo": "^INDIAVIX",
+        "type": "index",
+        "currency": "INR",
+        "sector": null,
+        "value": 17.16,
+        "change": 1.7793594306049865,
+        "rsi": 67.64707028878836,
+        "rating": 0.5097402597402597,
+        "volume": null
+      },
+      "usdinr": {
+        "key": "USDINR",
+        "name": "USD / INR",
+        "short": "USDINR",
+        "exchange": "FX",
+        "tv": "FX_IDC:USDINR",
+        "yahoo": "INR=X",
+        "type": "global",
+        "currency": "INR",
+        "sector": null,
+        "value": 95.175,
+        "change": 0.25808490466658623,
+        "rsi": 45.20523597270929,
+        "rating": -0.10714285714285714,
+        "volume": 0
+      },
+      "brent": {
+        "key": "BRENT",
+        "name": "Brent crude",
+        "short": "BRENT",
+        "exchange": "NYMEX",
+        "tv": "NYMEX:BZ1!",
+        "yahoo": "BZ=F",
+        "type": "global",
+        "currency": "USD",
+        "sector": null,
+        "value": 116.84,
+        "change": 0.1028101439342054,
+        "rsi": 72.15147935895621,
+        "rating": 0.5121212121212121,
+        "volume": 13609
+      },
+      "wti": {
+        "key": "WTI",
+        "name": "WTI crude",
+        "short": "WTI",
+        "exchange": "NYMEX",
+        "tv": "NYMEX:CL1!",
+        "yahoo": "CL=F",
+        "type": "global",
+        "currency": "USD",
+        "sector": null,
+        "value": 102.68,
+        "change": -0.5713179045221161,
+        "rsi": 66.52327423085453,
+        "rating": 0.4212121212121212,
+        "volume": 165976
+      },
+      "gold": {
+        "key": "GOLD",
+        "name": "Gold futures",
+        "short": "GOLD",
+        "exchange": "COMEX",
+        "tv": "COMEX:GC1!",
+        "yahoo": "GC=F",
+        "type": "global",
+        "currency": "USD",
+        "sector": null,
+        "value": 4030.6,
+        "change": 0.5663813967414311,
+        "rsi": 33.77942030160909,
+        "rating": -0.35454545454545455,
+        "volume": 96969
+      },
+      "dxy": {
+        "key": "DXY",
+        "name": "Dollar index",
+        "short": "DXY",
+        "exchange": "ICE",
+        "tv": "TVC:DXY",
+        "yahoo": "DX-Y.NYB",
+        "type": "global",
+        "currency": "USD",
+        "sector": null,
+        "value": 101.995,
+        "change": 0.2398010830360387,
+        "rsi": 58.12035817684192,
+        "rating": 0.41883116883116883,
+        "volume": null
+      },
+      "us10y": {
+        "key": "US10Y",
+        "name": "US 10-year yield",
+        "short": "US10Y",
+        "exchange": "CBOT",
+        "tv": "TVC:US10Y",
+        "yahoo": "^TNX",
+        "type": "global",
+        "currency": "%",
+        "sector": null,
+        "value": 4.982,
+        "change": -0.3400680136027098,
+        "rsi": null,
+        "rating": null,
+        "volume": null
+      }
+    },
+    "bankNifty": {
+      "quote": {
+        "key": "BANKNIFTY",
+        "name": "Bank Nifty",
+        "short": "Bank Nifty",
+        "exchange": "NSE",
+        "tv": "NSE:BANKNIFTY",
+        "yahoo": "^NSEBANK",
+        "type": "index",
+        "currency": "INR",
+        "sector": null,
+        "value": 54366.7,
+        "change": 0.14616664839967056,
+        "rsi": 38.74425038450405,
+        "rating": -0.5363636363636364,
+        "volume": 262914141
+      },
+      "niftyQuote": {
+        "key": "NIFTY",
+        "name": "Nifty 50",
+        "short": "Nifty 50",
+        "exchange": "NSE",
+        "tv": "NSE:NIFTY",
+        "yahoo": "^NSEI",
+        "type": "index",
+        "currency": "INR",
+        "sector": null,
+        "value": 22753.2,
+        "change": 0.6778761061946935,
+        "rsi": 46.07587136000214,
+        "rating": -0.2,
+        "volume": 310215880
+      },
+      "correlation": 0.83,
+      "beta": 0.92,
+      "niftyMonth": -2.96,
+      "bankMonth": -3.86,
+      "relativeStrength1m": -0.9,
+      "dependency": "High",
+      "movers": [
+        {
+          "key": "KOTAKBANK",
+          "name": "Kotak Mahindra Bank",
+          "value": 440.75,
+          "change": 2.380952380952381,
+          "rsi": 58.946614222268515,
+          "correlation": 0.51,
+          "beta": 0.9
+        },
+        {
+          "key": "BAJFINANCE",
+          "name": "Bajaj Finance",
+          "value": 918.7,
+          "change": -1.103396307659185,
+          "rsi": 36.17439073991538,
+          "correlation": null,
+          "beta": null
+        },
+        {
+          "key": "HDFCBANK",
+          "name": "HDFC Bank",
+          "value": 688.05,
+          "change": -0.6856235565819861,
+          "rsi": 39.169685881423895,
+          "correlation": 0.55,
+          "beta": 0.94
+        },
+        {
+          "key": "ICICIBANK",
+          "name": "ICICI Bank",
+          "value": 1403,
+          "change": 0.6311863434227482,
+          "rsi": 59.36094111075785,
+          "correlation": 0.68,
+          "beta": 0.94
+        },
+        {
+          "key": "SBIN",
+          "name": "State Bank of India",
+          "value": 960.8,
+          "change": 0.2295013561443701,
+          "rsi": 45.16134332874891,
+          "correlation": 0.72,
+          "beta": 1.07
+        },
+        {
+          "key": "AXISBANK",
+          "name": "Axis Bank",
+          "value": 1220,
+          "change": 0.20533880903490762,
+          "rsi": 44.139376433748765,
+          "correlation": 0.69,
+          "beta": 1.24
+        }
+      ],
+      "note": "Bank Nifty is the high-beta domestic-cyclical index. A correlation above 0.8 means Nifty direction and Bank Nifty direction are usually the same trade; the beta tells you how much more Bank Nifty tends to move."
+    },
+    "rupee": {
+      "quote": {
+        "key": "USDINR",
+        "name": "USD / INR",
+        "short": "USDINR",
+        "exchange": "FX",
+        "tv": "FX_IDC:USDINR",
+        "yahoo": "INR=X",
+        "type": "global",
+        "currency": "INR",
+        "sector": null,
+        "value": 95.175,
+        "change": 0.25808490466658623,
+        "rsi": 45.20523597270929,
+        "rating": -0.10714285714285714,
+        "volume": 0
+      },
+      "trend": "Stabilising",
+      "weekChange": 0.21,
+      "monthChange": -1.03,
+      "quarterChange": -0.44,
+      "ema20": 95.3565,
+      "ema50": 95.4912,
+      "support": 94.15,
+      "resistance": 96.89,
+      "stress": "Rupee strengthening",
+      "winners": [
+        "IT exporters",
+        "Pharma exporters",
+        "GIFT City / dollar earners"
+      ],
+      "losers": [
+        "Importers",
+        "Aviation",
+        "Paints",
+        "Oil marketing companies",
+        "Electronics"
+      ],
+      "note": "USD/INR up means the rupee is falling. A weaker rupee helps dollar earners and hurts import-heavy sectors; it also raises the imported cost of crude."
+    },
+    "crude": {
+      "brent": {
+        "key": "BRENT",
+        "name": "Brent crude",
+        "short": "BRENT",
+        "exchange": "NYMEX",
+        "tv": "NYMEX:BZ1!",
+        "yahoo": "BZ=F",
+        "type": "global",
+        "currency": "USD",
+        "sector": null,
+        "value": 116.84,
+        "change": 0.1028101439342054,
+        "rsi": 72.15147935895621,
+        "rating": 0.5121212121212121,
+        "volume": 13609
+      },
+      "wti": {
+        "key": "WTI",
+        "name": "WTI crude",
+        "short": "WTI",
+        "exchange": "NYMEX",
+        "tv": "NYMEX:CL1!",
+        "yahoo": "CL=F",
+        "type": "global",
+        "currency": "USD",
+        "sector": null,
+        "value": 102.68,
+        "change": -0.5713179045221161,
+        "rsi": 66.52327423085453,
+        "rating": 0.4212121212121212,
+        "volume": 165976
+      },
+      "weekChange": 2.04,
+      "monthChange": 7.16,
+      "ema20": 107.4679,
+      "support": 96.56,
+      "resistance": 117.41,
+      "risk": "High",
+      "sensitivity": "Rule of thumb: a sustained $10/bbl rise in crude is roughly a $15–18 bn annual headwind for India's oil import bill. Treat this as an estimate, not a forecast.",
+      "winners": [
+        "Upstream producers (ONGC, Oil India)",
+        "Defence / energy security"
+      ],
+      "losers": [
+        "Oil marketing companies",
+        "Aviation",
+        "Paints",
+        "Tyres",
+        "Consumers of crude derivatives"
+      ],
+      "note": "Crude is the fastest transmission channel from a war or Middle East headline into Indian inflation, the rupee and the Nifty."
+    },
+    "war": {
+      "score": 52,
+      "label": "Watch",
+      "negativeShare": 17,
+      "warHeadlines": 5,
+      "drivers": [
+        "India VIX at 17.16",
+        "Brent at $116.84",
+        "Gold +0.57% today",
+        "5 conflict headlines in feed"
+      ],
+      "headlines": [
+        {
+          "title": "Oil price surge fuels Iran hardliners’ case against US deal - Iran International",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1uamhXNFlaTFc0RWpyV3p4QTNzdmxZZFF2RHJSc0pPWjFmNXBnSjc3Sk0tNmJUVUpKMktKbENIeFlCcURCSTBjR1FfekczbDFKRkE?oc=5",
+          "source": "Iran International",
+          "ago": "20m ago",
+          "sentiment": "positive"
+        },
+        {
+          "title": "As Trump brags about U.S. oil and gas company profits, his stocks gained millions during Iran war - CBS News",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNU1NNM0tTeE1oc2ZkTUdxRUlwZ2h1OFpGdWd0bjZqbmYxb0NkM1JpVEF6Sm0tQzBfU05IZ2pnb2FkaXVGQUc2Y213MWJWclA3cl9tT3BlZlplek9rTlhGLXNrdzZPNHEtc2ZCU0pxWXJ3NHowTXgxN2JVekgyM2RRYlBmM2YzbW5jdTJMWGFLODZYSnkyb3BxNHhtYWY3dw?oc=5",
+          "source": "CBS News",
+          "ago": "3h ago",
+          "sentiment": "positive"
+        },
+        {
+          "title": "US paying most for Hormuz oil shock with world’s largest fuel bill - Centre for Research on Energy and Clean Air",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5May1PaC1oNEZxQmlRREJxV2x3TVdnb1BLd3dmTl9Ib3N5ZnFYMFhtVkFBRUUwZlg0bGpVRkc4cmVDZVR1bzhTRC1CcnlUQ1NSOUJVd1hxdjdHYzRlNzJ3a2dVYXFLV2hsMFlOUmoxMmpRbWdK?oc=5",
+          "source": "Centre for Research on Energy and Clean Air",
+          "ago": "3h ago",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "CHARTED: Oil Trade Through the Strait of Hormuz by Country – Visual Capitalist - EnergyNow.com",
+          "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQeU1tdWFDbEwyc2R5ZEFYN3Y4Q3czZEZKX2ZMWUZWUjVDaHljOVZXY1dTX1h1LXFMSlNJcGtad1VURWhBaHFPWm5nNmY5YzJDX1B1RU1ISDFKWEs1US1TNkptS3lIYXVyWUZsdUM4OTFzRk8zOU1abWE5M3IwV0dtX2VqWlhBUW5mbERvOVVoU2EyR25PQk5qbk9PNXBfbmZ3NTFlR1hXVVZNUQ?oc=5",
+          "source": "EnergyNow.com",
+          "ago": "3h ago",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "In his own words: Trump on gas prices and energy costs since launching the war with Iran - AP News",
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQWVloTVpZeHZsZHpoNVdPZFQ0X21mbU5QSnY1UmczNVNJTG9iTmhMSlNoaVM0YUVwWnQzNjIzb3ktV1JRUEp5VVR4bHdCOGdHUGZXQ2RzMzAzLVlrZ2M4OVhjOUoyOVJtNEplUEc2YlRCTE1YWV94aUVhZ2dybUJ2SkoxRHE0ak5ObVBnVmxmTWNIaTNPT2VCM21pTHA3N28?oc=5",
+          "source": "AP News",
+          "ago": "3h ago",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Oil Prices Fall as Traders Weigh U.S.-Iran Diplomacy, Saudi Attacks - WSJ",
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOdHd1Q1FTWEFlUlUtZ1FQRWJfYm1QYm5KZW1jTVA2cS01R0cxb0xsNVNrdXJVNm44VTd2ZWN4WnY1R0tla0JuM3NVUmpBVF9GLTl2WEdFRmNUTFpEVUpHVHQzdUREUFBwN2ZEZ2xGcThUa0lKamdzaEY2c19pRy1PcXZCd2hPUmRfTmQ4bUNGWkFPbTM3Z04zLXB2bUdtclBvVmpmQmhqcEloSTJUOHg2ZzRsbEI?oc=5",
+          "source": "WSJ",
+          "ago": "4h ago",
+          "sentiment": "negative"
+        }
+      ],
+      "playbook": [
+        "Do not chase a gap on the first headline; wait for the second candle and the crude/VIX response.",
+        "Defensive order: gold and dollar strength first, crude second, equities third.",
+        "If Brent and India VIX both rise, cut position size rather than averaging into weakness.",
+        "Keep stop-losses wider than the headline noise only if size is reduced proportionally."
+      ]
+    },
+    "events": {
+      "fed": {
+        "label": "Fed & FOMC",
+        "items": [
+          {
+            "title": "Jeff Sica discusses tech AI spending and Federal Reserve rate expectations - Fox Business",
+            "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wOTFwRU5SdjRiNDFUUUlPNm90WHNwbERNbGZfdExhc2xUNEdVZVFpeGNlV0tZYW1lQnFTZ3dVUFNMN1BxaDQxYnFQLTlKZWh1UUJQMFoxdkZjQkU?oc=5",
+            "source": "Fox Business",
+            "ago": "1h ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "Fed Meets, Inflation Report Due Ahead of Midterms | National News | U.S. News - U.S. News & World Report",
+            "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPc2paV3hSZkdQcFpBMlJJeVNTV0ppVjhVSldDampyZGZGaThFODNFN2dfWmYtUnAxN0FJTzlYaGh2SWZHNWZsTUdrSlpETk1qbndMYXpCNVc2U3dhV0Jrd3NrLWxzV2JHTDJyV1lyZzRLUnRaNWw2ZkM1RDZVYzc3X1Z4WmswSE1nNWtDVTB0bVc2S1RPMFBlNkZMLXM4U2pUNWJ2eFoxSFRJSjVjNnBZ?oc=5",
+            "source": "U.S. News & World Report",
+            "ago": "3h ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "FOMC Meeting Puts Fed Interest Rate Decision in Focus as Inflation Rises - Coinpedia",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOZ2d6MkVDNmZVaEJuTkdpbEZxLUpVOUVLa09EWnYxcFNtNi1qczNXSlh4M3I2TUltcUFJVTZfSjJXNTlMMHBWdXd0XzZVeFlLZU80VlBMR0hSVzgxZHpCNmIxaE9uakRQeElPbGo0U19WdllHM3JRTlhWYUhxNi1YLTJhV0VTVDNjMWN6eVo3UTRIN0dqaFhfS2E4cFVpMU1PZEHSAacBQVVfeXFMTi1ZQzR6UnlaRWp0TU96TDRabDc1VkJPS013RnBsUTZBNFE0RWR5ZkVCTTBfVjJrV3M3LVhlUFFNWnVaXzR0YVA2bUM4OFlraGJ2MzczVU1wYnhVcGIycFhtYXdvdGhSY2ZoS2lvNFRhdU5VUy0ySGU4NFpncUFZclZVYlRfam1SSVJIcFBKQlBIWll5alBoNEJvU2x6cU90OFd4azdudEE?oc=5",
+            "source": "Coinpedia",
+            "ago": "4h ago",
+            "sentiment": "positive"
+          },
+          {
+            "title": "US Stock Futures Rise Ahead of Federal Reserve Decision and Major Technology Earnings - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOWjRNaTdzZnZMZ0ZNV3VkNnpRZTVKV0lpVDJmXzh5bUt2UTZLalNHVzFJdy1fdkF6TVo4ak0wZEUzV3JZTFI5SE9rOUpTcWhBaHFWa0JqOWpmdDZBZnBSLXlXVDluY0dQOTltV2lVUUVReEFtdllsNUtzNXkyQTV4azJmYWlwUmJmWnY2YmV3RlZJbUxqMVBJ?oc=5",
+            "source": "Yahoo Finance",
+            "ago": "4h ago",
+            "sentiment": "positive"
+          }
+        ]
+      },
+      "policy": {
+        "label": "India policy / GIFT City",
+        "items": [
+          {
+            "title": "India SEZ Rules 2026: Key Changes for IFSC Funds & LoA Renewal - India Briefing",
+            "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNSzEteUs3cExxT0FneklkbTRxcHlITlRiRU50akFKVk5FYUQyaXlkQzBzSURfSmtEbnJCMGZveXpaUkdyd2pCX05zWDBJNTZnaVlMenlmU2pUUUF1aFE0cGlWWEZWYVhKUVZmZ0xfeXlKdmhGTEcweUJoZTJhRmN4MG1Gd2dOSTNKWE1ta09maVdya0lxN2c?oc=5",
+            "source": "India Briefing",
+            "ago": "7d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "GIFT City Accelerates Social Infra Development - https://www.fintechbiznews.com/",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQQV9rdk9icl9aeF9zS0kwRVNFaFpfQThMZDctd3BFbmxOaEV2WXJfY29PcnlyT0M0UnFkRG1tWUZOSkZUNDRKYmVKX3ItU2dKREJjenkxWUNPemRGdGwxRzVCeWZWdk83cFo5R2ZCM3VNSjJ3U2M0aHR3bjVsVWIySjhCRHhGMWxDNU5mVmFJbFEwOUdnMG1rSEhRYmxVcU5pQXVaLWhJVQ?oc=5",
+            "source": "https://www.fintechbiznews.com/",
+            "ago": "4d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "India refines 1,200 tonnes of gold but consumes 800-850 tonnes: How GIFT City could help unlock major expo - The Economic Times",
+            "link": "https://news.google.com/rss/articles/CBMizgJBVV95cUxNV3diOWp1bWZwQU9meTNncXlQOWRaRVpzakR1S0h3RVA4MFVTMkxUUy1va2d3S2J1WGRndnFVTlJ2aTlTRUVIXzZMWXNFc05LVHJIZDk4VUY1dUlIOHNJb2lhNlhlQmNFbmlDNjhfVF9qOWdQMDFpYWdSRUxmRzZja1d5YXpfWUprZVVlSXMwQ19uYlpacVh4Rlp2RXh0NHJ5dFQtQkQ3eDdsRDBxR1plbFNsS2FlTUl3TU8tWGZaSnE2ZGxOenJoMENiZTRwTVZIbUJib01TVDU3dWFTVE5yNUhyX3gzazR1ZnhFQmo3S2J5d0cweC1kbm1zWWxqOUVJeENlTm1QVkUtb3g5S1hab2J6dDA3cU1aR0xzc2s2cDhxRGlscGtwWVN5QlFnbkhKemhZWmh2RGxMblMybDF0OEF2OE5lSjgxeXlIcUd30gHTAkFVX3lxTE10RlRaODh5MmoxTEZhMkhZbkoyeVNiRW9UaUlLYnFIREw5UzZxa2drUldKbmRyN0dFU1JKeGZBSTl1RFNRNjRLT1hHZUdrNVhmM2kyZFRqOHZLdEo2czYxb2dOeldlZ1RWZXc1ZFVxMGxpMDZZcUJCY01TQlZLSWNvWWVWUjhxWXhnUWNqWDExR21Jdkh6X3Y2OEQ1WWx0NU5mYTR2bnFnVld2RnhJdzRhWGNCS2R1NXg4bUZJMng2LVlISlF6VEhIOHFKcHI5T3pCN2JWc0ljWmhhS2NxV1pKT1BMb3gtakFRY3l6THVkREJXRXpWUVJmckR5Ui1UZUJCckYycG5nV1IwT2p3Nk52YWVmRHRIMThOTmlESm9wMXFWWnZmQVhLcktpQ3YwVjNFRGFiblMwREI4aFlxbHVJbzY2MlBiRlRGUU5NalRVSlNUZw?oc=5",
+            "source": "The Economic Times",
+            "ago": "9d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "India’s finance minister says market liquidity makes it easier for investors to exit - CNBC",
+            "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBGWG1fbVpjWEttMmtlcUsyRC1ZbV80N3NLdWdxZzBuWmhTOXhpTXdPR20ydzZoLXUwNjVlWERKVTNfVnZ4N0pxRnBJTlpsU29qTE9jZElmcmlvY25NclRJZHhkbW5GRUhBR0FKRm9tLXRpY0cyRVVpUWxB0gF_QVVfeXFMTWlWMjV3V1J4ZTAxekdzazNZZ0taTXhoSTFaM2Q4REFZdENTV2VwWHFQaVVxREw4R053MmxEVVE2N0RnOHV3TWpBY0k1MlZvZ2NfaS0tTENDYmVmclBJd0JmT0twbUhRZnR1V1JrUHFoalJsOHFRbjgtVzJLV0o4RQ?oc=5",
+            "source": "CNBC",
+            "ago": "8d ago",
+            "sentiment": "neutral"
+          }
+        ],
+        "buckets": {
+          "giftCity": [
+            {
+              "title": "India SEZ Rules 2026: Key Changes for IFSC Funds & LoA Renewal - India Briefing",
+              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNSzEteUs3cExxT0FneklkbTRxcHlITlRiRU50akFKVk5FYUQyaXlkQzBzSURfSmtEbnJCMGZveXpaUkdyd2pCX05zWDBJNTZnaVlMenlmU2pUUUF1aFE0cGlWWEZWYVhKUVZmZ0xfeXlKdmhGTEcweUJoZTJhRmN4MG1Gd2dOSTNKWE1ta09maVdya0lxN2c?oc=5",
+              "source": "India Briefing",
+              "category": "custom",
+              "categoryLabel": "GIFT City & FPI tax",
+              "published": "Mon, 19 Oct 2026 17:51",
+              "publishedIso": "2026-10-19T17:51:12.000Z",
+              "ago": "7d ago",
+              "sentiment": "neutral"
+            },
+            {
+              "title": "GIFT City Accelerates Social Infra Development - https://www.fintechbiznews.com/",
+              "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQQV9rdk9icl9aeF9zS0kwRVNFaFpfQThMZDctd3BFbmxOaEV2WXJfY29PcnlyT0M0UnFkRG1tWUZOSkZUNDRKYmVKX3ItU2dKREJjenkxWUNPemRGdGwxRzVCeWZWdk83cFo5R2ZCM3VNSjJ3U2M0aHR3bjVsVWIySjhCRHhGMWxDNU5mVmFJbFEwOUdnMG1rSEhRYmxVcU5pQXVaLWhJVQ?oc=5",
+              "source": "https://www.fintechbiznews.com/",
+              "category": "custom",
+              "categoryLabel": "GIFT City & FPI tax",
+              "published": "Thu, 22 Oct 2026 20:29",
+              "publishedIso": "2026-10-22T20:29:56.000Z",
+              "ago": "4d ago",
+              "sentiment": "neutral"
+            },
+            {
+              "title": "India refines 1,200 tonnes of gold but consumes 800-850 tonnes: How GIFT City could help unlock major expo - The Economic Times",
+              "link": "https://news.google.com/rss/articles/CBMizgJBVV95cUxNV3diOWp1bWZwQU9meTNncXlQOWRaRVpzakR1S0h3RVA4MFVTMkxUUy1va2d3S2J1WGRndnFVTlJ2aTlTRUVIXzZMWXNFc05LVHJIZDk4VUY1dUlIOHNJb2lhNlhlQmNFbmlDNjhfVF9qOWdQMDFpYWdSRUxmRzZja1d5YXpfWUprZVVlSXMwQ19uYlpacVh4Rlp2RXh0NHJ5dFQtQkQ3eDdsRDBxR1plbFNsS2FlTUl3TU8tWGZaSnE2ZGxOenJoMENiZTRwTVZIbUJib01TVDU3dWFTVE5yNUhyX3gzazR1ZnhFQmo3S2J5d0cweC1kbm1zWWxqOUVJeENlTm1QVkUtb3g5S1hab2J6dDA3cU1aR0xzc2s2cDhxRGlscGtwWVN5QlFnbkhKemhZWmh2RGxMblMybDF0OEF2OE5lSjgxeXlIcUd30gHTAkFVX3lxTE10RlRaODh5MmoxTEZhMkhZbkoyeVNiRW9UaUlLYnFIREw5UzZxa2drUldKbmRyN0dFU1JKeGZBSTl1RFNRNjRLT1hHZUdrNVhmM2kyZFRqOHZLdEo2czYxb2dOeldlZ1RWZXc1ZFVxMGxpMDZZcUJCY01TQlZLSWNvWWVWUjhxWXhnUWNqWDExR21Jdkh6X3Y2OEQ1WWx0NU5mYTR2bnFnVld2RnhJdzRhWGNCS2R1NXg4bUZJMng2LVlISlF6VEhIOHFKcHI5T3pCN2JWc0ljWmhhS2NxV1pKT1BMb3gtakFRY3l6THVkREJXRXpWUVJmckR5Ui1UZUJCckYycG5nV1IwT2p3Nk52YWVmRHRIMThOTmlESm9wMXFWWnZmQVhLcktpQ3YwVjNFRGFiblMwREI4aFlxbHVJbzY2MlBiRlRGUU5NalRVSlNUZw?oc=5",
+              "source": "The Economic Times",
+              "category": "custom",
+              "categoryLabel": "GIFT City & FPI tax",
+              "published": "Sat, 17 Oct 2026 07:00",
+              "publishedIso": "2026-10-17T07:00:00.000Z",
+              "ago": "9d ago",
+              "sentiment": "neutral"
+            }
+          ],
+          "rbiFinance": [
+            {
+              "title": "India’s finance minister says market liquidity makes it easier for investors to exit - CNBC",
+              "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBGWG1fbVpjWEttMmtlcUsyRC1ZbV80N3NLdWdxZzBuWmhTOXhpTXdPR20ydzZoLXUwNjVlWERKVTNfVnZ4N0pxRnBJTlpsU29qTE9jZElmcmlvY25NclRJZHhkbW5GRUhBR0FKRm9tLXRpY0cyRVVpUWxB0gF_QVVfeXFMTWlWMjV3V1J4ZTAxekdzazNZZ0taTXhoSTFaM2Q4REFZdENTV2VwWHFQaVVxREw4R053MmxEVVE2N0RnOHV3TWpBY0k1MlZvZ2NfaS0tTENDYmVmclBJd0JmT0twbUhRZnR1V1JrUHFoalJsOHFRbjgtVzJLV0o4RQ?oc=5",
+              "source": "CNBC",
+              "category": "custom",
+              "categoryLabel": "RBI Governor & Finance Minister",
+              "published": "Sun, 18 Oct 2026 23:00",
+              "publishedIso": "2026-10-18T23:00:01.000Z",
+              "ago": "8d ago",
+              "sentiment": "neutral"
+            },
+            {
+              "title": "Finance Minister Highlights India’s vast market size and long term investment potential at Chicago Business Roundtable - News On AIR",
+              "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPRDZwbnRsZXRXRm04RDhtMTZIbHdKd2h5RWN2ZFg4eWFXVlU5TmF3TXN5MFRCRC1vLUlybjVjZktJdHZ1SXRBZnhaLVRxYnFWSG5LSWFpR0NwM1JqNkVNak5wV2VZaWpySUVzY2JsV3NicUQ2UHNlQXNuTGhnMjJnSklsZGk1UTRGaXFyTDFxZzhHRE1yU0tEUWFJMzJjNXNmSmZYZHB6cHJtanRCckVKYlpR?oc=5",
+              "source": "News On AIR",
+              "category": "custom",
+              "categoryLabel": "RBI Governor & Finance Minister",
+              "published": "Fri, 23 Oct 2026 09:22",
+              "publishedIso": "2026-10-23T09:22:08.000Z",
+              "ago": "3d ago",
+              "sentiment": "neutral"
+            },
+            {
+              "title": "India’s RBI Governor Open to Rate Use to Curb Financial Risks - Bloomberg.com",
+              "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOcldxdmVNX3BPWUJxLTUyazlLdTh5aTFLemFQbHdBdlF5WjZ2UWNNYVlCZUtRS0pjOUNOLXl4QzVkTWZrUlRaV3dhc3B4YkV4ZGNUdV9HUGpkRkRJMV9VNjhhc1pDRy1BWWZiY1lrRlNHOFJhalZpeUphaHlLQ043NFZIS1IxMVlFeWI4bjZqVG1wTGQybnZnUG5vMmo5SlFqRHRSOG9uWW1rcXNwSTdwQ1NR?oc=5",
+              "source": "Bloomberg.com",
+              "category": "custom",
+              "categoryLabel": "RBI Governor & Finance Minister",
+              "published": "Fri, 23 Oct 2026 15:24",
+              "publishedIso": "2026-10-23T15:24:08.000Z",
+              "ago": "3d ago",
+              "sentiment": "neutral"
+            }
+          ],
+          "pmTax": [
+            {
+              "title": "Reforms to Expand Foreign Participation in G-Secs - Press Information Bureau",
+              "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9lUDRBaE03QUhlNGJpR2xmUDBPejBuaXc0MUt3emJEeDlENmxVQy1EdUdVa3VRb0RRTEJyRlROVGZ0ZlZYcjEtUnB4RDAxS0p1MzVvUG4xd3lSbks4WXVLRHo3ZkxSSHRTaVYxc0pmMXhNbjNnLXhN?oc=5",
+              "source": "Press Information Bureau",
+              "category": "custom",
+              "categoryLabel": "PM meeting & foreign-investor tax",
+              "published": "Fri, 23 Oct 2026 15:36",
+              "publishedIso": "2026-10-23T15:36:31.000Z",
+              "ago": "3d ago",
+              "sentiment": "neutral"
+            },
+            {
+              "title": "FM says open to discussion on capital gains tax - The New Indian Express",
+              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPOTNiVHl1OURISWFZMkZaaGxEU2dzSlFYNUNNdGdhTzk1Uy14Y0pNSWdlcEh6X1d6UFB4M04yOGpEY1cxcjlqZW9nNFNWbHBDR0VLNEhOMURmLXZpSzdvb054ck1lOEdHNjk4YnJaSlBzZ2dfbFhUSmJtRjZCNGl5eXIyb1Rxd3dEd2ZmRE1WbUVqTlEzbFJPVWk4eUMtR2QwdjNr0gGwAUFVX3lxTE5IVU5ZektVQ3N0dmphSTkxWVg0VXlnTlJiSk9KNlVOV3RycEExUDhxZTlxVUx3MVdnY1Z1UmtPZ193YWx5cWlCcUpTdF9jS1lGVjRRRk54QVB2RVI0NEVyTnlSZWlxTG9ULWpYWWdPN3Nkd0Q4N2w4d1hoLUNreG1ZOTEteHhEYW0tQlBhT2V2cDVReVlQTWI4aEF3Y2d5TVkzX3ZVVkRvUWlnVURsSHh3?oc=5",
+              "source": "The New Indian Express",
+              "category": "custom",
+              "categoryLabel": "PM meeting & foreign-investor tax",
+              "published": "Tue, 13 Oct 2026 07:00",
+              "publishedIso": "2026-10-13T07:00:00.000Z",
+              "ago": "13d ago",
+              "sentiment": "positive"
+            },
+            {
+              "title": "Canadian Foreign Minister Anita Anand meets PM Modi - ET Government",
+              "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUnF3Zm5zdlBJdE5jd0VJcmdlcDlNdGdPalV6c1FaNVBOYmF0VnlycW9aMWRHcElRNy1UdjBxOWNiNUdLQklnS1F6WDlTUVE1WlJTWjBDXzFhRWlJZE1ibVRwampQWWttNnlndE8zUEpHSEtWS01rUFo3MUNaU28xSlJMQWpySVIzbjBVZ0JFUEo4ZXJybm10N2hNR2pMeWhZelIyXzZCb2FLQ25JbFY5SlNnQzlnYU8wdVJaSWV0UdIBwwFBVV95cUxNb0xSa1VTZG5FYzlKQXVxY2lxYVlvSktiWXZrWnFwbDRqbmsyU09QVzhpc0FvdGtaMWFyWnFEQ1g4V3gzT2ctcktKeldXalhleW9JQVhKWTNVdUs0RkFWQXFXZEJGckhNTjVhZy1VWmZkUHRmNmtuemwycEtuOElRQVhRdWlkUlpkV3FzR3FaS0dzbUpaY3NkcGx3ZDItTFVMQ0tFQWR3NGsxNTl4Sk9sM2V0Mld3VVRSWlFHeGZqTFlpU1E?oc=5",
+              "source": "ET Government",
+              "category": "custom",
+              "categoryLabel": "PM meeting & foreign-investor tax",
+              "published": "Fri, 16 Oct 2026 07:00",
+              "publishedIso": "2026-10-16T07:00:00.000Z",
+              "ago": "10d ago",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      },
+      "rareEarth": {
+        "label": "Rare earth metals",
+        "note": "China's export controls can move magnets, EV, electronics and defence supply chains. In India, track strategic-metal policy and listed producers/processors; headlines are catalysts, not a recommendation.",
+        "items": [
+          {
+            "title": "Engineered porous material recovers valuable rare earth elements from industrial wastewater - Tech Xplore",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPdkE2ZEcwRzB3SXpPSzBneVZjUG92SW9zUHFXdHVYN0FQOWlDN3M1dkx5anNORkZ4cy1lal80UHo4d0RIQ3d6ZnAycVNMVXp0MDlJZ0Nra2czTG4ybC1aUTdza1RER2FjU3BBRWxpSGlzaGRQMWFrNzJpeVJ3TWZ5akhkb3QtZw?oc=5",
+            "source": "Tech Xplore",
+            "ago": "4d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "Beyond metal purity with upcycled rare earth mixtures from electronic waste for enantioselective synthesis - Nature",
+            "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5JbEROc3liY3hyV3piQkt4YXpWVlduWi01MDZQblBPckVscXNVOFZIWDBpbUVfcS0wenU4UlJONUV0TTYza0hzVEZMeXBwckMydUtYYVNPN0NsMTlKWWw4?oc=5",
+            "source": "Nature",
+            "ago": "4d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "Phoenix Tailings picks Rochester for $375M rare earth facility - Rochester Business Journal",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNYl83OHIwLXlWTG9rUDlqbzE0ZlFVR0xkZGVoOU5LMnZpSFljLUVQSm5yV1N6clVTZy1PRGRsWXkzX1JBNUkwai01R19YZXVVamppTVpLc3BkUGtFQmkxQUtrWlZmSTRKeWtrSWZsUWM5UXJqSE9JeTJUbFB5SFVFN3dueXBnQQ?oc=5",
+            "source": "Rochester Business Journal",
+            "ago": "5d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "Vulcan Elements, UNC Team Up to Improve Rare Earth Magnets - The Quantum Insider",
+            "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPbEVnMUwxTERGd19qWnBCeHNjbEo1S2owUEptMllJVjVZSEs1VW1sQWZMMVFfNkY2TXZTaHE2ckxDU0pZZjNsZ1ZGSGhoMG4tVUpYS0lBcmxiRmlEWHRWdXhuaEJNek1rcjNla1JxUDl1V0lCeDZjQU1kd3dFV3FZTF90M2pPMFhjY2FxSGl3LUhwemFpVXR0cmQxYjBweHFR?oc=5",
+            "source": "The Quantum Insider",
+            "ago": "5d ago",
+            "sentiment": "neutral"
+          }
+        ]
+      },
+      "worldBank": {
+        "label": "World Bank & IMF",
+        "note": "Growth forecasts, funding costs and global trade language matter for FPI flows and the rupee. Watch the India growth commentary and any climate/energy financing announcements.",
+        "items": [
+          {
+            "title": "World Bank, IMF sideline climate at Bangkok meetings - Green Central Banking",
+            "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNbmFnSHhqMHI1eGx4dUZoV3pVWnUtVDl5RkRDTzcxelBqWmRTOHJOSXhIOFNDcFFsVGRYUVBib2JPR3diZmp2MXhVWmM1eThDZHd0NmlGOGlZU2RBYmVrYm9ZRG1lWndpZWlqalZHSm92TW9zRUYtNi1FUGoyQWU4S2R4MXAxNE9LdFhmWUhvanZNOWlHWjRTekUxWEJoU3JCc2Zv?oc=5",
+            "source": "Green Central Banking",
+            "ago": "4d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "The world’s finance chiefs see new risks — and less China angst - CNBC",
+            "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNblRUeEhJa2ZudHZxRXVFcmJxTkc5clFqdmFIQVNpT292MTVVVS1fLUtCa2hPQ084ZUhEUXRKZUVqRzdUdm13ci1nU2NISU9HTUkzM3VIWnRDNzBPS3dBZVFoN2xUUy1qSUE1MGhVS2lDZ2lkYXNLSnUwSndVWmozSNIBhgFBVV95cUxObzgyTTBPM3hIZE5jakVpVTE5VGp3UjR4cHZlV1huT1lBTUlMcGNVaGIza0E3THdEMXEzR3ZWSWxkS2h5OTRQZ1NaNEZHclVkaVRCYU0xdnhHWm9CZUVWRk8yOE15MndJdTFKWHBfeTIxUFFOLWMySWxDRTFySjc0THZndVphZw?oc=5",
+            "source": "CNBC",
+            "ago": "7d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "The Annual Meeting of the IMF and World Bank: What Might It Mean for the EU? - Hungarian Conservative",
+            "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOT0xLZ1J1ci1IaXljR2tNY1dUYmFvZnhlOGNNVy1DeWV0ajV3ZkdWd2RMX0YycHdTdFo1QkFKLXQ4ckZYZld5MkQzdl9Ta2RlcVZvS2sxYWNHLXZnZ2pWZWpxTHRVWWFNNFY1X3NycDZXMHJ1NTdneDh3R002Y05hcjAzYjRUN1lvM1hNck1Ba0ZsX3dDWHpZMA?oc=5",
+            "source": "Hungarian Conservative",
+            "ago": "9d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "IMFC chair says global economy resilient; delegates walk out on Russian official - Reuters",
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOa05jVFdUVTlxcG85OVFRMF94Wmo0TXlmSjRUWXhlb0xYYUVXdXd3ODJ6QWFMXzlSRW0ybkJ1MHgtbmt6ZjhXNzN1UkwwTEFURzJsRk8zSVBlQldrWXlHMGlhSTJoSDdYMjc5UWttN1dDX1VKZ2xTcGRHYVEyRW16TUdGbGpSMVVKck1ITUk5dkpyOHhrODd5bi1vLXJpUy1pR0tUd2V2T1hXOUNQcDJLMlNEMVZXUVl2RlgzVGZJaEV2VUNsSGc?oc=5",
+            "source": "Reuters",
+            "ago": "9d ago",
+            "sentiment": "neutral"
+          }
+        ]
+      }
+    },
+    "fed": {
+      "event": "US Fed decision — 25 bp scenarios",
+      "context": {
+        "vix": 17.16,
+        "usdinr": 95.175,
+        "dxy": 101.995,
+        "us10y": 4.982,
+        "niftyChange": 0.6778761061946935,
+        "bankNiftyChange": 0.14616664839967056
+      },
+      "pricedIn": "VIX is not complacent: the market is already charging some event risk. Confirm direction with DXY, US 10Y and USD/INR.",
+      "scenarios": [
+        {
+          "key": "cut25",
+          "label": "Cut 25 bps",
+          "tone": "positive",
+          "summary": "Liquidity-positive if the cut is accompanied by a dovish tone; often partly priced before the meeting.",
+          "rows": [
+            [
+              "USD / INR",
+              "Rupee supportive",
+              "Softer dollar usually pulls USD/INR lower; importers get relief."
+            ],
+            [
+              "Nifty 50",
+              "Mild positive",
+              "Rate-sensitive banks, realty and autos lead; watch the press conference for sell-the-news."
+            ],
+            [
+              "Bank Nifty",
+              "Positive bias",
+              "Lower funding costs and risk-on sentiment help banks, but the move can fade if credit growth guidance is weak."
+            ],
+            [
+              "Gold",
+              "Positive",
+              "Lower real yields and a softer dollar are tailwinds."
+            ],
+            [
+              "Crude",
+              "Mixed",
+              "Demand optimism supports crude; a weaker dollar is also supportive."
+            ]
+          ]
+        },
+        {
+          "key": "hold",
+          "label": "Hold / hawkish pause",
+          "tone": "neutral",
+          "summary": "The statement and dot plot matter more than the decision; volatility can rise into the press conference.",
+          "rows": [
+            [
+              "USD / INR",
+              "Range",
+              "Dollar steadier; rupee tracks oil and portfolio flows."
+            ],
+            [
+              "Nifty 50",
+              "Choppy",
+              "Index heavyweights may consolidate until the next inflation or payroll print."
+            ],
+            [
+              "Bank Nifty",
+              "Neutral",
+              "No fresh liquidity impulse; relative strength depends on credit growth."
+            ],
+            [
+              "Gold",
+              "Soft",
+              "Higher-for-longer real yields can cap gold."
+            ],
+            [
+              "Crude",
+              "Range",
+              "Policy uncertainty keeps a risk premium in the barrel."
+            ]
+          ]
+        },
+        {
+          "key": "hike25",
+          "label": "Hike 25 bps",
+          "tone": "negative",
+          "summary": "A surprise hike is the risk-off case: stronger dollar, weaker rupee and pressure on rate-sensitive sectors.",
+          "rows": [
+            [
+              "USD / INR",
+              "Rupee under pressure",
+              "Higher US yields can pull portfolio flows out of India."
+            ],
+            [
+              "Nifty 50",
+              "Negative",
+              "Valuation compression hits long-duration growth and rate-sensitive pockets."
+            ],
+            [
+              "Bank Nifty",
+              "Mixed / negative",
+              "Higher net interest margins help, but credit-cost and mark-to-market worries dominate first."
+            ],
+            [
+              "Gold",
+              "Pressure",
+              "Higher real yields and a stronger dollar weigh on gold."
+            ],
+            [
+              "Crude",
+              "Pressure",
+              "Demand concerns can outweigh dollar moves."
+            ]
+          ]
+        }
+      ]
+    },
+    "policyWatch": {
+      "giftCity": {
+        "title": "GIFT City & foreign-investor tax",
+        "explainer": "GIFT City / IFSC tax changes alter the cost of routing foreign capital into India. Lower taxes can support FPI flows, broking, asset management and rupee sentiment; implementation details matter more than the headline.",
+        "items": [
+          {
+            "title": "India SEZ Rules 2026: Key Changes for IFSC Funds & LoA Renewal - India Briefing",
+            "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNSzEteUs3cExxT0FneklkbTRxcHlITlRiRU50akFKVk5FYUQyaXlkQzBzSURfSmtEbnJCMGZveXpaUkdyd2pCX05zWDBJNTZnaVlMenlmU2pUUUF1aFE0cGlWWEZWYVhKUVZmZ0xfeXlKdmhGTEcweUJoZTJhRmN4MG1Gd2dOSTNKWE1ta09maVdya0lxN2c?oc=5",
+            "source": "India Briefing",
+            "ago": "7d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "GIFT City Accelerates Social Infra Development - https://www.fintechbiznews.com/",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQQV9rdk9icl9aeF9zS0kwRVNFaFpfQThMZDctd3BFbmxOaEV2WXJfY29PcnlyT0M0UnFkRG1tWUZOSkZUNDRKYmVKX3ItU2dKREJjenkxWUNPemRGdGwxRzVCeWZWdk83cFo5R2ZCM3VNSjJ3U2M0aHR3bjVsVWIySjhCRHhGMWxDNU5mVmFJbFEwOUdnMG1rSEhRYmxVcU5pQXVaLWhJVQ?oc=5",
+            "source": "https://www.fintechbiznews.com/",
+            "ago": "4d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "India refines 1,200 tonnes of gold but consumes 800-850 tonnes: How GIFT City could help unlock major expo - The Economic Times",
+            "link": "https://news.google.com/rss/articles/CBMizgJBVV95cUxNV3diOWp1bWZwQU9meTNncXlQOWRaRVpzakR1S0h3RVA4MFVTMkxUUy1va2d3S2J1WGRndnFVTlJ2aTlTRUVIXzZMWXNFc05LVHJIZDk4VUY1dUlIOHNJb2lhNlhlQmNFbmlDNjhfVF9qOWdQMDFpYWdSRUxmRzZja1d5YXpfWUprZVVlSXMwQ19uYlpacVh4Rlp2RXh0NHJ5dFQtQkQ3eDdsRDBxR1plbFNsS2FlTUl3TU8tWGZaSnE2ZGxOenJoMENiZTRwTVZIbUJib01TVDU3dWFTVE5yNUhyX3gzazR1ZnhFQmo3S2J5d0cweC1kbm1zWWxqOUVJeENlTm1QVkUtb3g5S1hab2J6dDA3cU1aR0xzc2s2cDhxRGlscGtwWVN5QlFnbkhKemhZWmh2RGxMblMybDF0OEF2OE5lSjgxeXlIcUd30gHTAkFVX3lxTE10RlRaODh5MmoxTEZhMkhZbkoyeVNiRW9UaUlLYnFIREw5UzZxa2drUldKbmRyN0dFU1JKeGZBSTl1RFNRNjRLT1hHZUdrNVhmM2kyZFRqOHZLdEo2czYxb2dOeldlZ1RWZXc1ZFVxMGxpMDZZcUJCY01TQlZLSWNvWWVWUjhxWXhnUWNqWDExR21Jdkh6X3Y2OEQ1WWx0NU5mYTR2bnFnVld2RnhJdzRhWGNCS2R1NXg4bUZJMng2LVlISlF6VEhIOHFKcHI5T3pCN2JWc0ljWmhhS2NxV1pKT1BMb3gtakFRY3l6THVkREJXRXpWUVJmckR5Ui1UZUJCckYycG5nV1IwT2p3Nk52YWVmRHRIMThOTmlESm9wMXFWWnZmQVhLcktpQ3YwVjNFRGFiblMwREI4aFlxbHVJbzY2MlBiRlRGUU5NalRVSlNUZw?oc=5",
+            "source": "The Economic Times",
+            "ago": "9d ago",
+            "sentiment": "neutral"
+          }
+        ]
+      },
+      "rbiFinance": {
+        "title": "RBI Governor + Finance Minister",
+        "explainer": "Coordination between the RBI and the Finance Ministry matters for liquidity, the bond market and the rupee. Watch for comments on inflation, rate direction, FPI rules and G-Sec demand.",
+        "items": [
+          {
+            "title": "India’s finance minister says market liquidity makes it easier for investors to exit - CNBC",
+            "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBGWG1fbVpjWEttMmtlcUsyRC1ZbV80N3NLdWdxZzBuWmhTOXhpTXdPR20ydzZoLXUwNjVlWERKVTNfVnZ4N0pxRnBJTlpsU29qTE9jZElmcmlvY25NclRJZHhkbW5GRUhBR0FKRm9tLXRpY0cyRVVpUWxB0gF_QVVfeXFMTWlWMjV3V1J4ZTAxekdzazNZZ0taTXhoSTFaM2Q4REFZdENTV2VwWHFQaVVxREw4R053MmxEVVE2N0RnOHV3TWpBY0k1MlZvZ2NfaS0tTENDYmVmclBJd0JmT0twbUhRZnR1V1JrUHFoalJsOHFRbjgtVzJLV0o4RQ?oc=5",
+            "source": "CNBC",
+            "ago": "8d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "Finance Minister Highlights India’s vast market size and long term investment potential at Chicago Business Roundtable - News On AIR",
+            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPRDZwbnRsZXRXRm04RDhtMTZIbHdKd2h5RWN2ZFg4eWFXVlU5TmF3TXN5MFRCRC1vLUlybjVjZktJdHZ1SXRBZnhaLVRxYnFWSG5LSWFpR0NwM1JqNkVNak5wV2VZaWpySUVzY2JsV3NicUQ2UHNlQXNuTGhnMjJnSklsZGk1UTRGaXFyTDFxZzhHRE1yU0tEUWFJMzJjNXNmSmZYZHB6cHJtanRCckVKYlpR?oc=5",
+            "source": "News On AIR",
+            "ago": "3d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "India’s RBI Governor Open to Rate Use to Curb Financial Risks - Bloomberg.com",
+            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOcldxdmVNX3BPWUJxLTUyazlLdTh5aTFLemFQbHdBdlF5WjZ2UWNNYVlCZUtRS0pjOUNOLXl4QzVkTWZrUlRaV3dhc3B4YkV4ZGNUdV9HUGpkRkRJMV9VNjhhc1pDRy1BWWZiY1lrRlNHOFJhalZpeUphaHlLQ043NFZIS1IxMVlFeWI4bjZqVG1wTGQybnZnUG5vMmo5SlFqRHRSOG9uWW1rcXNwSTdwQ1NR?oc=5",
+            "source": "Bloomberg.com",
+            "ago": "3d ago",
+            "sentiment": "neutral"
+          }
+        ]
+      },
+      "pmTax": {
+        "title": "PM meeting / foreign-investor tax",
+        "explainer": "A policy signal on foreign-investor taxation can move banks, capital-market intermediaries and the rupee before the fine print is published. Treat political headlines as catalysts, not as trades by themselves.",
+        "items": [
+          {
+            "title": "Reforms to Expand Foreign Participation in G-Secs - Press Information Bureau",
+            "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9lUDRBaE03QUhlNGJpR2xmUDBPejBuaXc0MUt3emJEeDlENmxVQy1EdUdVa3VRb0RRTEJyRlROVGZ0ZlZYcjEtUnB4RDAxS0p1MzVvUG4xd3lSbks4WXVLRHo3ZkxSSHRTaVYxc0pmMXhNbjNnLXhN?oc=5",
+            "source": "Press Information Bureau",
+            "ago": "3d ago",
+            "sentiment": "neutral"
+          },
+          {
+            "title": "FM says open to discussion on capital gains tax - The New Indian Express",
+            "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPOTNiVHl1OURISWFZMkZaaGxEU2dzSlFYNUNNdGdhTzk1Uy14Y0pNSWdlcEh6X1d6UFB4M04yOGpEY1cxcjlqZW9nNFNWbHBDR0VLNEhOMURmLXZpSzdvb054ck1lOEdHNjk4YnJaSlBzZ2dfbFhUSmJtRjZCNGl5eXIyb1Rxd3dEd2ZmRE1WbUVqTlEzbFJPVWk4eUMtR2QwdjNr0gGwAUFVX3lxTE5IVU5ZektVQ3N0dmphSTkxWVg0VXlnTlJiSk9KNlVOV3RycEExUDhxZTlxVUx3MVdnY1Z1UmtPZ193YWx5cWlCcUpTdF9jS1lGVjRRRk54QVB2RVI0NEVyTnlSZWlxTG9ULWpYWWdPN3Nkd0Q4N2w4d1hoLUNreG1ZOTEteHhEYW0tQlBhT2V2cDVReVlQTWI4aEF3Y2d5TVkzX3ZVVkRvUWlnVURsSHh3?oc=5",
+            "source": "The New Indian Express",
+            "ago": "13d ago",
+            "sentiment": "positive"
+          },
+          {
+            "title": "Canadian Foreign Minister Anita Anand meets PM Modi - ET Government",
+            "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUnF3Zm5zdlBJdE5jd0VJcmdlcDlNdGdPalV6c1FaNVBOYmF0VnlycW9aMWRHcElRNy1UdjBxOWNiNUdLQklnS1F6WDlTUVE1WlJTWjBDXzFhRWlJZE1ibVRwampQWWttNnlndE8zUEpHSEtWS01rUFo3MUNaU28xSlJMQWpySVIzbjBVZ0JFUEo4ZXJybm10N2hNR2pMeWhZelIyXzZCb2FLQ25JbFY5SlNnQzlnYU8wdVJaSWV0UdIBwwFBVV95cUxNb0xSa1VTZG5FYzlKQXVxY2lxYVlvSktiWXZrWnFwbDRqbmsyU09QVzhpc0FvdGtaMWFyWnFEQ1g4V3gzT2ctcktKeldXalhleW9JQVhKWTNVdUs0RkFWQXFXZEJGckhNTjVhZy1VWmZkUHRmNmtuemwycEtuOElRQVhRdWlkUlpkV3FzR3FaS0dzbUpaY3NkcGx3ZDItTFVMQ0tFQWR3NGsxNTl4Sk9sM2V0Mld3VVRSWlFHeGZqTFlpU1E?oc=5",
+            "source": "ET Government",
+            "ago": "10d ago",
+            "sentiment": "neutral"
+          }
+        ]
+      }
+    },
+    "disclaimer": "Macro radar is research and paper-trading context, not investment advice. News headlines are third-party and may be incomplete or delayed. Scenario impacts are tendencies, not predictions."
+  },
+  "scan": {
+    "items": [
+      {
+        "key": "KOTAKBANK",
+        "name": "Kotak Mahindra Bank",
+        "short": "KOTAKBANK",
+        "tv": "NSE:KOTAKBANK",
+        "yahoo": "KOTAKBANK.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Financials",
+        "value": 440.75,
+        "change": 2.38,
+        "rsi": 58.9,
+        "ema20": 432.63,
+        "ema50": 420.74,
+        "ema200": 405.51,
+        "atr": 9.99,
+        "atrPct": 2.27,
+        "high1m": 453.1,
+        "low1m": 394.7,
+        "relVolume": 1.53,
+        "volatility": 3.61,
+        "rating": "Buy",
+        "recommend": 0.47,
+        "trend": "Strong uptrend",
+        "score": 96,
+        "signals": [
+          "EMA stack up",
+          "RSI momentum",
+          "Volume 1.53x"
+        ]
+      },
+      {
+        "key": "TECHM",
+        "name": "Tech Mahindra",
+        "short": "TECHM",
+        "tv": "NSE:TECHM",
+        "yahoo": "TECHM.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "IT",
+        "value": 1795,
+        "change": 0.28,
+        "rsi": 69.7,
+        "ema20": 1661.63,
+        "ema50": 1604.71,
+        "ema200": 1541.08,
+        "atr": 53.81,
+        "atrPct": 3,
+        "high1m": 1845,
+        "low1m": 1442.5,
+        "relVolume": 0.67,
+        "volatility": 2.99,
+        "rating": "Buy",
+        "recommend": 0.35,
+        "trend": "Strong uptrend",
+        "score": 90,
+        "signals": [
+          "EMA stack up",
+          "RSI momentum"
+        ]
+      },
+      {
+        "key": "ICICIBANK",
+        "name": "ICICI Bank",
+        "short": "ICICIBANK",
+        "tv": "NSE:ICICIBANK",
+        "yahoo": "ICICIBANK.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Financials",
+        "value": 1403,
+        "change": 0.63,
+        "rsi": 59.4,
+        "ema20": 1371.02,
+        "ema50": 1373.95,
+        "ema200": 1364.74,
+        "atr": 25.55,
+        "atrPct": 1.82,
+        "high1m": 1411.8,
+        "low1m": 1291,
+        "relVolume": 0.61,
+        "volatility": 1.83,
+        "rating": "Strong buy",
+        "recommend": 0.56,
+        "trend": "Uptrend",
+        "score": 75,
+        "signals": [
+          "RSI momentum"
+        ]
+      },
+      {
+        "key": "INDIAVIX",
+        "name": "India VIX",
+        "short": "India VIX",
+        "tv": "NSE:INDIAVIX",
+        "yahoo": "^INDIAVIX",
+        "exchange": "NSE",
+        "type": "index",
+        "currency": "INR",
+        "value": 17.16,
+        "change": 1.78,
+        "rsi": 67.6,
+        "ema20": 14.64,
+        "ema50": 13.59,
+        "ema200": 13.96,
+        "atr": 1.59,
+        "atrPct": 9.28,
+        "high1m": 18,
+        "low1m": 11.97,
+        "relVolume": null,
+        "volatility": 6.78,
+        "rating": "Strong buy",
+        "recommend": 0.51,
+        "trend": "Uptrend",
+        "score": 71,
+        "signals": [
+          "RSI momentum",
+          "High volatility"
+        ]
+      },
+      {
+        "key": "INFY",
+        "name": "Infosys",
+        "short": "INFY",
+        "tv": "NSE:INFY",
+        "yahoo": "INFY.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "IT",
+        "value": 1166,
+        "change": 1.06,
+        "rsi": 65.5,
+        "ema20": 1095.3,
+        "ema50": 1087.71,
+        "ema200": 1208.35,
+        "atr": 42.85,
+        "atrPct": 3.67,
+        "high1m": 1197.8,
+        "low1m": 980.4,
+        "relVolume": 1.37,
+        "volatility": 5.33,
+        "rating": "Buy",
+        "recommend": 0.22,
+        "trend": "Mixed",
+        "score": 69,
+        "signals": [
+          "RSI momentum",
+          "Volume 1.37x"
+        ]
+      },
+      {
+        "key": "TCS",
+        "name": "Tata Consultancy Services",
+        "short": "TCS",
+        "tv": "NSE:TCS",
+        "yahoo": "TCS.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "IT",
+        "value": 2535,
+        "change": 0.2,
+        "rsi": 74.5,
+        "ema20": 2326.77,
+        "ema50": 2270.75,
+        "ema200": 2465.21,
+        "atr": 74.65,
+        "atrPct": 2.94,
+        "high1m": 2625,
+        "low1m": 2032.4,
+        "relVolume": 0.51,
+        "volatility": 2.33,
+        "rating": "Buy",
+        "recommend": 0.31,
+        "trend": "Uptrend",
+        "score": 65,
+        "signals": []
+      },
+      {
+        "key": "HCLTECH",
+        "name": "HCL Technologies",
+        "short": "HCLTECH",
+        "tv": "NSE:HCLTECH",
+        "yahoo": "HCLTECH.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "IT",
+        "value": 1417,
+        "change": -0.37,
+        "rsi": 71.3,
+        "ema20": 1327.97,
+        "ema50": 1293.67,
+        "ema200": 1330.89,
+        "atr": 40.25,
+        "atrPct": 2.84,
+        "high1m": 1467.5,
+        "low1m": 1172.8,
+        "relVolume": 0.5,
+        "volatility": 2.65,
+        "rating": "Buy",
+        "recommend": 0.26,
+        "trend": "Uptrend",
+        "score": 65,
+        "signals": []
+      },
+      {
+        "key": "BHARTIARTL",
+        "name": "Bharti Airtel",
+        "short": "BHARTIARTL",
+        "tv": "NSE:BHARTIARTL",
+        "yahoo": "BHARTIARTL.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Telecom",
+        "value": 1917.5,
+        "change": 1.34,
+        "rsi": 62,
+        "ema20": 1850.55,
+        "ema50": 1853.67,
+        "ema200": 1882.59,
+        "atr": 43.3,
+        "atrPct": 2.26,
+        "high1m": 1929.6,
+        "low1m": 1726.3,
+        "relVolume": 0.31,
+        "volatility": 2.29,
+        "rating": "Strong buy",
+        "recommend": 0.6,
+        "trend": "Uptrend",
+        "score": 60,
+        "signals": [
+          "EMA stack down",
+          "RSI momentum"
+        ]
+      },
+      {
+        "key": "ULTRACEMCO",
+        "name": "UltraTech Cement",
+        "short": "ULTRACEMCO",
+        "tv": "NSE:ULTRACEMCO",
+        "yahoo": "ULTRACEMCO.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Cement",
+        "value": 11180,
+        "change": 1.18,
+        "rsi": 57,
+        "ema20": 10895.72,
+        "ema50": 11073.02,
+        "ema200": 11482.48,
+        "atr": 259.55,
+        "atrPct": 2.32,
+        "high1m": 11219,
+        "low1m": 10426,
+        "relVolume": 0.95,
+        "volatility": 2.31,
+        "rating": "Buy",
+        "recommend": 0.25,
+        "trend": "Strong downtrend",
+        "score": 58,
+        "signals": [
+          "EMA stack down",
+          "RSI momentum",
+          "1M breakout",
+          "Near 50-EMA"
+        ]
+      },
+      {
+        "key": "WIPRO",
+        "name": "Wipro",
+        "short": "WIPRO",
+        "tv": "NSE:WIPRO",
+        "yahoo": "WIPRO.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "IT",
+        "value": 189.2,
+        "change": -0.34,
+        "rsi": 71.4,
+        "ema20": 175.79,
+        "ema50": 174.15,
+        "ema200": 194.05,
+        "atr": 5.12,
+        "atrPct": 2.71,
+        "high1m": 197.25,
+        "low1m": 156.79,
+        "relVolume": 0.41,
+        "volatility": 2.44,
+        "rating": "Neutral",
+        "recommend": 0.13,
+        "trend": "Mixed",
+        "score": 53,
+        "signals": []
+      },
+      {
+        "key": "BAJFINANCE",
+        "name": "Bajaj Finance",
+        "short": "BAJFINANCE",
+        "tv": "NSE:BAJFINANCE",
+        "yahoo": "BAJFINANCE.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Financials",
+        "value": 918.7,
+        "change": -1.1,
+        "rsi": 36.2,
+        "ema20": 963.21,
+        "ema50": 995,
+        "ema200": 984.94,
+        "atr": 28.22,
+        "atrPct": 3.07,
+        "high1m": 995.8,
+        "low1m": 906.2,
+        "relVolume": 0.44,
+        "volatility": 2.51,
+        "rating": "Strong sell",
+        "recommend": -0.6,
+        "trend": "Downtrend",
+        "score": 35,
+        "signals": []
+      },
+      {
+        "key": "SUNPHARMA",
+        "name": "Sun Pharma",
+        "short": "SUNPHARMA",
+        "tv": "NSE:SUNPHARMA",
+        "yahoo": "SUNPHARMA.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Pharma",
+        "value": 1740,
+        "change": -0.46,
+        "rsi": 35.7,
+        "ema20": 1778.77,
+        "ema50": 1825.46,
+        "ema200": 1817.06,
+        "atr": 33.24,
+        "atrPct": 1.91,
+        "high1m": 1865,
+        "low1m": 1719.1,
+        "relVolume": 1.13,
+        "volatility": 2.12,
+        "rating": "Strong sell",
+        "recommend": -0.51,
+        "trend": "Downtrend",
+        "score": 35,
+        "signals": []
+      },
+      {
+        "key": "ADANIENT",
+        "name": "Adani Enterprises",
+        "short": "ADANIENT",
+        "tv": "NSE:ADANIENT",
+        "yahoo": "ADANIENT.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Conglomerate",
+        "value": 2508,
+        "change": 1.25,
+        "rsi": 32,
+        "ema20": 2696.07,
+        "ema50": 2822.14,
+        "ema200": 2708.08,
+        "atr": 80.25,
+        "atrPct": 3.2,
+        "high1m": 2972.9,
+        "low1m": 2446.9,
+        "relVolume": 1.23,
+        "volatility": 2.7,
+        "rating": "Sell",
+        "recommend": -0.45,
+        "trend": "Downtrend",
+        "score": 35,
+        "signals": []
+      },
+      {
+        "key": "TITAN",
+        "name": "Titan Company",
+        "short": "TITAN",
+        "tv": "NSE:TITAN",
+        "yahoo": "TITAN.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Consumer",
+        "value": 4323,
+        "change": 0.54,
+        "rsi": 30.7,
+        "ema20": 4495.01,
+        "ema50": 4648.72,
+        "ema200": 4439.45,
+        "atr": 92.83,
+        "atrPct": 2.15,
+        "high1m": 4881,
+        "low1m": 4209,
+        "relVolume": 0.67,
+        "volatility": 2.05,
+        "rating": "Sell",
+        "recommend": -0.49,
+        "trend": "Downtrend",
+        "score": 35,
+        "signals": []
+      },
+      {
+        "key": "SENSEX",
+        "name": "Sensex",
+        "short": "Sensex",
+        "tv": "BSE:SENSEX",
+        "yahoo": "^BSESN",
+        "exchange": "BSE",
+        "type": "index",
+        "currency": "INR",
+        "lotSize": 20,
+        "strikeStep": 100,
+        "value": 73606.75,
+        "change": 0.66,
+        "rsi": 49.2,
+        "ema20": 73497.73,
+        "ema50": 74477.81,
+        "ema200": 77048.74,
+        "atr": 964.38,
+        "atrPct": 1.31,
+        "high1m": 74849.75,
+        "low1m": 71292.88,
+        "relVolume": 0.57,
+        "volatility": 1.51,
+        "rating": "Neutral",
+        "recommend": -0.05,
+        "trend": "Strong downtrend",
+        "score": 28,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "ONGC",
+        "name": "ONGC",
+        "short": "ONGC",
+        "tv": "NSE:ONGC",
+        "yahoo": "ONGC.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Energy",
+        "value": 228.44,
+        "change": 0.41,
+        "rsi": 51.8,
+        "ema20": 226.47,
+        "ema50": 231.5,
+        "ema200": 246.61,
+        "atr": 3.95,
+        "atrPct": 1.73,
+        "high1m": 235.85,
+        "low1m": 218.53,
+        "relVolume": 0.73,
+        "volatility": 1.89,
+        "rating": "Neutral",
+        "recommend": -0.05,
+        "trend": "Strong downtrend",
+        "score": 28,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "ASIANPAINT",
+        "name": "Asian Paints",
+        "short": "ASIANPAINT",
+        "tv": "NSE:ASIANPAINT",
+        "yahoo": "ASIANPAINT.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Consumer",
+        "value": 2322,
+        "change": 0.65,
+        "rsi": 40,
+        "ema20": 2360.94,
+        "ema50": 2450.11,
+        "ema200": 2536.27,
+        "atr": 51.11,
+        "atrPct": 2.2,
+        "high1m": 2441.6,
+        "low1m": 2233.5,
+        "relVolume": 1.39,
+        "volatility": 3.96,
+        "rating": "Sell",
+        "recommend": -0.4,
+        "trend": "Strong downtrend",
+        "score": 26,
+        "signals": [
+          "EMA stack down",
+          "Volume 1.39x"
+        ]
+      },
+      {
+        "key": "NTPC",
+        "name": "NTPC",
+        "short": "NTPC",
+        "tv": "NSE:NTPC",
+        "yahoo": "NTPC.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Utilities",
+        "value": 300,
+        "change": 0.67,
+        "rsi": 29.8,
+        "ema20": 312.21,
+        "ema50": 323.5,
+        "ema200": 344.52,
+        "atr": 6.68,
+        "atrPct": 2.23,
+        "high1m": 326.6,
+        "low1m": 292.05,
+        "relVolume": 0.69,
+        "volatility": 2.48,
+        "rating": "Sell",
+        "recommend": -0.4,
+        "trend": "Strong downtrend",
+        "score": 23,
+        "signals": [
+          "EMA stack down",
+          "RSI oversold"
+        ]
+      },
+      {
+        "key": "NESTLEIND",
+        "name": "Nestle India",
+        "short": "NESTLEIND",
+        "tv": "NSE:NESTLEIND",
+        "yahoo": "NESTLEIND.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "FMCG",
+        "value": 1173.5,
+        "change": -0.13,
+        "rsi": 26.6,
+        "ema20": 1282.21,
+        "ema50": 1346.32,
+        "ema200": 1355.59,
+        "atr": 37.53,
+        "atrPct": 3.2,
+        "high1m": 1385.9,
+        "low1m": 1156.2,
+        "relVolume": 0.46,
+        "volatility": 1.81,
+        "rating": "Sell",
+        "recommend": -0.49,
+        "trend": "Strong downtrend",
+        "score": 23,
+        "signals": [
+          "EMA stack down",
+          "RSI oversold"
+        ]
+      },
+      {
+        "key": "NIFTY",
+        "name": "Nifty 50",
+        "short": "Nifty 50",
+        "tv": "NSE:NIFTY",
+        "yahoo": "^NSEI",
+        "exchange": "NSE",
+        "type": "index",
+        "currency": "INR",
+        "lotSize": 75,
+        "strikeStep": 50,
+        "value": 22753.2,
+        "change": 0.68,
+        "rsi": 46.1,
+        "ema20": 22831.86,
+        "ema50": 23210.7,
+        "ema200": 23952.1,
+        "atr": 300.76,
+        "atrPct": 1.32,
+        "high1m": 23175.25,
+        "low1m": 22179.9,
+        "relVolume": 0.93,
+        "volatility": 1.63,
+        "rating": "Sell",
+        "recommend": -0.2,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "BANKNIFTY",
+        "name": "Bank Nifty",
+        "short": "Bank Nifty",
+        "tv": "NSE:BANKNIFTY",
+        "yahoo": "^NSEBANK",
+        "exchange": "NSE",
+        "type": "index",
+        "currency": "INR",
+        "lotSize": 35,
+        "strikeStep": 100,
+        "value": 54366.7,
+        "change": 0.15,
+        "rsi": 38.7,
+        "ema20": 55201.23,
+        "ema50": 55849.49,
+        "ema200": 56397.18,
+        "atr": 718.53,
+        "atrPct": 1.32,
+        "high1m": 56065.5,
+        "low1m": 53777.5,
+        "relVolume": 0.68,
+        "volatility": 1.14,
+        "rating": "Strong sell",
+        "recommend": -0.54,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "RELIANCE",
+        "name": "Reliance Industries",
+        "short": "RELIANCE",
+        "tv": "NSE:RELIANCE",
+        "yahoo": "RELIANCE.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Energy",
+        "value": 1201.8,
+        "change": 0.99,
+        "rsi": 47.7,
+        "ema20": 1202.38,
+        "ema50": 1234.28,
+        "ema200": 1316.5,
+        "atr": 26.28,
+        "atrPct": 2.19,
+        "high1m": 1234.3,
+        "low1m": 1152.2,
+        "relVolume": 0.5,
+        "volatility": 2.55,
+        "rating": "Neutral",
+        "recommend": -0.04,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "HDFCBANK",
+        "name": "HDFC Bank",
+        "short": "HDFCBANK",
+        "tv": "NSE:HDFCBANK",
+        "yahoo": "HDFCBANK.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Financials",
+        "value": 688.05,
+        "change": -0.69,
+        "rsi": 39.2,
+        "ema20": 708.75,
+        "ema50": 720.01,
+        "ema200": 787.92,
+        "atr": 14.66,
+        "atrPct": 2.13,
+        "high1m": 734.9,
+        "low1m": 684,
+        "relVolume": 0.82,
+        "volatility": 1.43,
+        "rating": "Sell",
+        "recommend": -0.49,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "SBIN",
+        "name": "State Bank of India",
+        "short": "SBIN",
+        "tv": "NSE:SBIN",
+        "yahoo": "SBIN.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Financials",
+        "value": 960.8,
+        "change": 0.23,
+        "rsi": 45.2,
+        "ema20": 966.39,
+        "ema50": 987.46,
+        "ema200": 1000.83,
+        "atr": 18.19,
+        "atrPct": 1.89,
+        "high1m": 983.8,
+        "low1m": 937.5,
+        "relVolume": 0.73,
+        "volatility": 1.92,
+        "rating": "Sell",
+        "recommend": -0.27,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "ITC",
+        "name": "ITC",
+        "short": "ITC",
+        "tv": "NSE:ITC",
+        "yahoo": "ITC.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "FMCG",
+        "value": 260.5,
+        "change": 1.01,
+        "rsi": 47.1,
+        "ema20": 262.1,
+        "ema50": 266.55,
+        "ema200": 299.7,
+        "atr": 5.78,
+        "atrPct": 2.22,
+        "high1m": 269.8,
+        "low1m": 253.15,
+        "relVolume": 0.84,
+        "volatility": 2.44,
+        "rating": "Strong sell",
+        "recommend": -0.54,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "LT",
+        "name": "Larsen & Toubro",
+        "short": "LT",
+        "tv": "NSE:LT",
+        "yahoo": "LT.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Industrials",
+        "value": 3680,
+        "change": 0.9,
+        "rsi": 44.1,
+        "ema20": 3704.01,
+        "ema50": 3806.87,
+        "ema200": 3887.57,
+        "atr": 73.79,
+        "atrPct": 2.01,
+        "high1m": 3858.2,
+        "low1m": 3592.9,
+        "relVolume": 0.58,
+        "volatility": 1.91,
+        "rating": "Sell",
+        "recommend": -0.27,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "AXISBANK",
+        "name": "Axis Bank",
+        "short": "AXISBANK",
+        "tv": "NSE:AXISBANK",
+        "yahoo": "AXISBANK.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Financials",
+        "value": 1220,
+        "change": 0.21,
+        "rsi": 44.1,
+        "ema20": 1238.91,
+        "ema50": 1246.14,
+        "ema200": 1257.9,
+        "atr": 27.42,
+        "atrPct": 2.25,
+        "high1m": 1293.8,
+        "low1m": 1190.5,
+        "relVolume": 0.96,
+        "volatility": 1.48,
+        "rating": "Sell",
+        "recommend": -0.4,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "HINDUNILVR",
+        "name": "Hindustan Unilever",
+        "short": "HINDUNILVR",
+        "tv": "NSE:HINDUNILVR",
+        "yahoo": "HINDUNILVR.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "FMCG",
+        "value": 1818.6,
+        "change": 0.21,
+        "rsi": 37.3,
+        "ema20": 1869.01,
+        "ema50": 1932.71,
+        "ema200": 2117.33,
+        "atr": 38.17,
+        "atrPct": 2.1,
+        "high1m": 1933.2,
+        "low1m": 1781.1,
+        "relVolume": 0.44,
+        "volatility": 1.99,
+        "rating": "Sell",
+        "recommend": -0.49,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "MARUTI",
+        "name": "Maruti Suzuki",
+        "short": "MARUTI",
+        "tv": "NSE:MARUTI",
+        "yahoo": "MARUTI.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Auto",
+        "value": 11220,
+        "change": -0.09,
+        "rsi": 34.7,
+        "ema20": 11530.57,
+        "ema50": 12165.18,
+        "ema200": 13279.5,
+        "atr": 250.76,
+        "atrPct": 2.23,
+        "high1m": 12116,
+        "low1m": 10985,
+        "relVolume": 1.11,
+        "volatility": 1.77,
+        "rating": "Sell",
+        "recommend": -0.45,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      },
+      {
+        "key": "TATASTEEL",
+        "name": "Tata Steel",
+        "short": "TATASTEEL",
+        "tv": "NSE:TATASTEEL",
+        "yahoo": "TATASTEEL.NS",
+        "exchange": "NSE",
+        "type": "stock",
+        "currency": "INR",
+        "sector": "Metals",
+        "value": 169.94,
+        "change": 1.35,
+        "rsi": 36.2,
+        "ema20": 175.78,
+        "ema50": 180.95,
+        "ema200": 186.39,
+        "atr": 4.66,
+        "atrPct": 2.74,
+        "high1m": 189.55,
+        "low1m": 163.41,
+        "relVolume": 1.01,
+        "volatility": 2.68,
+        "rating": "Sell",
+        "recommend": -0.4,
+        "trend": "Strong downtrend",
+        "score": 20,
+        "signals": [
+          "EMA stack down"
+        ]
+      }
+    ],
+    "asOf": "2026-10-26T16:04:52.455Z",
+    "summary": {
+      "count": 34,
+      "advancing": 25,
+      "declining": 9,
+      "above20": 12,
+      "above50": 10,
+      "above200": 7,
+      "oversold": 2,
+      "overbought": 3,
+      "breakouts": 1,
+      "avgRsi": 47.1
+    },
+    "presets": [
+      {
+        "key": "all",
+        "label": "All"
+      },
+      {
+        "key": "momentum",
+        "label": "Momentum"
+      },
+      {
+        "key": "breakout",
+        "label": "Breakout"
+      },
+      {
+        "key": "trend",
+        "label": "Trend"
+      },
+      {
+        "key": "oversold",
+        "label": "Oversold"
+      },
+      {
+        "key": "bearish",
+        "label": "Bearish"
+      },
+      {
+        "key": "volume",
+        "label": "Volume surge"
+      }
+    ],
+    "source": "TradingView scanner"
+  },
+  "news": {
+    "category": "all",
+    "categories": [
+      {
+        "key": "india",
+        "label": "India markets"
+      },
+      {
+        "key": "global",
+        "label": "Global markets"
+      },
+      {
+        "key": "commodities",
+        "label": "Commodities"
+      },
+      {
+        "key": "economy",
+        "label": "Economy & policy"
+      },
+      {
+        "key": "corporate",
+        "label": "Corporate & earnings"
+      },
+      {
+        "key": "crypto",
+        "label": "Crypto"
+      },
+      {
+        "key": "forex",
+        "label": "Currencies"
+      },
+      {
+        "key": "geopolitics",
+        "label": "Geopolitics & oil"
+      },
+      {
+        "key": "fed",
+        "label": "Fed & FOMC"
+      },
+      {
+        "key": "policy",
+        "label": "India policy & GIFT City"
+      },
+      {
+        "key": "rareearth",
+        "label": "Rare earth metals"
+      },
+      {
+        "key": "worldbank",
+        "label": "World Bank & IMF"
+      }
+    ],
+    "items": [
+      {
+        "title": "Bangladesh set to overtake India in per capita GDP in 2026, but lags in economic strength: IMF - The Daily Star",
+        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNQUkxcU1OcE9CZFZDVm1WZTN3X0pSRFJsbDN2ZEZqOGYwZkh1eFZfRFBhTXdQUnl5ZjVhNjQzakR1bnRiX0RySUNwOWFsTW1TY3lLVkJwd2gzdUFtRHh4eU5jN0dMcExPWUk0cVhQX0liNmhUc2NJcHFIZ3Y4Wm43OUdVM2NyOTk5d0tLMFFHY2d3ZGhZMkFQN0lhWHZPRi1pRGZ2Q3hDWWNIUUwzT1g1Y1Zkalk2QWJTZFNlYUp1aW5vUVAxV0VlYXIxTQ?oc=5",
+        "source": "The Daily Star",
+        "category": "economy",
+        "categoryLabel": "Economy & policy",
+        "published": "Mon, 26 Oct 2026 15:52",
+        "publishedIso": "2026-10-26T15:52:35.000Z",
+        "ago": "12m ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Oil price surge fuels Iran hardliners’ case against US deal - Iran International",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1uamhXNFlaTFc0RWpyV3p4QTNzdmxZZFF2RHJSc0pPWjFmNXBnSjc3Sk0tNmJUVUpKMktKbENIeFlCcURCSTBjR1FfekczbDFKRkE?oc=5",
+        "source": "Iran International",
+        "category": "geopolitics",
+        "categoryLabel": "Geopolitics & oil",
+        "published": "Mon, 26 Oct 2026 15:45",
+        "publishedIso": "2026-10-26T15:45:02.000Z",
+        "ago": "20m ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Investors are doing just as well this year by shunning AI. How to invest if the tech trade keeps fizzling - CNBC",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1FdjVKTnQ4QW10cjgyM0xRdm1pQWYwRVpzb1pWbHZyQm8yOXhvbnh3bkhaVVZNaU1pYkhKQm9fRzdyLUQwZlRETUtZd0piMVVWdGhDLTBzTEpWLU05V3ljOWgyd013bUpZaGdFd0ZBVFhnaF9GOFhV0gF8QVVfeXFMUElCZzFQMm5rcGxzeFJSVk5HNV9qalkxT21HZm40Q19kR3hUc1FkYTJLZ2stSWt6a20zRUM4OGNRM0tTNGc5cndSY2ZWY2hKelktcS1RSnV5ejhZY2JqQWRxUWVPaEZ4aG96S1BxTmhUZTBjVzhoRWRXaGV5aw?oc=5",
+        "source": "CNBC",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 15:39",
+        "publishedIso": "2026-10-26T15:39:55.000Z",
+        "ago": "25m ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "AI stocks rise as Anthropic nears Wall Street debut amid investor caution - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQNVdGRWF4eUpFNlQ2QkxGSWVrdlZZMU9OVlgtNkduS1JrMVdzQ0VJRVJPak4xcERFNENPWGE3YUM3VHpSSnFybzZJRWRTSW53eWwzTW1jLTR5dmpjelcxam96czEycUZ3a1piY2kwcC15WTR3ZFJUeGdIUkxuLXl6b0d4dGJ0T0hWcUl0ejVSMzI1UlpJdzRnZ09Td05wRDlJbVJaT0ktM3Z4Q2ZNdnNSWnA1bkZGVl9iYVI1TEtCc0VhRjRJ?oc=5",
+        "source": "Reuters",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 15:35",
+        "publishedIso": "2026-10-26T15:35:43.000Z",
+        "ago": "29m ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Bitcoin Analysis: BTC Is Falling on Doubts About AI Spending. Is It Trading Like a Tech Stock Now? - 24/7 Wall St.",
+        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQTGpRQjZjNWxvLW1mTGdieVdTeWltM1lHNW1wekpBbG9TZjcyV1UtMWdGanN1TnJ1Yk9fN3B0bnNRY2k4c012bDZNOVFRb2N1ODkwd29JRVIza1hZUTNybUFDZzhIc3h2cU4xUXEybzNhYXU5dFVBOVd3c01JeFp1bmVoWjVjRmFnNnlXaDJlRmw1TVpwd3habWNHTF83SFRrMTRnZUxjaTc0NVI1NlVXdG5lekRyTTVsMFFtRnlDdlE3S1RVTXRsMGxyclRQZ3RZTS1iVHl6WkpaTHA4VldaanBwdlI0Mm1JZ0E?oc=5",
+        "source": "24/7 Wall St.",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 15:25",
+        "publishedIso": "2026-10-26T15:25:26.000Z",
+        "ago": "39m ago",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Jeff Sica discusses tech AI spending and Federal Reserve rate expectations - Fox Business",
+        "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wOTFwRU5SdjRiNDFUUUlPNm90WHNwbERNbGZfdExhc2xUNEdVZVFpeGNlV0tZYW1lQnFTZ3dVUFNMN1BxaDQxYnFQLTlKZWh1UUJQMFoxdkZjQkU?oc=5",
+        "source": "Fox Business",
+        "category": "fed",
+        "categoryLabel": "Fed & FOMC",
+        "published": "Mon, 26 Oct 2026 14:49",
+        "publishedIso": "2026-10-26T14:49:33.000Z",
+        "ago": "1h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Bitcoin’s Bear Market Is Over, Galaxy Says - Bitcoin Magazine",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWlgwZkZkdHU2QjMzRnc2YjY4YlI2RHdaLThNM1o5NWdSMVNfUG1KczlUaTlnUFVlcGN4UjMwRU9qdEwxSjlHUEQwZWV2WVZZelFxWEd6VnUtTHhrYmhLX1VKYTAzeUpCU0NwWlhWMjlZVTlIbEdtZnNNcmdlSkstbGp3?oc=5",
+        "source": "Bitcoin Magazine",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 14:44",
+        "publishedIso": "2026-10-26T14:44:40.000Z",
+        "ago": "1h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Bitcoin Dips Below $80,000 as AI-Related Market Selloff Deepens - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNT1RlX3A3ZENOMTJhNU5CRi12a0swUnlCSmtzbnJYQnRfQ1Z5NnpBVU9GdkRSUHNEXzZwSS0xc1FGRTlId3FnTWYzY1RCSWZHbkltc1dVRWMtSWNfSXFyLUJkcTRHSUV4MndxNVdONjRkSzBfRU44X1k4YjZqTVFfaWgzWE9QMHd1VWZsS1RUUmpxWTZBcHlHMXMxX25vNzhrOXViWGxXTUlVMUtoV05HQkhUZw?oc=5",
+        "source": "Bloomberg.com",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 14:42",
+        "publishedIso": "2026-10-26T14:42:43.000Z",
+        "ago": "1h ago",
+        "sentiment": "negative"
+      },
+      {
+        "title": "India’s GDP Data: Is it Really Credible? - Investing.com India",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNQS1xY21nTHBydkpUaERrLUk4YzY2ZlREbmtYU2M2MEd0cVIwZDltYzdmNXAtS1NNbTNEUFA3Q1NjdUxBYWhOZFVnbXViekcxeDJvdDIzWjZIZTVqRUMxdjdJOFhnRkY3ZjFvZk52NlNxNU16bmR1OEJDdWZIOExqeWFvQ3I0OVdB?oc=5",
+        "source": "Investing.com India",
+        "category": "economy",
+        "categoryLabel": "Economy & policy",
+        "published": "Mon, 26 Oct 2026 14:37",
+        "publishedIso": "2026-10-26T14:37:50.000Z",
+        "ago": "1h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Stock market rises as Wall Street looks to rebound after difficult week (SP500:) - Seeking Alpha",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMGpmRDlYZ3Z6dVN3UDVvZTJVNmI2REZUMkZiSHQzMzJ5RWVRcXFBT1poZzlwQmV5RTQwUlBwdThVMHhZWGRseVQ1UUVkTWxvUjNZYjJaLTY1WGh2SUVFdHV5MnpmRHgxZ1FlOUN4MzhEWTVCX2pzX2xlLW0yQUpoUmVNTEhxZ05h?oc=5",
+        "source": "Seeking Alpha",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 14:33",
+        "publishedIso": "2026-10-26T14:33:00.000Z",
+        "ago": "2h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Sumitomo Chemical Q2 Results: Net profit falls 12% as revenue and EBITDA decline - IndiaIPO",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQdDU1V0tjNGtxSGVZckdiYnFxc0hOcS1wQkZITVVsSERIRjIyRUh0cVhCak5jR3NKbFRvaHdES2xGOGRscEpleXhpblhFQ1JIekdYRzBoQUpnX245bG9FN2ZUUEdtMXJIc24zanpqdWtzck5PdGI5V2cxMHViTWxxcmNTWC1yOUpJc3NYOFVHYlBwM1JmYlE1cDBEbDRMYmJGVTZ1Ul9PTnZTb1pHeFhBOTFzZFk?oc=5",
+        "source": "IndiaIPO",
+        "category": "corporate",
+        "categoryLabel": "Corporate & earnings",
+        "published": "Mon, 26 Oct 2026 14:32",
+        "publishedIso": "2026-10-26T14:32:49.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Aavas Financiers Q2 results: Net profit rises 11% to ₹182 crore, NII grows 10% - IndiaIPO",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOVlpkNkp6V0M1TDJENmlJREVUaUFWenZNM0RURXdOSTBKeE05SXdWX3dUWmNWVnB1R1ZZSDdYQ0IxZFo1QW1KSS1fMmc0MkFQbUE3YzJuMmJCVkNyU044RXdpYjFVVVE4SlNvTHJha3hZVDU0NkFGU2x0Wjh3Y2pGaElaamFmMGRMZ0djOHpMdjNtNWJ6RjM4ZXFrX0ZVVmF0OXNfMU93WTlhVWdyRUE?oc=5",
+        "source": "IndiaIPO",
+        "category": "corporate",
+        "categoryLabel": "Corporate & earnings",
+        "published": "Mon, 26 Oct 2026 14:32",
+        "publishedIso": "2026-10-26T14:32:49.000Z",
+        "ago": "2h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "BNB Standard Corporation Rings the Opening Bell - Nasdaq",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9rM0t5X09jeFlGWW9pdEU0dFVEWjN2MU84eDJ1eXl4WTFoTGtfbkhEV0JpR3VFUjNtS2VqUFFZUllnaHF5OE5ibktQR1YtN3lsS3psNUlGSkVOcGV2LTJDck9WU19BbzF6S2dGcXNPNHp1NS1OLWw0WlV4X0hCdw?oc=5",
+        "source": "Nasdaq",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 14:15",
+        "publishedIso": "2026-10-26T14:15:00.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Galaxy Digital Says Bitcoin Bear Market Is Officially Over - Yahoo Finance",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNVlFJa2NmVEtwVDRtUmk2SVpwZzM1WlVuNmZTVk5VX2JpamRWYkM2dXR1OGJCbnM0UmtCY2VEald4VkFYREtTWGFMRkZBN1ZGOHNhUE5hOXZvZjcyeWZ4S2tmRnEwV2FGZmFxcmhPZVE3YU10TmJyb1VHNWNXYklkelEtck5VOFdMVWxWako5aUh3UHVaSFlDcnNLekR4dw?oc=5",
+        "source": "Yahoo Finance",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 13:43",
+        "publishedIso": "2026-10-26T13:43:00.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Anthropic files for IPO and plans Nasdaq listing as ANT - Quartz",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE8tSWFJR3J6QVpsV2tGRk94WVE1UW9kQkttRnBIeHBFdGFVT2Jxamp6aHBQVHYyeTdTbENqSnNYa0NCTDBIQmVOU0ZUUncxRkpqYm5fNHM1SVVndEZieUR0cTN0WGUxeU5XanJ4RzhrNA?oc=5",
+        "source": "Quartz",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 13:41",
+        "publishedIso": "2026-10-26T13:41:21.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Watch Anthropic Files for IPO, Plans to Trade on Nasdaq - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQkotUHA3TU5WZzN2OEFVR2Q1SEhKR09QSjhfd3gyUEFhNm11dzY1Z0pORktabjFnc01wOW40Yld2NVZSNEF2eFM0TERGZnJhZjFkZFRCTzdZMklwZEtNSUdQN3dsYkNETlVpRy1qMXFGbW9Ud3JTVTlWMUlKR1JJeUpKWlNJNHc1UWFwVldGMzFLbXhRT0dUQ1BTWVk0dGN6SXZNeHZB?oc=5",
+        "source": "Bloomberg.com",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 13:36",
+        "publishedIso": "2026-10-26T13:36:15.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "As Trump brags about U.S. oil and gas company profits, his stocks gained millions during Iran war - CBS News",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNU1NNM0tTeE1oc2ZkTUdxRUlwZ2h1OFpGdWd0bjZqbmYxb0NkM1JpVEF6Sm0tQzBfU05IZ2pnb2FkaXVGQUc2Y213MWJWclA3cl9tT3BlZlplek9rTlhGLXNrdzZPNHEtc2ZCU0pxWXJ3NHowTXgxN2JVekgyM2RRYlBmM2YzbW5jdTJMWGFLODZYSnkyb3BxNHhtYWY3dw?oc=5",
+        "source": "CBS News",
+        "category": "geopolitics",
+        "categoryLabel": "Geopolitics & oil",
+        "published": "Mon, 26 Oct 2026 13:30",
+        "publishedIso": "2026-10-26T13:30:00.000Z",
+        "ago": "3h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "India's credit-to-GDP ratio to rise as credit access expands: Economists - Business Standard",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQbDlIUk93QW85dnRaVmR6YWlrcm10aDc5ckM3MnlEUjg2amhCTEZEY0ZSYXdaWDFqSFJOQ3Y1YWUxRW4xNW80bEp3VmZQVGp6cmJCUXlXMWlHYm5MLVh5UGl0dWtuYW94dFZWRV92TVdMaWVVSXhVT2JaTWJpZmZBYTZYQlo4VEloNHpLZ3JMM0RxMTBrVGVRWUIzbmZvdXlSbVlaREdCem9SdENvWmJEWmRuN05pOVJRckdkTzRnc0x4eTJKdHlCa29PY0xpRU1aNFVxem5BWnVFcDJh0gHiAUFVX3lxTE9ySFRwSktGYXFORW4yVERBVW5xSGxZcUFGQnpvOU4wMGgwcHJHbnpINE5xOTJ0NEJIcDlRUU8ycFZIZWozNlhqWmdfYUs1eHI1cWItSXJCSk5mOVhWU1IzaXBuMGNEMDh3TmZCZzhpRWt1UlNKQjdVRkkxTlM2Y2ZVLTJhZVFYRDRyU0RXSjZTaEhVNzRjZnZNNU93anlpZ2g4YzVheDRBbVNscW1Ic1lPcEtfMXVETUtWMnlQZkRrcXBBWmp3T2JqdWc0WHlOYzVXd0FYck52UHZIT1Yzc2ZRc2c?oc=5",
+        "source": "Business Standard",
+        "category": "economy",
+        "categoryLabel": "Economy & policy",
+        "published": "Mon, 26 Oct 2026 13:27",
+        "publishedIso": "2026-10-26T13:27:09.000Z",
+        "ago": "3h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Fed Meets, Inflation Report Due Ahead of Midterms | National News | U.S. News - U.S. News & World Report",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPc2paV3hSZkdQcFpBMlJJeVNTV0ppVjhVSldDampyZGZGaThFODNFN2dfWmYtUnAxN0FJTzlYaGh2SWZHNWZsTUdrSlpETk1qbndMYXpCNVc2U3dhV0Jrd3NrLWxzV2JHTDJyV1lyZzRLUnRaNWw2ZkM1RDZVYzc3X1Z4WmswSE1nNWtDVTB0bVc2S1RPMFBlNkZMLXM4U2pUNWJ2eFoxSFRJSjVjNnBZ?oc=5",
+        "source": "U.S. News & World Report",
+        "category": "fed",
+        "categoryLabel": "Fed & FOMC",
+        "published": "Mon, 26 Oct 2026 13:25",
+        "publishedIso": "2026-10-26T13:25:00.000Z",
+        "ago": "3h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Polymarket Odds Today: Bitcoin October, Sweden PM, World Series MVP - RG.org",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPTVhoSXh2VjY3LU5jaEpOaFdLYmJsa0VPNENIOElwUzNEY2xRZVNVRGtKaE5uVXZCSmpWSU5OV2VPTW5mOWdTRmtSLVNrN29KdzJlZUh1blFiWGhVTFl2UXkxMTYwQ2tqVjNCa0g0RW9ZRjlYV1k5S3IxNkFrYU50NGFidjVSTnhudDBYbUR5VGVvNVBueS1MTVFVRVhxUUZVa0NzWjE0RDFjeHQxYUNFSE1hT0o?oc=5",
+        "source": "RG.org",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 13:12",
+        "publishedIso": "2026-10-26T13:12:09.000Z",
+        "ago": "3h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "US paying most for Hormuz oil shock with world’s largest fuel bill - Centre for Research on Energy and Clean Air",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5May1PaC1oNEZxQmlRREJxV2x3TVdnb1BLd3dmTl9Ib3N5ZnFYMFhtVkFBRUUwZlg0bGpVRkc4cmVDZVR1bzhTRC1CcnlUQ1NSOUJVd1hxdjdHYzRlNzJ3a2dVYXFLV2hsMFlOUmoxMmpRbWdK?oc=5",
+        "source": "Centre for Research on Energy and Clean Air",
+        "category": "geopolitics",
+        "categoryLabel": "Geopolitics & oil",
+        "published": "Mon, 26 Oct 2026 12:59",
+        "publishedIso": "2026-10-26T12:59:00.000Z",
+        "ago": "3h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "CHARTED: Oil Trade Through the Strait of Hormuz by Country – Visual Capitalist - EnergyNow.com",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQeU1tdWFDbEwyc2R5ZEFYN3Y4Q3czZEZKX2ZMWUZWUjVDaHljOVZXY1dTX1h1LXFMSlNJcGtad1VURWhBaHFPWm5nNmY5YzJDX1B1RU1ISDFKWEs1US1TNkptS3lIYXVyWUZsdUM4OTFzRk8zOU1abWE5M3IwV0dtX2VqWlhBUW5mbERvOVVoU2EyR25PQk5qbk9PNXBfbmZ3NTFlR1hXVVZNUQ?oc=5",
+        "source": "EnergyNow.com",
+        "category": "geopolitics",
+        "categoryLabel": "Geopolitics & oil",
+        "published": "Mon, 26 Oct 2026 12:56",
+        "publishedIso": "2026-10-26T12:56:02.000Z",
+        "ago": "3h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "CFTC weighs crypto-style trading tools for farm futures markets - Farm Progress",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQM09iWDEwempxVThaa3lyTW5PcU1XSEZaZVFwa2NWelRiRVBtOEVZTlE4S0FmeUFuTFhVWVNxbjZMYkthS0twV01uWjkwTWxGSEZEalpnSDd1Q294TFR4YnhWOEFqaGprb2d1LW0yZjhQWk82LU1tSE5BdFd1OFh5Y2dsRTM0SzRRTktSakFubldFOEZBYkszZjdLVTd2S25weDhvZ1JkRng?oc=5",
+        "source": "Farm Progress",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 12:55",
+        "publishedIso": "2026-10-26T12:55:31.000Z",
+        "ago": "3h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "In his own words: Trump on gas prices and energy costs since launching the war with Iran - AP News",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQWVloTVpZeHZsZHpoNVdPZFQ0X21mbU5QSnY1UmczNVNJTG9iTmhMSlNoaVM0YUVwWnQzNjIzb3ktV1JRUEp5VVR4bHdCOGdHUGZXQ2RzMzAzLVlrZ2M4OVhjOUoyOVJtNEplUEc2YlRCTE1YWV94aUVhZ2dybUJ2SkoxRHE0ak5ObVBnVmxmTWNIaTNPT2VCM21pTHA3N28?oc=5",
+        "source": "AP News",
+        "category": "geopolitics",
+        "categoryLabel": "Geopolitics & oil",
+        "published": "Mon, 26 Oct 2026 12:43",
+        "publishedIso": "2026-10-26T12:43:00.000Z",
+        "ago": "3h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Current price of Bitcoin for October 26, 2026 - Fortune",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5scU51cEwzRE0yakN1aXgwY2lVX1pyOGI0NTQ2Nnc1RTJKVGNoVTdpUklZM2laX1h4MWVxTWp3SjVHS2hYWHEwazBsemZQNGV5MFZZZ3JwWlA4WTJRVjEya1pxV1hHQ2s?oc=5",
+        "source": "Fortune",
+        "category": "crypto",
+        "categoryLabel": "Crypto",
+        "published": "Mon, 26 Oct 2026 12:34",
+        "publishedIso": "2026-10-26T12:34:07.000Z",
+        "ago": "4h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "S&P 500 biggest stocks: 6 of the top 10 fell last week - Opening Bell Daily",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9yOW5XS0hEbEdkcEV6dVNWSUZxV2JlOWthRV9BYzlMclRoUUNKeS1BNWFXTVRjQUNHcm9XNVRFQ1pjZFl3ejdIUW1PSHRibWxQRUo5ZEZzYmx6VGhQLXd5b1B1OFU0LTdsVkFHS0lIVkd6UE1NakJFemd5aw?oc=5",
+        "source": "Opening Bell Daily",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 12:27",
+        "publishedIso": "2026-10-26T12:27:54.000Z",
+        "ago": "4h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Tata Consumer Q2 Results: Net profit rises 16% YoY to Rs 470 crore, revenue up 14% - The Economic Times",
+        "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOcGFsQzFfRS1wcHdncWNpY29YWndRRGctNGRyNVpzQV95enctUjJtdVNEM21VTFhCeUg3ZzYzbnZrd2syNEd3Y3FkNkwwRnlCLVlwMmVZczg2MU44aFFmaHROZ3lOR0t3YTJ0US13YUJOZDNsbjlicnFqWjdxREI3X1FrZWFWUXFWMXVJRFdpR09RN2NWcmtMX0hkdzdMQ0s2UFM0QnJsWHVoamUzTEI0S0RGWHpIT042Rll3SF9yT0NUX0FMVFhFYzVOTU92S2Vsb1c2alVkTnd4cTdwdDgyanBWWXRPdDlNbXlWQW5WVF9MUDNSYWtWTtIB8gFBVV95cUxQZXhfNFBPbVl4MEh1ZHJXSWVtem5LZmxTTHlneGtnRHFmQjZBR1ExN05Rc1NuNERFTjJxX2ptX1BMdVJRSWxOd1kybWxxNzV1cGtad2FrXzVkRTZ3ajF2bmpOQzhtNTZkUWxEZjNiV2tnTFRVNkZpN3labVZkdE1rOFlkWVcxZ1NKNHRQeVpNU19ZR05PUzhQbEFzc0ZCRkd3dkFaWWZBUGgweWNoNG5uWVB2OG8tWURjQ3g4a2MtX21PaFZvT056eF9yUFZBV2Rkdm8xbE9oQkYwR3B5bWpweE9XdlYySU9hM1JWdmh2cUVndw?oc=5",
+        "source": "The Economic Times",
+        "category": "corporate",
+        "categoryLabel": "Corporate & earnings",
+        "published": "Mon, 26 Oct 2026 12:12",
+        "publishedIso": "2026-10-26T12:12:43.000Z",
+        "ago": "4h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Oil Prices Fall as Traders Weigh U.S.-Iran Diplomacy, Saudi Attacks - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOdHd1Q1FTWEFlUlUtZ1FQRWJfYm1QYm5KZW1jTVA2cS01R0cxb0xsNVNrdXJVNm44VTd2ZWN4WnY1R0tla0JuM3NVUmpBVF9GLTl2WEdFRmNUTFpEVUpHVHQzdUREUFBwN2ZEZ2xGcThUa0lKamdzaEY2c19pRy1PcXZCd2hPUmRfTmQ4bUNGWkFPbTM3Z04zLXB2bUdtclBvVmpmQmhqcEloSTJUOHg2ZzRsbEI?oc=5",
+        "source": "WSJ",
+        "category": "geopolitics",
+        "categoryLabel": "Geopolitics & oil",
+        "published": "Mon, 26 Oct 2026 12:11",
+        "publishedIso": "2026-10-26T12:11:11.000Z",
+        "ago": "4h ago",
+        "sentiment": "negative"
+      },
+      {
+        "title": "FOMC Meeting Puts Fed Interest Rate Decision in Focus as Inflation Rises - Coinpedia",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOZ2d6MkVDNmZVaEJuTkdpbEZxLUpVOUVLa09EWnYxcFNtNi1qczNXSlh4M3I2TUltcUFJVTZfSjJXNTlMMHBWdXd0XzZVeFlLZU80VlBMR0hSVzgxZHpCNmIxaE9uakRQeElPbGo0U19WdllHM3JRTlhWYUhxNi1YLTJhV0VTVDNjMWN6eVo3UTRIN0dqaFhfS2E4cFVpMU1PZEHSAacBQVVfeXFMTi1ZQzR6UnlaRWp0TU96TDRabDc1VkJPS013RnBsUTZBNFE0RWR5ZkVCTTBfVjJrV3M3LVhlUFFNWnVaXzR0YVA2bUM4OFlraGJ2MzczVU1wYnhVcGIycFhtYXdvdGhSY2ZoS2lvNFRhdU5VUy0ySGU4NFpncUFZclZVYlRfam1SSVJIcFBKQlBIWll5alBoNEJvU2x6cU90OFd4azdudEE?oc=5",
+        "source": "Coinpedia",
+        "category": "fed",
+        "categoryLabel": "Fed & FOMC",
+        "published": "Mon, 26 Oct 2026 12:09",
+        "publishedIso": "2026-10-26T12:09:39.000Z",
+        "ago": "4h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "News by CNBC TV18 on TradingView, 2026-10-26 — cnbctv:bc8b20523094b:0 - TradingView",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE80S24zMkZjQWRNTTZENkpzbjVUbUFMamNCa3dwNnFRQXRPX0VxZjk1QnhvWHJHMTg0cWNNS2RnWEtCaTgzQVIzaWtxUXo5MFp0ZlpKN3REdVctU0RwXzFlVl9NaTk5VTA?oc=5",
+        "source": "TradingView",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 11:58",
+        "publishedIso": "2026-10-26T11:58:30.000Z",
+        "ago": "4h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Rupee falls for third straight session, ends at 95.19 as oil prices and importer demand weigh - Moneycontrol.com",
+        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQdl9tMnRGa0NRb3dNUllqSzRLMEF4ekN2U0lheUgtZ0k3QjVSY2RWZmtRT3gtY3lXdjI1N3ptOW9yVkZlZjhwTzRZVEVpd3hudURTUzhYTERGNjlUcHppMjVJRUZxSjd5TXBJQ1BIXzBsaEl5SDBiTmdGOXhQbWRIMC13cGljWTdMNUcxRjJ4Q1F3MkE0NzFNQUtWcExxandlcU1YVTRCTUVqTWxfdm9WR0pMZjZ1YUtJQWZhWWVHYlotSzVSQzZzMnV4V25IZ1dtTHQzVVJGSVU0WW01bDhOUjZGNVBhVHpfRGZr0gHwAUFVX3lxTE5oRXE3LXVIMVBVajg1cDJ3amFvNnZvYndpYVItN2JHU0pWLUNhZWhvQmdndjNzVTRvenRvUG1qczBGTnNDUkpCWFVCaTBrcnktZWlmRGRTSTdTMHR6TFhPOUYwX2ZGUVNxNEM4aWpkWEh2OWg5RFpEcW9TMS0wY2s1VFhhS1ZvWGdiZl9xWFc0NDRaVDQzbHNlMjZOVnZ0T2FkOW9ZckpOTVJ5WDQwZXNIZEhoMTA1NWpLMVh5aWtBLTZRenVGVmRzSGIzM29xeWNSOWdhQ3c4MnpkbHNZUHU2SmtyWVJRbnhCUE0xYTk3Tw?oc=5",
+        "source": "Moneycontrol.com",
+        "category": "forex",
+        "categoryLabel": "Currencies",
+        "published": "Mon, 26 Oct 2026 11:56",
+        "publishedIso": "2026-10-26T11:56:45.000Z",
+        "ago": "4h ago",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Sensex Jumps 483 Points, Nifty Closes Above 22,750 - Rediff",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQem9CbDhnM0pya3ljb3E0QU55RmRIUmhyTU5Qb0pkWnREWlVkQlFoVTZHdld0YWVYcjlvZnBYUjNxN294ak9tVTNDbnJZSTBQTUdVNmVqZmFnanFOTTg0ekRrUUtiX2ZFVVZ6QU5PWU5TcHV6NHhmY1E1SFJzZFozME1KY2JlSmFYMXhzdVo1VENJUUx6Sm1zbG9SS2Z0Mm5xdHNPUlVQWnZZNzNMcWc1SWc1SVZ0QW44WUpCekdpVC1zVk91YlV2WDd6amVtOVZqQUREWNIB1wFBVV95cUxQSHVReDk4Q0o0Z0pmTUpnejB5UFlIQXVNeVh1S1hfcFE3aVI1c2FDYV9WSmxFdVRYYkRMREt0ZUVTYkhiRGhrTDRseHNPZkVhaFMzZUNDOUdkeFFaQzR6dGREUk5YSlFWYVBGMzcya3RUTUR6RGRESWVGUHhJVjZwV0d5Q0hRN1VjbFBkZ1dBMkJYMHU5T3BoZ2l1cjh3NFhDaTlzTHh6ZUp0NE5UeWl1TW1CbXV2NzNkdnlnMDNVSURRVUNkbWdaWFpUcFp5SGpmUlBOMnlESQ?oc=5",
+        "source": "Rediff",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 11:48",
+        "publishedIso": "2026-10-26T11:48:44.000Z",
+        "ago": "4h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "FDI in India via Acquisition of Shares: FEMA Rules and RBI Filings - India Briefing",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNbUdkUzcyZW5zMzZ6MFh4dzZ5R0sxY0xDNjlkYl9ROGk1VEh2VHgyYUo0OFZndmV3LUVVVGI3ZDlQMWp0bGNzUjhhdlVhRzBNZ0NBRVBpaEhMRDBrT2ozTmVsVDBTWlBUeVIwakZ6ZHVBeE9mQzZKWEFMR0dVNTk5RWR0SnhwZw?oc=5",
+        "source": "India Briefing",
+        "category": "policy",
+        "categoryLabel": "India policy & GIFT City",
+        "published": "Mon, 26 Oct 2026 11:45",
+        "publishedIso": "2026-10-26T11:45:15.000Z",
+        "ago": "4h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "US Stock Futures Rise Ahead of Federal Reserve Decision and Major Technology Earnings - Yahoo Finance",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOWjRNaTdzZnZMZ0ZNV3VkNnpRZTVKV0lpVDJmXzh5bUt2UTZLalNHVzFJdy1fdkF6TVo4ak0wZEUzV3JZTFI5SE9rOUpTcWhBaHFWa0JqOWpmdDZBZnBSLXlXVDluY0dQOTltV2lVUUVReEFtdllsNUtzNXkyQTV4azJmYWlwUmJmWnY2YmV3RlZJbUxqMVBJ?oc=5",
+        "source": "Yahoo Finance",
+        "category": "fed",
+        "categoryLabel": "Fed & FOMC",
+        "published": "Mon, 26 Oct 2026 11:42",
+        "publishedIso": "2026-10-26T11:42:10.000Z",
+        "ago": "4h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "What To Expect From This Week’s Federal Reserve Meeting - Investopedia",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQR1g1MjJqM1A4WVk0SHlYMjhTTjRnZk1rdWZSeVh6QnBmbkhqeEFLMS1uQXN3OVB0VEhCMElnak05UFRLRkV2VVlmVno1YzAyOXFXbS1BanllLVRVUkI2eXI1LWRvcDd1M05nWGtLcmtwTHpjQWw0SkNDdkxhWkxiODNWek9CWmV4Mm81dTRHOTFfczJVYzRZ?oc=5",
+        "source": "Investopedia",
+        "category": "fed",
+        "categoryLabel": "Fed & FOMC",
+        "published": "Mon, 26 Oct 2026 11:33",
+        "publishedIso": "2026-10-26T11:33:00.000Z",
+        "ago": "5h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Rupee falls 29 paise to close at 95.22 against U.S. dollar - The Hindu",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPd1dTRG0xZmpuMTYwcHFpUk5DZkJOQkhKRlpBWWxFZ0haNXRIZldGUXBWYVRUX01fdy1EVHNHSWdZc0djUzlFWmRpZHBKZXBubUdTSzJJdmxuY2JvNWd3WjNNemJVdldMX2xTcXpnbWZ1STlQdmR2NmNuZmpNUml1VDcycTM0RlVVZGNXYmE4Q1Q4QTgxX2lJWFR1TWYyaGdzTDRvenNPcllmNDNhbDlrUVdTM2lhdUl0LTBILWQtd9IBvwFBVV95cUxPd1dTRG0xZmpuMTYwcHFpUk5DZkJOQkhKRlpBWWxFZ0haNXRIZldGUXBWYVRUX01fdy1EVHNHSWdZc0djUzlFWmRpZHBKZXBubUdTSzJJdmxuY2JvNWd3WjNNemJVdldMX2xTcXpnbWZ1STlQdmR2NmNuZmpNUml1VDcycTM0RlVVZGNXYmE4Q1Q4QTgxX2lJWFR1TWYyaGdzTDRvenNPcllmNDNhbDlrUVdTM2lhdUl0LTBILWQtdw?oc=5",
+        "source": "The Hindu",
+        "category": "forex",
+        "categoryLabel": "Currencies",
+        "published": "Mon, 26 Oct 2026 11:11",
+        "publishedIso": "2026-10-26T11:11:54.000Z",
+        "ago": "5h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "What Newmont’s Outperformance and Extreme Short Data Reveal About Gold - TradingView",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNUVZObmJHWUpwVmNqQ3VTUUJyUEljVHZqcWdTRzVabGJtOUVSMXZKM29wY3BMMUF6SzMta2dHNC1iRnBqc1JtMWdnUmFfc2xadThTTUNWTFVyallEdHFRQVdxbTFvVWIwem12LWpyRFBjR2xmdnRsLUt4SmRrcGZaenpNbUF0Z2gwWmNJdEFfdlRhajhIQXYzX1JtOUhRLXdRcjNDR3FpUXIwUHkxOWx6SU5Cejc5ZFdwZlNiaWxHSXhZaXM2RHBGeA?oc=5",
+        "source": "TradingView",
+        "category": "commodities",
+        "categoryLabel": "Commodities",
+        "published": "Mon, 26 Oct 2026 10:58",
+        "publishedIso": "2026-10-26T10:58:49.000Z",
+        "ago": "5h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Mind-boggling Monday at Indian stock markets: Sensex, Nifty mirror life’s ups and downs — October 26 trade details - Livemint",
+        "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQNGhnZkxKZjYtUXRwalZ4ZklGMGVHLWJLSzBIVzNHMnNiYTZ1REFZaUlGc0t6Z19hd05TS3VLbElVQllLaUhWNWROUmJENlpiY29OVGs4bE01aXdrY3lzb1VDLXNsbVR1cUdYazFOclBHZHRESHZrc0RzNFBPa1NUelVPQzBabGZPMWpTSllhNGNUc21tZ0ZnNkh2RzBuUWxDM0pQcGVSSVdiWkt1THJlN2tBVXEtT2UwSGNBU0Etcm9FVXl6dzFGR3FhbTBkeGNMWWVoZzBPbTBuampWUHRoTjNCMkFid29vSFJpTnNsX2l3d241aVdqNTNCQVZEckw2OW5hOWoyY0RJaW_SAZACQVVfeXFMTzRlak1saFVfMnVpdmtzemQ5MUhZYU9lclZ2WGtFSzEyNUdwQTZzdWFXeWtiR0dCLVV5RklFek9kNURXb193VzBIZS1WaHpFOVdzdDY0OUpmWUNvX0xkcVloQXE4MENBV3V1SjVlS2Z3TENCZnc4U0N1ZFgxRmNWUldlQkpFeDF5Q2FUbE5nakNQaEJQd3dsZlU4cVJXeTBVSFF2ZFBEY29naTN3M19HbUhubk52c2owbUVmcWN6cXlncVc2UjFmRmRxS2F4Unl6QWltcURJbFEyWlcyWFhSai1lYjBmS0l1M0QtQWI0QlJLV3RxV2lkc3lGRmozTi1kUE5xQkctQTJiQnFHWmozTEc?oc=5",
+        "source": "Livemint",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 10:51",
+        "publishedIso": "2026-10-26T10:51:29.000Z",
+        "ago": "5h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Rupee falling against the dollar? Finance Minister Sitharaman explains what the RBI can and cannot do - Open Magazine",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQT0swMlA2X2VCSnBhN3BWQWtiY3RuRG5TaE9PNHZiZGpuTWRQc1I4S1ZWRmpucDJpdEkzdDFXdVlCTk40RVpoanE1aC1vLTIta0ZTdGlsQjVDNGVNMGhCME4yak1PVUN0NUZMcmFUWk4tZ2FTWEdwa2JxbDFrY0JVa09tdE10XzBvV2NHYnhnVkxUczUycWVNNGpwbzdSNy1QYTIyWW40MmprTHRabkRXazRRLXVkMngwVGVKLWVCVFVGN2k4Vi1fVGxsVXVfYUNid29R?oc=5",
+        "source": "Open Magazine",
+        "category": "economy",
+        "categoryLabel": "Economy & policy",
+        "published": "Mon, 26 Oct 2026 10:39",
+        "publishedIso": "2026-10-26T10:39:43.000Z",
+        "ago": "5h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "India stocks higher at close of trade; Nifty 50 up 0.68% - Investing.com",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUEY3ZC1tRmc2M0ZvUEo2MnphM1p1OFFDckpMSlRBSU04Qm5ETjdWWjExOE9fTGxoYW9vdWhqS09fX19vTkM5ZjZQQ2lRMW5samJBdnIyQjVrOVlselZoYlpFMEZfTjVMcURYQ29EZFJ0SDZ2QUpsTnVSNHN3djNKLVZiel8tQlFvX3duc3VpNFpPVEdGb0d4UFd2aGRtUW1kUFNlb3J2ajVkTWlsNWR3?oc=5",
+        "source": "Investing.com",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 10:35",
+        "publishedIso": "2026-10-26T10:35:20.000Z",
+        "ago": "6h ago",
+        "sentiment": "neutral"
+      }
+    ],
+    "counts": {
+      "india": 7,
+      "global": 7,
+      "commodities": 7,
+      "economy": 7,
+      "corporate": 7,
+      "crypto": 7,
+      "forex": 5,
+      "geopolitics": 7,
+      "fed": 7,
+      "policy": 3,
+      "rareearth": 0,
+      "worldbank": 0
+    },
+    "asOf": "2026-10-26T16:04:53.118Z",
+    "india": [
+      {
+        "title": "News by CNBC TV18 on TradingView, 2026-10-26 — cnbctv:bc8b20523094b:0 - TradingView",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE80S24zMkZjQWRNTTZENkpzbjVUbUFMamNCa3dwNnFRQXRPX0VxZjk1QnhvWHJHMTg0cWNNS2RnWEtCaTgzQVIzaWtxUXo5MFp0ZlpKN3REdVctU0RwXzFlVl9NaTk5VTA?oc=5",
+        "source": "TradingView",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 11:58",
+        "publishedIso": "2026-10-26T11:58:30.000Z",
+        "ago": "4h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Sensex Jumps 483 Points, Nifty Closes Above 22,750 - Rediff",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQem9CbDhnM0pya3ljb3E0QU55RmRIUmhyTU5Qb0pkWnREWlVkQlFoVTZHdld0YWVYcjlvZnBYUjNxN294ak9tVTNDbnJZSTBQTUdVNmVqZmFnanFOTTg0ekRrUUtiX2ZFVVZ6QU5PWU5TcHV6NHhmY1E1SFJzZFozME1KY2JlSmFYMXhzdVo1VENJUUx6Sm1zbG9SS2Z0Mm5xdHNPUlVQWnZZNzNMcWc1SWc1SVZ0QW44WUpCekdpVC1zVk91YlV2WDd6amVtOVZqQUREWNIB1wFBVV95cUxQSHVReDk4Q0o0Z0pmTUpnejB5UFlIQXVNeVh1S1hfcFE3aVI1c2FDYV9WSmxFdVRYYkRMREt0ZUVTYkhiRGhrTDRseHNPZkVhaFMzZUNDOUdkeFFaQzR6dGREUk5YSlFWYVBGMzcya3RUTUR6RGRESWVGUHhJVjZwV0d5Q0hRN1VjbFBkZ1dBMkJYMHU5T3BoZ2l1cjh3NFhDaTlzTHh6ZUp0NE5UeWl1TW1CbXV2NzNkdnlnMDNVSURRVUNkbWdaWFpUcFp5SGpmUlBOMnlESQ?oc=5",
+        "source": "Rediff",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 11:48",
+        "publishedIso": "2026-10-26T11:48:44.000Z",
+        "ago": "4h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Mind-boggling Monday at Indian stock markets: Sensex, Nifty mirror life’s ups and downs — October 26 trade details - Livemint",
+        "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQNGhnZkxKZjYtUXRwalZ4ZklGMGVHLWJLSzBIVzNHMnNiYTZ1REFZaUlGc0t6Z19hd05TS3VLbElVQllLaUhWNWROUmJENlpiY29OVGs4bE01aXdrY3lzb1VDLXNsbVR1cUdYazFOclBHZHRESHZrc0RzNFBPa1NUelVPQzBabGZPMWpTSllhNGNUc21tZ0ZnNkh2RzBuUWxDM0pQcGVSSVdiWkt1THJlN2tBVXEtT2UwSGNBU0Etcm9FVXl6dzFGR3FhbTBkeGNMWWVoZzBPbTBuampWUHRoTjNCMkFid29vSFJpTnNsX2l3d241aVdqNTNCQVZEckw2OW5hOWoyY0RJaW_SAZACQVVfeXFMTzRlak1saFVfMnVpdmtzemQ5MUhZYU9lclZ2WGtFSzEyNUdwQTZzdWFXeWtiR0dCLVV5RklFek9kNURXb193VzBIZS1WaHpFOVdzdDY0OUpmWUNvX0xkcVloQXE4MENBV3V1SjVlS2Z3TENCZnc4U0N1ZFgxRmNWUldlQkpFeDF5Q2FUbE5nakNQaEJQd3dsZlU4cVJXeTBVSFF2ZFBEY29naTN3M19HbUhubk52c2owbUVmcWN6cXlncVc2UjFmRmRxS2F4Unl6QWltcURJbFEyWlcyWFhSai1lYjBmS0l1M0QtQWI0QlJLV3RxV2lkc3lGRmozTi1kUE5xQkctQTJiQnFHWmozTEc?oc=5",
+        "source": "Livemint",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 10:51",
+        "publishedIso": "2026-10-26T10:51:29.000Z",
+        "ago": "5h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "India stocks higher at close of trade; Nifty 50 up 0.68% - Investing.com",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUEY3ZC1tRmc2M0ZvUEo2MnphM1p1OFFDckpMSlRBSU04Qm5ETjdWWjExOE9fTGxoYW9vdWhqS09fX19vTkM5ZjZQQ2lRMW5samJBdnIyQjVrOVlselZoYlpFMEZfTjVMcURYQ29EZFJ0SDZ2QUpsTnVSNHN3djNKLVZiel8tQlFvX3duc3VpNFpPVEdGb0d4UFd2aGRtUW1kUFNlb3J2ajVkTWlsNWR3?oc=5",
+        "source": "Investing.com",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 10:35",
+        "publishedIso": "2026-10-26T10:35:20.000Z",
+        "ago": "6h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Stock markets decline in early trade; Sensex drops - DD India",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNcVlnSWFXbE9RQ2dMakJ6T2tnM1ZSd2N0c0lNSzJMMkwzZ1plWlFVa1d6SU44LTUyRWo3ZlVKMlVORDhiMVV4VnJ4M1hnMjhzRjU1bmU5YW1RZUxGY3MwQUhmci1GYWJwTklOdUVzLUZUZ1A0MlRyeVNrZjk1aG5VUlVvYTNtMUk?oc=5",
+        "source": "DD India",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 06:26",
+        "publishedIso": "2026-10-26T06:26:50.000Z",
+        "ago": "10h ago",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Sensex, Nifty Fall as Asia Weak, Oil High, Middle East Tense - HDFC Sky",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNazhhQm5RMlJLbUlRVk9rRGNnbi1Ya1lJVmJvU0FJOFNxd0dQZTlpRWZ4ZGQzUDQtVHR2ams4T3FGV24yYzZoMGU0VFpNTk9WLUdRQjFZWEJVaXhXTzBsMEI3ckVCWHp5c1lnSFltU1NJQWpFRC1nTFdNYjRDMW55Nm9oMEo1YWxTLVlXX3VwMUVhUk50SmprRUdsdW5vNFRKa3pEa3J5M29yOUFlUl8wWDZVOUFNeE9Ic3BZOHRxT1k3bloyTkZN?oc=5",
+        "source": "HDFC Sky",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 04:51",
+        "publishedIso": "2026-10-26T04:51:24.000Z",
+        "ago": "11h ago",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Sensex Today Trades Higher | Nifty Above 22,600 | Kotak Mahindra & Sun Pharma Top Gainers - Equitymaster",
+        "link": "https://news.google.com/rss/articles/CBMiwwJBVV95cUxQbi0tSVlUd2QyOVhtbDZQSGlmMlB2T3dvMUlWeVBBekx0MXhOWklDQ0dJc2VpYzNMaTFiV2lMY3hNOU84OXdiaDBsR29RdnhYQkpLZnZKdlUxeHdnLS1aVTd0a2ZDU0wxZDRBM3pzaG1HSGFDU3FXN043enpROHF5WU5HM25PUXRRV1liZ2ttS0E2VTNEaDAwRnN5Wkx5dENMMHM1NkdvQ3JnaWhLVjE1Mnc3S3c5MmtBOXotVkxUd1BrY3Uxc3BXcUk4VmI4UkE0dnpWQnBwVEFYLVN4bTJKNzItWTJjamltMlNlemJUMWl4ZHYyQUJYeEZZaHRsOWpqU1NISEMzdnNyMmxCSG90d2tDOUU2b09saXdCblVXTklSUVg2a1ExYWZfZEliUVVFNWt0Q01OX3hKcU00Mmk4V2tyOA?oc=5",
+        "source": "Equitymaster",
+        "category": "india",
+        "categoryLabel": "India markets",
+        "published": "Mon, 26 Oct 2026 04:50",
+        "publishedIso": "2026-10-26T04:50:24.000Z",
+        "ago": "11h ago",
+        "sentiment": "positive"
+      }
+    ],
+    "global": [
+      {
+        "title": "Investors are doing just as well this year by shunning AI. How to invest if the tech trade keeps fizzling - CNBC",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1FdjVKTnQ4QW10cjgyM0xRdm1pQWYwRVpzb1pWbHZyQm8yOXhvbnh3bkhaVVZNaU1pYkhKQm9fRzdyLUQwZlRETUtZd0piMVVWdGhDLTBzTEpWLU05V3ljOWgyd013bUpZaGdFd0ZBVFhnaF9GOFhV0gF8QVVfeXFMUElCZzFQMm5rcGxzeFJSVk5HNV9qalkxT21HZm40Q19kR3hUc1FkYTJLZ2stSWt6a20zRUM4OGNRM0tTNGc5cndSY2ZWY2hKelktcS1RSnV5ejhZY2JqQWRxUWVPaEZ4aG96S1BxTmhUZTBjVzhoRWRXaGV5aw?oc=5",
+        "source": "CNBC",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 15:39",
+        "publishedIso": "2026-10-26T15:39:55.000Z",
+        "ago": "25m ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "AI stocks rise as Anthropic nears Wall Street debut amid investor caution - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQNVdGRWF4eUpFNlQ2QkxGSWVrdlZZMU9OVlgtNkduS1JrMVdzQ0VJRVJPak4xcERFNENPWGE3YUM3VHpSSnFybzZJRWRTSW53eWwzTW1jLTR5dmpjelcxam96czEycUZ3a1piY2kwcC15WTR3ZFJUeGdIUkxuLXl6b0d4dGJ0T0hWcUl0ejVSMzI1UlpJdzRnZ09Td05wRDlJbVJaT0ktM3Z4Q2ZNdnNSWnA1bkZGVl9iYVI1TEtCc0VhRjRJ?oc=5",
+        "source": "Reuters",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 15:35",
+        "publishedIso": "2026-10-26T15:35:43.000Z",
+        "ago": "29m ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Stock market rises as Wall Street looks to rebound after difficult week (SP500:) - Seeking Alpha",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMGpmRDlYZ3Z6dVN3UDVvZTJVNmI2REZUMkZiSHQzMzJ5RWVRcXFBT1poZzlwQmV5RTQwUlBwdThVMHhZWGRseVQ1UUVkTWxvUjNZYjJaLTY1WGh2SUVFdHV5MnpmRHgxZ1FlOUN4MzhEWTVCX2pzX2xlLW0yQUpoUmVNTEhxZ05h?oc=5",
+        "source": "Seeking Alpha",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 14:33",
+        "publishedIso": "2026-10-26T14:33:00.000Z",
+        "ago": "2h ago",
+        "sentiment": "positive"
+      },
+      {
+        "title": "BNB Standard Corporation Rings the Opening Bell - Nasdaq",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9rM0t5X09jeFlGWW9pdEU0dFVEWjN2MU84eDJ1eXl4WTFoTGtfbkhEV0JpR3VFUjNtS2VqUFFZUllnaHF5OE5ibktQR1YtN3lsS3psNUlGSkVOcGV2LTJDck9WU19BbzF6S2dGcXNPNHp1NS1OLWw0WlV4X0hCdw?oc=5",
+        "source": "Nasdaq",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 14:15",
+        "publishedIso": "2026-10-26T14:15:00.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Anthropic files for IPO and plans Nasdaq listing as ANT - Quartz",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE8tSWFJR3J6QVpsV2tGRk94WVE1UW9kQkttRnBIeHBFdGFVT2Jxamp6aHBQVHYyeTdTbENqSnNYa0NCTDBIQmVOU0ZUUncxRkpqYm5fNHM1SVVndEZieUR0cTN0WGUxeU5XanJ4RzhrNA?oc=5",
+        "source": "Quartz",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 13:41",
+        "publishedIso": "2026-10-26T13:41:21.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "Watch Anthropic Files for IPO, Plans to Trade on Nasdaq - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQkotUHA3TU5WZzN2OEFVR2Q1SEhKR09QSjhfd3gyUEFhNm11dzY1Z0pORktabjFnc01wOW40Yld2NVZSNEF2eFM0TERGZnJhZjFkZFRCTzdZMklwZEtNSUdQN3dsYkNETlVpRy1qMXFGbW9Ud3JTVTlWMUlKR1JJeUpKWlNJNHc1UWFwVldGMzFLbXhRT0dUQ1BTWVk0dGN6SXZNeHZB?oc=5",
+        "source": "Bloomberg.com",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 13:36",
+        "publishedIso": "2026-10-26T13:36:15.000Z",
+        "ago": "2h ago",
+        "sentiment": "neutral"
+      },
+      {
+        "title": "S&P 500 biggest stocks: 6 of the top 10 fell last week - Opening Bell Daily",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9yOW5XS0hEbEdkcEV6dVNWSUZxV2JlOWthRV9BYzlMclRoUUNKeS1BNWFXTVRjQUNHcm9XNVRFQ1pjZFl3ejdIUW1PSHRibWxQRUo5ZEZzYmx6VGhQLXd5b1B1OFU0LTdsVkFHS0lIVkd6UE1NakJFemd5aw?oc=5",
+        "source": "Opening Bell Daily",
+        "category": "global",
+        "categoryLabel": "Global markets",
+        "published": "Mon, 26 Oct 2026 12:27",
+        "publishedIso": "2026-10-26T12:27:54.000Z",
+        "ago": "4h ago",
+        "sentiment": "neutral"
+      }
+    ]
+  },
+  "aiPlan": {
+    "version": "Solo AI Trader · multi-factor rule engine v1",
+    "generatedAt": "2026-10-26T16:04:54.110Z",
+    "symbol": "NIFTY",
+    "name": "Nifty 50",
+    "style": "intraday",
+    "horizon": "Intraday / 1–3 sessions",
+    "market": {
+      "spot": 22753.2,
+      "changePct": 0.6778761061946935,
+      "interval": "15m",
+      "range": "5d",
+      "marketOpen": false,
+      "vix": 17.16,
+      "vixRegime": "Normal",
+      "bias": "Bearish"
+    },
+    "bias": {
+      "label": "Strong bearish",
+      "side": "SHORT",
+      "score": 16.7,
+      "confidence": 78,
+      "reasons": [
+        "Price below 20-DMA",
+        "Price below 50-DMA",
+        "RSI 46.1 · MACD hist 52.36",
+        "Daily EMA alignment 1/5"
+      ]
+    },
+    "structure": {
+      "ema20": 22831.86,
+      "ema50": 23210.75,
+      "ema200": 24165.2,
+      "rsi14": 46.08,
+      "macdHist": 52.36,
+      "intradayEma20": 22659.65,
+      "intradayEma50": 22628.12,
+      "atr": 48.93,
+      "atrPct": 0.22,
+      "swingHigh": 22753.2,
+      "swingLow": 22523.6,
+      "recentHigh": 22753.2,
+      "recentLow": 22674.65
+    },
+    "levels": {
+      "pivot": 22631.25,
+      "supports": [
+        22509.3,
+        22265.4,
+        22179.9
+      ],
+      "resistances": [
+        22875.15,
+        22997.1,
+        23175.25
+      ],
+      "high52": 26373.2,
+      "low52": 22179.9,
+      "keySupport": 22509.3,
+      "keyResistance": 22875.15
+    },
+    "trade": {
+      "side": "SHORT",
+      "instrument": "Option · Long put (ATM)",
+      "entry": 22663.31,
+      "entryZone": [
+        22617.99,
+        22708.64
+      ],
+      "trigger": 22663.31,
+      "stop": 22720.2,
+      "stopDistance": 56.88,
+      "stopPct": 0.25,
+      "targets": [
+        22592.21,
+        22549.55,
+        22492.66
+      ],
+      "riskReward": 2,
+      "capital": 100000,
+      "riskPct": 1,
+      "riskAmount": 1000,
+      "qty": 75,
+      "lots": 1,
+      "lotSize": 75,
+      "notional": 6435,
+      "maxLossAtStop": 1802,
+      "rewardAtT2": 2000,
+      "summary": "Sell only after 22663.31 holds. Stop 22720.20. Book partials at T1 and trail the rest."
+    },
+    "option": {
+      "available": true,
+      "strategy": "Long put (ATM)",
+      "side": "SHORT",
+      "expiry": "27-Oct-2026",
+      "spot": 22753.2,
+      "atm": 22750,
+      "strike": 22750,
+      "type": "PE",
+      "lotSize": 75,
+      "lots": 1,
+      "premium": 85.8,
+      "stopPremium": 61.78,
+      "targetPremium": 132.99,
+      "premiumStopPct": 28,
+      "premiumTargetPct": 55,
+      "breakeven": 22664.2,
+      "maxLoss": 6435,
+      "riskAtStop": 1802,
+      "riskPerLot": 1802,
+      "budgetLots": 0,
+      "riskExceedsBudget": true,
+      "rewardAtTarget": 3539,
+      "iv": 18.8,
+      "oi": 68271,
+      "pcr": 1.126,
+      "maxPain": 22750,
+      "expectedMove": 210.03,
+      "rationale": [
+        "Nifty 50 is bearish; the plan buys the ATM PE expiring 27-Oct-2026.",
+        "Premium 85.8, IV 18.8%, PCR 1.126, max pain 22750.",
+        "A put buy needs spot to move below strike − premium before expiry."
+      ],
+      "alternatives": [
+        "IV is elevated. A defined-risk bear call spread may offer better theta than an outright PE.",
+        "Avoid averaging down on a losing option; respect the premium stop."
+      ]
+    },
+    "scenarios": [
+      {
+        "name": "Bear continuation",
+        "condition": "Below 22663.31",
+        "action": "Hold with a trailing stop after T1.",
+        "target": "T2 22549.55"
+      },
+      {
+        "name": "Stop-out / invalidation",
+        "condition": "Above 22720.20",
+        "action": "Exit without averaging. Reassess only after a fresh close.",
+        "target": "Risk capped at ₹1,000"
+      },
+      {
+        "name": "Chop / no follow-through",
+        "condition": "Price stalls near entry for 2–3 bars",
+        "action": "Cut to half size or move to breakeven. Do not pay theta for a dead setup.",
+        "target": "Capital preservation"
+      }
+    ],
+    "checklist": [
+      {
+        "text": "Daily trend and 20/50/200 EMA structure checked",
+        "status": "pass"
+      },
+      {
+        "text": "Entry trigger is defined before the trade",
+        "status": "pass"
+      },
+      {
+        "text": "Hard stop is placed beyond the noise level",
+        "status": "pass"
+      },
+      {
+        "text": "Risk is 0.1%–2% of capital",
+        "status": "pass"
+      },
+      {
+        "text": "Position size is based on stop distance, not conviction",
+        "status": "pass"
+      },
+      {
+        "text": "Volatility regime is acceptable",
+        "status": "pass"
+      },
+      {
+        "text": "No major event inside the holding window",
+        "status": "watch"
+      },
+      {
+        "text": "Option premium and breakeven are understood",
+        "status": "pass"
+      },
+      {
+        "text": "Trade is logged in the paper book first",
+        "status": "watch"
+      },
+      {
+        "text": "Stop and target are written in the journal",
+        "status": "watch"
+      }
+    ],
+    "skills": [
+      {
+        "key": "structure",
+        "label": "Chart structure",
+        "value": "Below 20-DMA",
+        "note": "Daily trend skeleton"
+      },
+      {
+        "key": "trend",
+        "label": "Trend alignment",
+        "value": "1/5 bullish checks",
+        "note": "Daily EMA + RSI + MACD"
+      },
+      {
+        "key": "momentum",
+        "label": "Momentum",
+        "value": "RSI 46.1",
+        "note": "MACD hist 52.36"
+      },
+      {
+        "key": "volatility",
+        "label": "Volatility",
+        "value": "ATR 0.22%",
+        "note": "India VIX 17.15999984741211"
+      },
+      {
+        "key": "levels",
+        "label": "Key levels",
+        "value": "22509.30 / 22875.15",
+        "note": "Support / resistance"
+      },
+      {
+        "key": "volume",
+        "label": "Volume",
+        "value": "—",
+        "note": "20-bar average"
+      },
+      {
+        "key": "risk",
+        "label": "Risk budget",
+        "value": "₹1,000",
+        "note": "1% of capital"
+      },
+      {
+        "key": "sizing",
+        "label": "Position sizing",
+        "value": "1 lot",
+        "note": "Stop-based"
+      },
+      {
+        "key": "options",
+        "label": "Options edge",
+        "value": "Long put (ATM)",
+        "note": "PCR 1.126 · IV 20.41%"
+      },
+      {
+        "key": "journal",
+        "label": "Journal",
+        "value": "Not logged",
+        "note": "Use Notes / Reports"
+      }
+    ],
+    "narrative": [
+      "Nifty 50 is trading at 22753.20 with a strong bearish daily bias. Price is below the 20-DMA, below the 50-DMA, and daily RSI(14) is 46.1.",
+      "The intraday plan uses a 56.88-point stop (0.25% of spot) and targets 22592.21 / 22549.55 / 22492.66. Risk budget is ₹1,000 (1% of capital).",
+      "Options overlay: Long put (ATM) on 27-Oct-2026. Nifty 50 is bearish; the plan buys the ATM PE expiring 27-Oct-2026."
+    ],
+    "warnings": [
+      "Indian cash market is closed. Levels are based on the last close and can gap on the next open.",
+      "NSE option-chain snapshot is stale; refresh before using the option plan.",
+      "One option lot risks about ₹1,802 at the premium stop, above your ₹1,000 budget. Skip the trade, use a spread, or raise capital.",
+      "This is a research plan, not investment advice. Markets can gap through stops."
+    ],
+    "optionChainAvailable": true,
+    "disclaimer": "Solo AI Trader is a deterministic research engine using live quotes, Yahoo candles, NSE option-chain data and rule-based risk logic. It is not a licensed investment adviser and does not place live orders."
+  },
+  "errors": []
+}

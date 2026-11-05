@@ -1,0 +1,45 @@
+﻿//@version=6
+// NSE RSI Dip - TradingView Strategy Tester edition
+// Mirrors "rsi-dip" in engine.mjs: buy RSI(2) < 10 above the 200-SMA,
+// exit when RSI(2) > 60 or price closes above the 5-SMA.
+
+strategy("NSE RSI Dip (2/200)", overlay = true,
+     initial_capital = 100000,
+     default_qty_type = strategy.percent_of_equity,
+     default_qty_value = 100,
+     commission_type = strategy.commission.percent,
+     commission_value = 0.15,
+     slippage = 1,
+     pyramiding = 0,
+     calc_on_every_tick = false,
+     process_orders_on_close = false)
+
+rsiLen   = input.int(2,   "RSI length",        minval = 2)
+buyLevel = input.int(10,  "Buy below RSI",     minval = 1, maxval = 50)
+sellLevel= input.int(60,  "Exit above RSI",    minval = 40, maxval = 100)
+trendLen = input.int(200, "Trend SMA",         minval = 20)
+exitLen  = input.int(5,   "Exit SMA",          minval = 2)
+startAt  = input.time(timestamp("2021-01-01"), "Backtest start")
+
+inWindow = time >= startAt
+
+rsiVal  = ta.rsi(close, rsiLen)
+trend   = ta.sma(close, trendLen)
+exitMa  = ta.sma(close, exitLen)
+
+longCond = rsiVal < buyLevel and close > trend and inWindow
+exitCond = rsiVal > sellLevel or close > exitMa
+
+if longCond
+    strategy.entry("Long", strategy.long, comment = "RSI dip")
+
+if exitCond
+    strategy.close("Long", comment = "RSI bounce")
+
+plot(trend,  "SMA 200", color = color.new(color.gray, 0), linewidth = 2)
+plot(exitMa, "SMA 5",   color = color.new(color.purple, 55), linewidth = 1)
+plotshape(longCond, "Entry", shape.triangleup,   location.belowbar, color.new(color.green, 0), size = size.tiny)
+plotshape(exitCond, "Exit",  shape.triangledown, location.abovebar, color.new(color.red,   0), size = size.tiny)
+
+alertcondition(longCond, "RSI Dip BUY",  "BUY {{ticker}} at {{close}} (RSI2 dip)")
+alertcondition(exitCond, "RSI Dip EXIT", "EXIT {{ticker}} at {{close}} (RSI2 bounce)")

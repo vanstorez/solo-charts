@@ -1,0 +1,739 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Solo Trading Charts — a TradingView-style NSE chart terminal with live market pulse, strategy backtests, drawings, alerts, and an intraday options workbench." />
+  <title>Solo Trading Charts · Pro NSE Terminal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div>
+          <div class="brand-name">Solo Trading Charts</div>
+          <div class="brand-sub">Charts · strategy · options</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <div class="nav-group-label">Market</div>
+        <button class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">◫</span>
+          <span>Market pulse</span>
+        </button>
+        <button class="nav-item" data-view="charts">
+          <span class="nav-icon">▥</span>
+          <span>Solo charts</span>
+        </button>
+        <button class="nav-item" data-view="scanner">
+          <span class="nav-icon">⌗</span>
+          <span>Chart scanner</span>
+        </button>
+        <button class="nav-item" data-view="ai">
+          <span class="nav-icon">✧</span>
+          <span>AI trader</span>
+        </button>
+
+        <div class="nav-group-label">Research</div>
+        <button class="nav-item" data-view="news">
+          <span class="nav-icon">▤</span>
+          <span>News terminal</span>
+        </button>
+        <button class="nav-item" data-view="macro">
+          <span class="nav-icon">🌐</span>
+          <span>Macro radar</span>
+        </button>
+        <button class="nav-item" data-view="notes">
+          <span class="nav-icon">✎</span>
+          <span>Notes</span>
+        </button>
+        <button class="nav-item" data-view="reports">
+          <span class="nav-icon">▦</span>
+          <span>Reports</span>
+        </button>
+
+        <div class="nav-group-label">Trade</div>
+        <button class="nav-item" data-view="options">
+          <span class="nav-icon">⇅</span>
+          <span>Options desk</span>
+        </button>
+        <button class="nav-item" data-view="calculator">
+          <span class="nav-icon">▣</span>
+          <span>Calculators</span>
+        </button>
+        <button class="nav-item" data-view="alerts">
+          <span class="nav-icon">◉</span>
+          <span>Alert center</span>
+        </button>
+        <button class="nav-item" data-view="broker">
+          <span class="nav-icon">⇄</span>
+          <span>Broker hub</span>
+        </button>
+        <button class="nav-item" data-view="watchlist">
+          <span class="nav-icon">☰</span>
+          <span>Watchlists</span>
+        </button>
+
+        <div class="nav-group-label">Lab</div>
+        <button class="nav-item" data-view="backtest">
+          <span class="nav-icon">⌁</span>
+          <span>Backtest lab</span>
+        </button>
+        <button class="nav-item" data-view="paper">
+          <span class="nav-icon">▤</span>
+          <span>Paper book</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Data feed</div>
+        <div class="feed-row"><span class="dot live" id="feedDot"></span><span id="feedLabel">Connecting…</span></div>
+        <div class="tiny">TradingView · Yahoo Finance · NSE</div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="tiny">Research and paper-trading only. Not investment advice. Markets can gap through stops.</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="pageEyebrow">MARKET PULSE</div>
+          <h1 id="pageTitle">Live market dashboard</h1>
+        </div>
+        <div class="top-actions">
+          <div class="asof">
+            <span class="asof-label">Snapshot</span>
+            <span id="asOf">—</span>
+          </div>
+          <button class="btn btn-ghost" id="refreshBtn">
+            <span class="btn-icon">↻</span> Refresh
+          </button>
+        </div>
+      </header>
+
+      <div class="ticker-tape" id="tickerTape" aria-label="Live market ticker">
+        <div class="ticker-track" id="tickerTrack"><span class="ticker-loading">Loading market ticker…</span></div>
+      </div>
+
+      <!-- ============================ DASHBOARD ============================ -->
+      <section class="view active" id="view-dashboard">
+        <div class="hero-grid">
+          <article class="panel hero-panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">NIFTY 50 · LIVE</div>
+                <div class="hero-price" id="heroNifty">—</div>
+                <div class="hero-change" id="heroChange">—</div>
+              </div>
+              <div class="badge" id="marketBias">—</div>
+            </div>
+            <div class="spark-wrap">
+              <svg class="spark" id="niftySpark" viewBox="0 0 420 96" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="hero-foot">
+              <span id="heroTrend">—</span>
+              <span class="separator"></span>
+              <span id="heroRange">—</span>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">MACRO RISK</div>
+                <h2 class="panel-title">War premium &amp; rates</h2>
+              </div>
+              <span class="status-pill" id="marketStatus">—</span>
+            </div>
+            <div class="macro-grid">
+              <div class="macro-item">
+                <span class="macro-label">Brent crude</span>
+                <strong id="macroBrent">—</strong>
+                <span class="macro-note" id="macroBrentNote">—</span>
+              </div>
+              <div class="macro-item">
+                <span class="macro-label">India VIX</span>
+                <strong id="macroVix">—</strong>
+                <span class="macro-note" id="macroVixNote">—</span>
+              </div>
+              <div class="macro-item">
+                <span class="macro-label">USD / INR</span>
+                <strong id="macroInr">—</strong>
+                <span class="macro-note">Rupee risk</span>
+              </div>
+              <div class="macro-item">
+                <span class="macro-label">US 10-year</span>
+                <strong id="macroYield">—</strong>
+                <span class="macro-note">Global cost of money</span>
+              </div>
+            </div>
+            <div class="callout" id="regimeCallout">Waiting for live data…</div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">NIFTY OPTIONS</div>
+                <h2 class="panel-title">Positioning pulse</h2>
+              </div>
+              <span class="badge subtle" id="optionsExpiry">—</span>
+            </div>
+            <div class="mini-stat-grid">
+              <div class="mini-stat"><span>ATM</span><strong id="pulseAtm">—</strong></div>
+              <div class="mini-stat"><span>PCR</span><strong id="pulsePcr">—</strong></div>
+              <div class="mini-stat"><span>Max pain</span><strong id="pulseMaxPain">—</strong></div>
+              <div class="mini-stat"><span>Expected move</span><strong id="pulseMove">—</strong></div>
+            </div>
+            <div class="oi-bars" id="oiBars"></div>
+            <button class="link-btn" data-jump="options">Open options desk →</button>
+          </article>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">CROSS ASSET TAPE</div>
+            <h2 class="section-title">Everything that matters this morning</h2>
+          </div>
+          <span class="tiny" id="sourceNote">—</span>
+        </div>
+        <div class="quote-strip" id="quoteStrip"></div>
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">LEVEL MAP</div>
+            <h2 class="section-title">Where the market can go</h2>
+          </div>
+          <span class="tiny">Supports below · resistances above</span>
+        </div>
+        <div class="levels-grid" id="levelsGrid"></div>
+
+        <div class="two-col">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">WHAT MATTERS</div>
+                <h2 class="panel-title">The trade narrative</h2>
+              </div>
+            </div>
+            <div class="narrative" id="narrative"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">HEADLINES</div>
+                <h2 class="panel-title">War, oil &amp; markets</h2>
+              </div>
+            </div>
+            <div class="news-list" id="newsList"></div>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <button class="cta-card" data-jump="backtest">
+            <span class="cta-kicker">TEST IT</span>
+            <strong>Run a 5-year index backtest</strong>
+            <span>EMA trend, RSI dip, Donchian, momentum</span>
+          </button>
+          <button class="cta-card" data-jump="options">
+            <span class="cta-kicker">TRADE IT</span>
+            <strong>Build an option buy or sell</strong>
+            <span>Live chain · payoff · margin · paper book</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ============================= SOLO CHARTS ========================= -->
+      <section class="view" id="view-charts">
+        <div class="chart-shell">
+          <aside class="chart-watchlist panel">
+            <div class="chart-watch-head">
+              <div>
+                <div class="eyebrow">WATCHLIST</div>
+                <h2 class="panel-title">Market radar</h2>
+              </div>
+              <span class="status-pill" id="watchlistAsOf">—</span>
+            </div>
+            <div class="symbol-search">
+              <input id="symbolSearch" type="search" placeholder="Search NSE, indices, global…" autocomplete="off" />
+              <div class="search-results" id="searchResults"></div>
+            </div>
+            <div class="watchlist" id="watchlist">
+              <div class="tiny" style="padding:12px">Loading watchlist…</div>
+            </div>
+            <div class="watchlist-foot">Live quotes via TradingView · click a symbol to chart</div>
+          </aside>
+
+          <div class="chart-workspace">
+            <div class="chart-head panel">
+              <div class="chart-symbol-block">
+                <div class="chart-symbol-mark" id="chartMark">N</div>
+                <div>
+                  <div class="chart-symbol-name" id="chartName">Nifty 50</div>
+                  <div class="chart-symbol-meta" id="chartMeta">NSE · Index · 1D</div>
+                </div>
+              </div>
+              <div class="chart-quote-block">
+                <div class="chart-last" id="chartLast">—</div>
+                <div class="chart-change" id="chartChange">—</div>
+              </div>
+              <div class="chart-head-actions">
+                <span class="chart-live-badge" id="chartLiveStatus" title="Auto-refreshing chart and watchlist. Exchange data may be delayed."><i></i> LIVE <b id="chartLiveStamp">--:--</b></span>
+                <button class="tool-btn" id="chartAiBtn" title="Build an AI trade plan">✧ AI plan</button>
+                <button class="tool-btn" id="chartScreenshot" title="Download chart as PNG">PNG</button>
+                <button class="tool-btn" id="chartFullscreen" title="Fullscreen">⛶</button>
+                <button class="tool-btn" id="chartRefresh" title="Refresh">↻</button>
+                <a class="tool-btn" id="chartTvLink" target="_blank" rel="noreferrer">TV ↗</a>
+              </div>
+            </div>
+
+            <div class="chart-toolbar panel">
+              <div class="chart-tabs" id="chartIntervals"></div>
+              <span class="toolbar-divider"></span>
+              <div class="chart-tabs" id="chartRanges"></div>
+              <span class="toolbar-divider"></span>
+              <div class="chart-tabs" id="chartTypes"></div>
+              <span class="toolbar-spacer"></span>
+              <button class="tool-btn" id="drawToolBtn">✎ <span>Draw</span></button>
+              <button class="tool-btn" id="indicatorBtn">ƒ <span>Indicators</span></button>
+              <button class="tool-btn" id="compareBtn">⊞ <span>Compare</span></button>
+              <button class="tool-btn" id="smcBtn" title="Smart Money Concepts: structure, order blocks, FVG, breakers, probability">SMC</button>
+              <button class="tool-btn" id="alertBtn">◉ <span>Alert</span></button>
+            </div>
+
+            <div class="chart-livewire panel" id="chartLiveWire">
+              <div class="livewire-label"><span class="live-dot"></span> <span id="chartLiveLabel">GLOBAL NEWS</span></div>
+              <div class="livewire-body">
+                <a id="chartLiveHeadline" href="#" target="_blank" rel="noopener noreferrer">Loading global headlines...</a>
+                <span id="chartLiveSource"></span>
+              </div>
+              <span class="livewire-stamp" id="chartLiveNewsStamp">--:--</span>
+            </div>
+
+            <div class="chart-stage panel" id="chartStage">
+              <div class="chart-legend" id="chartLegend"></div>
+              <div class="smc-hud" id="smcHud"></div>
+              <div class="chart-mount" id="chartMount"></div>
+              <canvas id="drawCanvas" class="draw-canvas"></canvas>
+              <div class="chart-crosshair" id="chartCrosshair"></div>
+              <div class="chart-loading" id="chartLoading">Loading chart…</div>
+
+              <div class="popover" id="drawMenu">
+                <div class="popover-title">Drawing tools</div>
+                <div class="popover-grid">
+                  <button class="popover-item active" data-draw="cursor">Cursor</button>
+                  <button class="popover-item" data-draw="hline">Horizontal line</button>
+                  <button class="popover-item" data-draw="trend">Trend line</button>
+                  <button class="popover-item" data-draw="rect">Rectangle</button>
+                  <button class="popover-item" data-draw="fib">Fib retracement</button>
+                  <button class="popover-item danger" data-draw="clear">Clear all</button>
+                </div>
+                <div class="tiny" style="margin-top:8px">Click twice to finish a trend line, box or Fib.</div>
+              </div>
+
+              <div class="popover wide" id="indicatorMenu">
+                <div class="popover-title">Indicators</div>
+                <div class="indicator-columns">
+                  <div>
+                    <div class="popover-subtitle">Price overlays</div>
+                    <label class="check-row"><input type="checkbox" data-indicator="ema9" /> EMA 9 <span class="ind-dot cyan"></span></label>
+                    <label class="check-row"><input type="checkbox" data-indicator="ema20" checked /> EMA 20 <span class="ind-dot cyan"></span></label>
+                    <label class="check-row"><input type="checkbox" data-indicator="ema50" checked /> EMA 50 <span class="ind-dot amber"></span></label>
+                    <label class="check-row"><input type="checkbox" data-indicator="ema100" /> EMA 100</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="ema200" /> EMA 200 <span class="ind-dot purple"></span></label>
+                    <label class="check-row"><input type="checkbox" data-indicator="sma20" /> SMA 20</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="sma50" /> SMA 50</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="sma200" /> SMA 200</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="bb" /> Bollinger Bands 20,2</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="donchian" /> Donchian channels 20</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="keltner" /> Keltner channels 20,2</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="vwap" /> VWAP (intraday)</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="supertrend" /> Supertrend 10,3</label>
+                    <label class="check-row"><input type="checkbox" data-indicator="psar" /> Parabolic SAR 0.02,0.2</label>
+                  </div>
+                  <div>
+                    <div class="popover-subtitle">Panels</div>
+                    <label class="check-row"><input type="checkbox" data-indicator="volume" checked /> Volume</label>
+                    <label class="check-row">Sub-panel
+                      <select id="subIndicator">
+                        <option value="rsi">RSI 14</option>
+                        <option value="macd">MACD 12,26,9</option>
+                        <option value="stoch">Stochastic 14,3,3</option>
+                        <option value="atr">ATR 14</option>
+                        <option value="adx">ADX 14 (+DI/−DI)</option>
+                        <option value="obv">OBV</option>
+                        <option value="none">None</option>
+                      </select>
+                    </label>
+                    <div class="popover-subtitle" style="margin-top:12px">Chart type</div>
+                    <div class="tiny">Use the candle / line / area buttons in the toolbar.</div>
+                    <div class="popover-subtitle" style="margin-top:12px">Indicator library</div>
+                    <div class="tiny">9/20/50/100/200 EMA · 20/50/200 SMA · Bollinger · Donchian · Keltner · VWAP · Supertrend · PSAR · RSI · MACD · Stochastic · ATR · ADX · OBV.</div>
+                    <div class="tiny" style="margin-top:6px">Smart Money: use the SMC button for structure, order blocks, FVG, breaker signals and the probability model.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="popover wide smc-popover" id="smcMenu">
+                <div class="popover-title">Smart Money Concepts</div>
+                <div class="smc-disclaimer">Independent clean-room implementations of SMC ideas. Not the original Expo, GainzAlgo or LuxAlgo scripts, and not affiliated with TradingView.</div>
+                <div class="smc-toggle-grid">
+                  <label class="check-row"><input type="checkbox" data-smc="structure" checked /> Smart Money Structure <span class="smc-hint">BOS / CHoCH</span></label>
+                  <label class="check-row"><input type="checkbox" data-smc="orderBlocks" checked /> Order Blocks <span class="smc-hint">SMC zones</span></label>
+                  <label class="check-row"><input type="checkbox" data-smc="fvg" checked /> Fair Value Gaps <span class="smc-hint">3-candle</span></label>
+                  <label class="check-row"><input type="checkbox" data-smc="breakers" checked /> Breaker Blocks + Signals <span class="smc-hint">retest</span></label>
+                  <label class="check-row"><input type="checkbox" data-smc="probability" checked /> Smart Money Probability <span class="smc-hint">local model</span></label>
+                  <label class="check-row"><input type="checkbox" data-smc="swings" /> Swing labels <span class="smc-hint">HH / HL / LH / LL</span></label>
+                </div>
+                <div class="smc-preset-row">
+                  <button class="mini-btn" data-smc-preset="full">Full SMC</button>
+                  <button class="mini-btn" data-smc-preset="structure">Structure only</button>
+                  <button class="mini-btn" data-smc-preset="off">Clear</button>
+                </div>
+                <div class="tiny smc-footnote">Structure marks swing breaks. Order blocks use the last opposing candle before displacement. FVGs use a three-candle imbalance. Breakers are failed order blocks with retest signals. Probability is a transparent multi-factor estimate, not a promise.</div>
+              </div>
+
+              <div class="popover" id="compareMenu">
+                <div class="popover-title">Compare performance</div>
+                <div class="tiny">Normalised % change from the first visible bar.</div>
+                <label class="check-row"><input type="checkbox" data-compare="NIFTY" /> Nifty 50</label>
+                <label class="check-row"><input type="checkbox" data-compare="BANKNIFTY" /> Bank Nifty</label>
+                <label class="check-row"><input type="checkbox" data-compare="SENSEX" /> Sensex</label>
+                <label class="check-row"><input type="checkbox" data-compare="SPX" /> S&amp;P 500</label>
+                <label class="check-row"><input type="checkbox" data-compare="BRENT" /> Brent crude</label>
+                <button class="mini-btn" id="clearCompare" style="margin-top:8px">Clear compare</button>
+              </div>
+
+              <div class="popover" id="alertMenu">
+                <div class="popover-title">Price alerts</div>
+                <div class="alert-form">
+                  <input id="alertPrice" type="number" step="0.05" placeholder="Price" />
+                  <button class="mini-btn" id="addAlert">Add</button>
+                </div>
+                <div id="alertList" class="alert-list"></div>
+                <div class="tiny" style="margin-top:8px">Alerts are checked on every refresh and stored in this browser.</div>
+              </div>
+            </div>
+
+            <div class="chart-subpanel panel" id="subChartPanel">
+              <div class="subchart-label" id="subChartLabel">RSI 14</div>
+              <div class="subchart-mount" id="subChartMount"></div>
+            </div>
+
+            <div class="chart-intel-grid">
+              <article class="panel chart-card smc-desk">
+                <div class="panel-head compact">
+                  <div>
+                    <div class="eyebrow">SMART MONEY PROBABILITY</div>
+                    <div class="tiny">Transparent local multi-factor model. Not investment advice.</div>
+                  </div>
+                  <span class="status-pill" id="smcStamp">--</span>
+                </div>
+                <div id="smcBody" class="smc-body"><div class="tiny">Load a chart to calculate structure.</div></div>
+              </article>
+              <article class="panel chart-card chart-news-desk">
+                <div class="panel-head compact">
+                  <div>
+                    <div class="eyebrow" id="chartNewsTitle">GLOBAL NEWS WIRE</div>
+                    <div class="tiny">Live headlines from public news feeds.</div>
+                  </div>
+                  <span class="status-pill" id="chartNewsStamp">--</span>
+                </div>
+                <div class="chart-news-tabs" id="chartNewsTabs"></div>
+                <div class="chart-news-list" id="chartNewsList"><div class="tiny">Loading global headlines...</div></div>
+              </article>
+            </div>
+
+            <div class="chart-info-grid">
+              <article class="panel chart-card">
+                <div class="eyebrow">TECHNICAL SNAPSHOT</div>
+                <div id="chartSnapshot" class="chart-card-body"></div>
+              </article>
+              <article class="panel chart-card">
+                <div class="eyebrow">KEY LEVELS</div>
+                <div id="chartLevels" class="chart-card-body"></div>
+              </article>
+              <article class="panel chart-card">
+                <div class="eyebrow">SOLO RATING</div>
+                <div id="chartRating" class="chart-card-body"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================== TERMINAL MODULES ======================= -->
+      <section class="view" id="view-ai"><div id="aiRoot"></div></section>
+      <section class="view" id="view-scanner"><div id="scannerRoot"></div></section>
+      <section class="view" id="view-news"><div id="newsRoot"></div></section>
+      <section class="view" id="view-macro"><div id="macroRoot"></div></section>
+      <section class="view" id="view-calculator"><div id="calculatorRoot"></div></section>
+      <section class="view" id="view-alerts"><div id="alertsRoot"></div></section>
+      <section class="view" id="view-notes"><div id="notesRoot"></div></section>
+      <section class="view" id="view-reports"><div id="reportsRoot"></div></section>
+      <section class="view" id="view-broker"><div id="brokerRoot"></div></section>
+      <section class="view" id="view-watchlist"><div id="watchlistRoot"></div></section>
+
+      <!-- ============================ BACKTEST ============================ -->
+      <section class="view" id="view-backtest">
+        <div class="panel control-panel">
+          <div class="control-head">
+            <div>
+              <div class="eyebrow">STRATEGY LAB</div>
+              <h2 class="panel-title">Backtest an index strategy</h2>
+              <p class="muted">Signals are calculated on the close and filled at the next bar's open. Costs are charged on both sides.</p>
+            </div>
+            <div class="badge subtle">No look-ahead</div>
+          </div>
+          <form class="form-grid" id="backtestForm">
+            <label class="field"><span>Index</span><select id="btSymbol">
+              <option value="NIFTY">Nifty 50</option>
+              <option value="BANKNIFTY">Bank Nifty</option>
+              <option value="SENSEX">Sensex</option>
+            </select></label>
+            <label class="field"><span>Strategy</span><select id="btStrategy"></select></label>
+            <label class="field"><span>History</span><select id="btRange">
+              <option value="1y">1 year</option>
+              <option value="3y">3 years</option>
+              <option value="5y" selected>5 years</option>
+              <option value="10y">10 years</option>
+            </select></label>
+            <label class="field"><span>Cost / side (%)</span><input id="btCost" type="number" value="0.05" min="0" max="2" step="0.01" /></label>
+            <button class="btn btn-primary" type="submit" id="btRun">Run backtest</button>
+          </form>
+          <div class="strategy-note" id="btDescription">Choose a strategy and run the test.</div>
+        </div>
+
+        <div class="metric-grid" id="btMetrics"></div>
+
+        <div class="two-col wide-left">
+          <article class="panel chart-panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">EQUITY CURVE</div>
+                <h2 class="panel-title" id="btChartTitle">Strategy vs benchmark</h2>
+              </div>
+              <div class="legend">
+                <span><i class="swatch cyan"></i> Strategy</span>
+                <span><i class="swatch muted"></i> Nifty B&amp;H</span>
+              </div>
+            </div>
+            <svg class="chart" id="equityChart" viewBox="0 0 900 340" preserveAspectRatio="none"></svg>
+            <div class="chart-foot" id="btMeta">—</div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">DISTRIBUTION</div>
+                <h2 class="panel-title">Monthly returns</h2>
+              </div>
+            </div>
+            <div class="heatmap-wrap" id="monthlyHeatmap"></div>
+          </article>
+        </div>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="eyebrow">TRADE LOG</div>
+              <h2 class="panel-title">Every fill</h2>
+            </div>
+            <span class="tiny" id="tradeCount">—</span>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Entry</th><th>Exit</th><th>Entry px</th><th>Exit px</th><th>Return</th><th>P&amp;L</th><th>Bars</th><th>Reason</th></tr></thead>
+              <tbody id="btTradesBody"><tr><td colspan="8" class="empty">Run a backtest to see trades.</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================ OPTIONS ============================ -->
+      <section class="view" id="view-options">
+        <div class="panel control-panel">
+          <div class="control-head">
+            <div>
+              <div class="eyebrow">INTRADAY OPTIONS</div>
+              <h2 class="panel-title">Live chain &amp; payoff desk</h2>
+              <p class="muted">Live NSE chain for entries. Payoffs are expiry diagrams. Intraday backtests use synthetic Black-Scholes premiums and are clearly labelled.</p>
+            </div>
+            <div class="option-controls">
+              <label class="field inline"><span>Index</span><select id="optSymbol"><option value="NIFTY">Nifty 50</option><option value="BANKNIFTY">Bank Nifty</option></select></label>
+              <label class="field inline"><span>Expiry</span><select id="optExpiry"></select></label>
+              <button class="btn btn-ghost" id="optRefresh">↻ Chain</button>
+            </div>
+          </div>
+          <div class="chain-summary" id="chainSummary"></div>
+        </div>
+
+        <div class="options-grid">
+          <article class="panel chain-panel">
+            <div class="panel-head">
+              <div>
+                <div class="eyebrow">NSE OPTION CHAIN</div>
+                <h2 class="panel-title" id="chainTitle">Nifty 50</h2>
+              </div>
+              <span class="status-pill" id="chainStamp">—</span>
+            </div>
+            <div class="chain-legend">
+              <span><i class="swatch red"></i> CE OI</span>
+              <span><i class="swatch green"></i> PE OI</span>
+              <span>ATM highlighted · values in ₹</span>
+            </div>
+            <div class="table-wrap chain-table-wrap">
+              <table class="data-table chain-table">
+                <thead>
+                  <tr><th>CE OI</th><th>CE LTP</th><th>CE IV</th><th class="strike-col">Strike</th><th>PE IV</th><th>PE LTP</th><th>PE OI</th></tr>
+                </thead>
+                <tbody id="chainBody"><tr><td colspan="7" class="empty">Loading NSE chain…</td></tr></tbody>
+              </table>
+            </div>
+            <div class="oi-support" id="oiSupport"></div>
+          </article>
+
+          <div class="option-builder-stack">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <div class="eyebrow">BUILD A TRADE</div>
+                  <h2 class="panel-title">Buy or sell</h2>
+                </div>
+                <div class="tab-switch" id="optionModeTabs">
+                  <button class="tab active" data-opt-mode="buy">Buy</button>
+                  <button class="tab" data-opt-mode="sell">Sell</button>
+                </div>
+              </div>
+
+              <div class="option-builder active" id="builderBuy">
+                <div class="form-grid compact">
+                  <label class="field"><span>View</span><select id="buySide"><option value="CE">Bullish · Call</option><option value="PE">Bearish · Put</option></select></label>
+                  <label class="field"><span>Strike</span><select id="buyStrike"></select></label>
+                  <label class="field"><span>Lots</span><input id="buyLots" type="number" min="1" max="50" value="1" /></label>
+                  <label class="field"><span>Premium</span><input id="buyPremium" type="number" min="0" step="0.05" /></label>
+                  <label class="field"><span>Target %</span><input id="buyTarget" type="number" min="1" value="60" /></label>
+                  <label class="field"><span>Stop %</span><input id="buyStop" type="number" min="1" value="35" /></label>
+                </div>
+                <div class="builder-actions">
+                  <button class="btn btn-primary" id="buildBuy">Build payoff</button>
+                  <button class="btn btn-ghost" id="paperBuy">Paper buy</button>
+                </div>
+                <div class="payoff-metrics" id="buyMetrics"></div>
+                <svg class="chart payoff" id="buyPayoffChart" viewBox="0 0 640 260" preserveAspectRatio="none"></svg>
+              </div>
+
+              <div class="option-builder" id="builderSell">
+                <div class="form-grid compact">
+                  <label class="field"><span>Strategy</span><select id="sellStrategy">
+                    <option value="iron-condor" selected>Iron condor (defined risk)</option>
+                    <option value="bull-put-spread">Bull put spread</option>
+                    <option value="bear-call-spread">Bear call spread</option>
+                    <option value="short-strangle">Short strangle</option>
+                    <option value="short-straddle">Short straddle (undefined risk)</option>
+                  </select></label>
+                  <label class="field"><span>Width %</span><input id="sellWidth" type="number" min="0.3" max="5" step="0.1" value="1" /></label>
+                  <label class="field"><span>Lots</span><input id="sellLots" type="number" min="1" max="50" value="1" /></label>
+                  <label class="field"><span>Target %</span><input id="sellTarget" type="number" min="1" value="50" /></label>
+                  <label class="field"><span>Stop %</span><input id="sellStop" type="number" min="1" value="35" /></label>
+                </div>
+                <div class="builder-actions">
+                  <button class="btn btn-danger" id="buildSell">Build payoff</button>
+                  <button class="btn btn-ghost" id="paperSell">Paper sell</button>
+                </div>
+                <div class="payoff-metrics" id="sellMetrics"></div>
+                <svg class="chart payoff" id="sellPayoffChart" viewBox="0 0 640 260" preserveAspectRatio="none"></svg>
+              </div>
+              <div class="tiny builder-note">Expiry payoff only. Live premium, IV and OI come from NSE. Margin is an estimate, not a broker SPAN file.</div>
+            </article>
+          </div>
+        </div>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="eyebrow">INTRADAY OPTION BACKTEST</div>
+              <h2 class="panel-title">Buy the breakout or sell the range</h2>
+            </div>
+            <span class="badge warn">Synthetic premiums</span>
+          </div>
+          <form class="form-grid" id="optionBacktestForm">
+            <label class="field"><span>Index</span><select id="obSymbol"><option value="NIFTY">Nifty 50</option><option value="BANKNIFTY">Bank Nifty</option><option value="SENSEX">Sensex</option></select></label>
+            <label class="field"><span>Mode</span><select id="obMode"><option value="buy">Buy options</option><option value="sell">Sell options</option></select></label>
+            <label class="field"><span>Strategy</span><select id="obStrategy"></select></label>
+            <label class="field"><span>Lots</span><input id="obLots" type="number" min="1" max="20" value="1" /></label>
+            <label class="field"><span>Expiry (days)</span><input id="obExpiryDays" type="number" min="0" max="10" value="2" /></label>
+            <label class="field"><span>Stop %</span><input id="obStop" type="number" min="1" value="35" /></label>
+            <label class="field"><span>Target %</span><input id="obTarget" type="number" min="1" value="80" /></label>
+            <label class="field"><span>IV override %</span><input id="obIv" type="number" min="8" max="60" placeholder="Auto: India VIX" /></label>
+            <button class="btn btn-primary" type="submit" id="obRun">Run option backtest</button>
+          </form>
+          <div class="backtest-disclaimer" id="obDisclaimer">Synthetic Black-Scholes premiums using India VIX. Not historical option prices.</div>
+          <div class="metric-grid" id="obMetrics"></div>
+          <div class="two-col">
+            <div>
+              <div class="chart-label">Intraday equity · ₹</div>
+              <svg class="chart tall" id="obEquityChart" viewBox="0 0 900 300" preserveAspectRatio="none"></svg>
+            </div>
+            <div>
+              <div class="chart-label">Latest option trades</div>
+              <div class="table-wrap small">
+                <table class="data-table">
+                  <thead><tr><th>Date</th><th>Side</th><th>Strike</th><th>Entry</th><th>Exit</th><th>P&amp;L</th></tr></thead>
+                  <tbody id="obTradesBody"><tr><td colspan="6" class="empty">Run the option backtest.</td></tr></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================ PAPER BOOK ============================ -->
+      <section class="view" id="view-paper">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">PAPER BOOK</div>
+            <h2 class="section-title">Your simulated positions</h2>
+          </div>
+          <div class="paper-actions">
+            <button class="btn btn-ghost" id="paperExport">Export JSON</button>
+            <button class="btn btn-danger-ghost" id="paperClear">Clear all</button>
+          </div>
+        </div>
+        <div class="metric-grid" id="paperMetrics"></div>
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="eyebrow">OPEN &amp; CLOSED</div>
+              <h2 class="panel-title">Paper trades</h2>
+            </div>
+            <span class="tiny" id="paperStamp">—</span>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Time</th><th>Instrument</th><th>Trade</th><th>Entry</th><th>Mark</th><th>P&amp;L</th><th>Status</th><th></th></tr></thead>
+              <tbody id="paperBody"><tr><td colspan="8" class="empty">No paper trades yet. Build one from the options desk.</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+        <div class="callout paper-note">Paper trades are stored only in this browser's localStorage. They are not sent to a broker and do not use real money.</div>
+      </section>
+
+      <footer class="footer">
+        <span>Solo Trading Charts · research terminal</span>
+        <span>Data: TradingView · Yahoo Finance · NSE · Lightweight Charts</span>
+        <span>Not investment advice</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="vendor/lightweight-charts.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+
