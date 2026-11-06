@@ -1157,6 +1157,14 @@ export interface AppConfig {
     polymarket_gamma_url: string;
     polymarket_clob_url: string;
     globaldatafeeds?: LiveStatus;
+    nse_direct?: {
+      provider: string;
+      enabled: boolean;
+      index_names_supported: number;
+      access: string;
+      session_open: boolean;
+      note: string;
+    };
   };
   api_host: string;
   api_port: number;

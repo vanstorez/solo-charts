@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     # Licensed vendor feed. Credentials are read server-side only and are never
     # returned by the API or embedded in the web bundle.
     gdf_enabled: bool = True
+    nse_direct_enabled: bool = True
     gdf_base_url: str = ""
     gdf_api_key: SecretStr = SecretStr("")
     gdf_request_timeout_seconds: float = 8.0

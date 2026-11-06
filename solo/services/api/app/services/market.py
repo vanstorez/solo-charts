@@ -1,11 +1,17 @@
 import asyncio
 from datetime import datetime
 
+from ..config import get_settings
 from ..indicators import atr, ema, macd, max_drawdown, pivot_points, round_values, rsi
 from ..provenance import feed_meta, unavailable_meta
 from ..providers import globaldatafeeds as gdf
-from ..providers import tradingview, yahoo
+from ..providers import nseindia, tradingview, yahoo
 from ..timeutil import market_session, utc_now
+
+
+def nseindia_enabled() -> bool:
+    """Direct provider flag from settings (nseindia.status() also reports it)."""
+    return bool(getattr(get_settings(), "nse_direct_enabled", True))
 
 SYMBOLS: dict[str, dict] = {
     "NIFTY": {"name": "Nifty 50", "short": "NIFTY", "tv": "NSE:NIFTY", "yahoo": "^NSEI", "exchange": "NSE", "type": "index", "currency": "INR"},
@@ -162,6 +168,23 @@ async def get_quotes(keys: list[str], prefer_licensed: bool = True) -> tuple[lis
         except Exception as exc:
             provider_error = exc
 
+    # NSE direct (exchange's own public site, personal use only): best available
+    # free source for NSE indices. Uses a single allIndices request per window.
+    nse_rows: dict[str, dict] = {}
+    if nseindia_enabled():
+        nse_keys = [
+            symbol["key"]
+            for symbol in remaining
+            if symbol.get("key") in nseindia.NSE_INDEX_NAMES
+            and symbol.get("exchange") == "NSE"
+            and symbol.get("type") == "index"
+        ]
+        if nse_keys:
+            try:
+                nse_rows = await nseindia.quotes(nse_keys)
+            except Exception:
+                nse_rows = {}
+
     quote_rows = []
     used_sources: set[str] = set()
     licensed_count = 0
@@ -202,6 +225,38 @@ async def get_quotes(keys: list[str], prefer_licensed: bool = True) -> tuple[lis
                 }
             )
             used_sources.add("Global Datafeeds")
+            continue
+
+        nse = nse_rows.get(symbol["key"])
+        if nse:
+            public_count += 1
+            quote_rows.append(
+                {
+                    "key": symbol["key"],
+                    "name": symbol["name"],
+                    "short": symbol["short"],
+                    "exchange": symbol["exchange"],
+                    "type": symbol["type"],
+                    "currency": symbol["currency"],
+                    "value": nse.get("value"),
+                    "change": nse.get("change"),
+                    "volume": None,
+                    "rsi": None,
+                    "rating": None,
+                    "as_of": nse.get("as_of"),
+                    "source": nse.get("source", "NSE India (nseindia.com direct)"),
+                    "data_status": nse.get("data_status", "delayed"),
+                    "delay_seconds": None,
+                    "open": nse.get("open"),
+                    "high": nse.get("high"),
+                    "low": nse.get("low"),
+                    "previous_close": nse.get("previous_close"),
+                    "bid": None,
+                    "ask": None,
+                    "open_interest": None,
+                }
+            )
+            used_sources.add("NSE India direct")
             continue
 
         row = rows.get(symbol.get("tv") or "")

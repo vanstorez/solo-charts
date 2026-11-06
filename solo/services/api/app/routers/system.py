@@ -4,6 +4,7 @@ from .. import __version__
 from ..config import get_settings
 from ..db import get_db
 from ..providers import globaldatafeeds as gdf
+from ..providers import nseindia
 from ..services import paper, quality, sources
 from ..timeutil import iso, utc_now
 
@@ -41,11 +42,33 @@ async def config():
             "polymarket_gamma_url": settings.polymarket_gamma_url,
             "polymarket_clob_url": settings.polymarket_clob_url,
             "globaldatafeeds": gdf.status(),
+            "nse_direct": nseindia.status(),
         },
         "api_host": settings.api_host,
         "api_port": settings.api_port,
         "note": "Local research API. There is no authentication layer yet; keep it bound to 127.0.0.1.",
     }
+
+
+@router.get("/nse/settings")
+async def nse_settings():
+    """Current NSE direct-quote configuration (no network call)."""
+    return nseindia.status()
+
+
+@router.post("/nse/settings")
+async def toggle_nse(enabled: bool = Query(default=True)):
+    """Runtime toggle for NSE direct quotes. Personal use only."""
+    nseindia.set_enabled(enabled)
+    return {"ok": True, "enabled": bool(enabled), "status": nseindia.status()}
+
+
+@router.get("/nse/status")
+async def nse_live_status():
+    """Live connectivity probe against nseindia.com (one polite request)."""
+    from ..timeutil import market_session
+
+    return {**nseindia.status(), "probe": await nseindia.probe(), "session": market_session()}
 
 
 @router.get("/live/status")

@@ -21,6 +21,95 @@ const fields: { key: keyof EditableLimits; label: string; hint: string; step?: n
 
 type EditableLimits = Pick<RiskLimits, "max_open_positions" | "max_trade_notional" | "max_total_exposure" | "daily_loss_limit" | "max_drawdown" | "paper_slippage_bps" | "paper_fee_bps">;
 
+type NseSettings = {
+  provider: string;
+  enabled: boolean;
+  index_names_supported: number;
+  access: string;
+  session_open: boolean;
+  note: string;
+};
+
+type NseProbeStatus = NseSettings & {
+  probe: { ok: boolean; indices_available?: number; sample_nifty?: { last: number | null; percentChange: number | null } | null; error?: string; checked_at?: string };
+};
+
+function NseDirectCard() {
+  const settings = useApi<NseSettings>("/api/nse/settings", 60_000);
+  const [probe, setProbe] = useState<NseProbeStatus["probe"] | null>(null);
+  const [testing, setTesting] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  const runProbe = async () => {
+    setTesting(true);
+    setMessage(null);
+    try {
+      const payload = await fetch("/backend/api/nse/status", { cache: "no-store" });
+      if (!payload.ok) throw new Error(`HTTP ${payload.status}`);
+      const data = (await payload.json()) as NseProbeStatus;
+      setProbe(data.probe);
+      setMessage(
+        data.probe.ok
+          ? `Connected — ${data.probe.indices_available} NSE indices reachable (NIFTY 50 sample: ${data.probe.sample_nifty?.last ?? "—"})`
+          : `Probe failed: ${data.probe.error ?? "unknown error"}`
+      );
+    } catch (caught) {
+      setMessage(`Test failed: ${caught instanceof Error ? caught.message : "unknown"}`);
+    } finally {
+      setTesting(false);
+    }
+  };
+
+  const toggle = async (enabled: boolean) => {
+    setBusy(true);
+    setMessage(null);
+    try {
+      const payload = await fetch(`/backend/api/nse/settings?enabled=${enabled ? "true" : "false"}`, { method: "POST", cache: "no-store" });
+      if (!payload.ok) throw new Error(`HTTP ${payload.status}`);
+      setMessage(enabled ? "NSE direct quotes ENABLED — NSE index quotes now come from the exchange site." : "NSE direct quotes disabled — back to delayed public providers.");
+      settings.refresh();
+    } catch (caught) {
+      setMessage(`Toggle failed: ${caught instanceof Error ? caught.message : "unknown"}`);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <>
+      {settings.error && <ErrorNotice error={settings.error} retry={settings.refresh} />}
+      {settings.data && (
+        <>
+          <div className="detail-grid" style={{ marginBottom: 10 }}>
+            <div className="detail-cell"><span>Status</span><strong>{settings.data.enabled ? "ENABLED" : "disabled"}</strong></div>
+            <div className="detail-cell"><span>Coverage</span><strong>{settings.data.index_names_supported} NSE indices (Sensex/BSE stay delayed)</strong></div>
+            <div className="detail-cell"><span>Source</span><strong>NSE India public website (nseindia.com)</strong></div>
+            <div className="detail-cell"><span>Market session</span><strong>{settings.data.session_open ? "open — values near-real-time" : "closed — shows last close"}</strong></div>
+          </div>
+          <p className="small muted" style={{ marginBottom: 8 }}>{settings.data.note}</p>
+          <div className="form-actions" style={{ marginBottom: 8 }}>
+            <button className="button primary" disabled={busy} onClick={() => void toggle(!settings.data!.enabled)} type="button">
+              {busy ? "Working..." : settings.data.enabled ? "Disable NSE direct" : "Enable NSE direct"}
+            </button>
+            <button className="button" disabled={testing} onClick={() => void runProbe()} type="button">
+              {testing ? "Testing…" : "Test connection"}
+            </button>
+          </div>
+          {message && <div className="notice info"><div><strong>NSE direct.</strong><p>{message}</p></div></div>}
+          <div className="warning-box" style={{ marginTop: 10 }}>
+            <strong>Personal use only.</strong> This reads the exchange's own public website at a polite, low frequency
+            (one request every few seconds at most, cached locally). It is not a licensed market-data feed and must not
+            be resold or redistributed. If NSE changes or blocks this endpoint, Solo automatically falls back to the
+            usual delayed providers — nothing breaks and nothing is faked.
+          </div>
+        </>
+      )}
+      {!settings.data && settings.loading && <LoadingBlock rows={4} label="Loading NSE direct status" />}
+    </>
+  );
+}
+
 export default function SettingsPage() {
   const config = useApi<AppConfig>("/api/config");
   const settings = useApi<RiskSettingsResponse>("/api/risk/settings");
@@ -138,6 +227,14 @@ export default function SettingsPage() {
           )}
         </Panel>
       </div>
+
+      <Panel
+        title="Live data — NSE India direct quotes"
+        kicker="Personal use only · not a licensed feed"
+        style={{ marginBottom: 13 }}
+      >
+        <NseDirectCard />
+      </Panel>
 
       <Panel title="Current contract" kicker="Configured limitations">
         <div className="grid-3">
