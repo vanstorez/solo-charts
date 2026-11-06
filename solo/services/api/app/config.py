@@ -29,6 +29,8 @@ class Settings(BaseSettings):
     dhan_enabled: bool = True
     dhan_client_id: str = ""
     dhan_data_token: SecretStr = SecretStr("")
+    dhan_app_id: str = ""
+    dhan_app_secret: SecretStr = SecretStr("")
     gdf_request_timeout_seconds: float = 8.0
     gdf_quote_ttl_seconds: float = 3.0
     gdf_history_ttl_seconds: float = 20.0
