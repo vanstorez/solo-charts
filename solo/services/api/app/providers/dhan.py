@@ -11,6 +11,7 @@ Personal use only. The token stays server-side and is never exposed to the brows
 from __future__ import annotations
 
 import asyncio
+import time
 from datetime import datetime
 from typing import Any
 
@@ -71,6 +72,10 @@ DHAN_ERRORS = {
 _DHAN_GATE: asyncio.Lock = asyncio.Lock()
 _MIN_GAP_SECONDS = 1.2  # documented limit: 1 request/second
 
+# Permanent failures (not subscribed / bad credentials) park the provider so
+# every browser refresh doesn't burn a request round-trip on a known dead end.
+_STATE: dict[str, float] = {"cooldown_until": 0.0}
+
 
 def _token() -> str:
     settings = get_settings()
@@ -86,7 +91,14 @@ def _client_id() -> str:
 
 def _enabled() -> bool:
     settings = get_settings()
-    return bool(getattr(settings, "dhan_enabled", True)) and bool(_token()) and bool(_client_id())
+    if not bool(getattr(settings, "dhan_enabled", True)) or not _token() or not _client_id():
+        return False
+    return _STATE["cooldown_until"] <= time.monotonic()
+
+
+def _park(seconds: float) -> None:
+    """Pause the provider after a permanent failure until this instant passes."""
+    _STATE["cooldown_until"] = max(_STATE["cooldown_until"], time.monotonic() + seconds)
 
 
 def status() -> dict[str, Any]:
@@ -209,7 +221,15 @@ async def quotes(keys: list[str], timeout: float | None = None) -> dict[str, dic
     body = _markets_for(requested)
     try:
         payload = await _post(endpoint, body, timeout or settings.http_timeout_seconds)
-    except (PermissionError, RuntimeError):
+    except PermissionError:
+        _park(30 * 60)  # credentials rejected — park before retrying blindly
+        raise
+    except RuntimeError as exc:
+        message = str(exc).lower()
+        if "not subscribed" in message:
+            _park(6 * 60 * 60)  # needs the paid Data APIs plan on the account
+        elif "expired" in message or "invalid" in message:
+            _park(30 * 60)
         raise
     except Exception as exc:
         raise RuntimeError(f"Dhan request failed: {str(exc)[:160]}") from exc

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FreshnessBadge, ProvenanceLine } from "@/components/Provenance";
 import { ErrorNotice, LoadingBlock, PageHeader, Panel, Toast } from "@/components/Ui";
+import { apiGet, errorMessage } from "@/lib/api";
 import { formatNumber, formatPct, timeAgo, toneClass } from "@/lib/format";
 import type {
   AdvancedAnalysisResponse,
@@ -21,6 +22,30 @@ const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes for analysis
 const SYMBOL_KEY = "solo:analysis:symbol";
 const INTERVAL_KEY = "solo:analysis:interval";
 const TOGGLES_KEY = "solo:analysis:toggles";
+
+type LiveQuoteRow = {
+  key: string;
+  name: string;
+  short: string;
+  exchange: string;
+  type: string;
+  currency: string;
+  value: number;
+  change: number | null;
+  change_pct: number | null;
+  open: number | null;
+  high: number | null;
+  low: number | null;
+  previous_close: number | null;
+  year_high: number | null;
+  year_low: number | null;
+  volume: number | null;
+  as_of: string | null;
+  source: string;
+  data_status: string;
+  live_attempt?: string;
+  note?: string | null;
+};
 
 type OverlayToggles = {
   sma20: boolean;
@@ -580,6 +605,29 @@ export default function AnalysisPage() {
   const [manualLoading, setManualLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type?: "error" | "success" } | null>(null);
+  const [liveQuote, setLiveQuote] = useState<LiveQuoteRow | null>(null);
+  const [liveBusy, setLiveBusy] = useState(false);
+
+  const symbolMeta = (symbols.data?.symbols ?? []).find((s) => s.key === selectedSymbol);
+  const canLiveLookup = symbolMeta?.exchange === "NSE" && symbolMeta?.type === "stock";
+
+  // One polite NSE request per click, cached server-side (15s open / 60s closed).
+  const fetchLiveQuote = useCallback(async () => {
+    setLiveBusy(true);
+    try {
+      const row = await apiGet<LiveQuoteRow>(`/api/quote-live?key=${encodeURIComponent(selectedSymbol)}`);
+      setLiveQuote(row);
+      if (row.note) setToast({ message: row.note, type: "success" });
+    } catch (caught) {
+      setToast({ message: `NSE live unavailable — ${errorMessage(caught).slice(0, 120)}`, type: "error" });
+    } finally {
+      setLiveBusy(false);
+    }
+  }, [selectedSymbol]);
+
+  useEffect(() => {
+    setLiveQuote(null);
+  }, [selectedSymbol]);
 
   const matchesSelection = (candidate: AdvancedAnalysisResponse | null) =>
     candidate && candidate.symbol === selectedSymbol && candidate.interval === selectedInterval ? candidate : null;
@@ -859,6 +907,17 @@ export default function AnalysisPage() {
               ))}
             </select>
             <button className="button" onClick={refreshAll} type="button">Refresh</button>
+            {canLiveLookup && (
+              <button
+                className="button"
+                onClick={fetchLiveQuote}
+                type="button"
+                disabled={liveBusy}
+                title="One polite request straight from nseindia.com — free, exchange-published, live during market hours"
+              >
+                {liveBusy ? "NSE…" : "⚡ Live (NSE)"}
+              </button>
+            )}
             <span className="badge">{data.meta?.source_type || "delayed"}</span>
           </>
         }
@@ -876,8 +935,24 @@ export default function AnalysisPage() {
           </div>
           <div className="stat-card">
             <div className="stat-label">Current Price</div>
-            <div className="stat-value">{formatNumber(price, 2)}</div>
-            <div className="stat-foot"><span style={{ color: toneClass(change_pct) }}>{formatPct(change_pct)}</span></div>
+            <div className="stat-value">{formatNumber(liveQuote ? liveQuote.value : price, 2)}</div>
+            <div className="stat-foot">
+              {liveQuote ? (
+                <span>
+                  <span style={{ color: toneClass(liveQuote.change_pct ?? 0) }}>{formatPct(liveQuote.change_pct ?? 0)}</span>
+                  {" · "}
+                  <span style={{ color: "var(--positive)" }}>
+                    {liveQuote.data_status === "live"
+                      ? "⚡ NSE live"
+                      : liveQuote.live_attempt === "fallback-delayed"
+                        ? "delayed snapshot"
+                        : "NSE close"}
+                  </span>
+                </span>
+              ) : (
+                <span style={{ color: toneClass(change_pct) }}>{formatPct(change_pct)}</span>
+              )}
+            </div>
           </div>
           <div className="stat-card">
             <div className="stat-label">Data As Of</div>

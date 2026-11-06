@@ -52,6 +52,8 @@ NSE_INDEX_NAMES: dict[str, str] = {
     "NIFTY_GROWTH_15": "NIFTY LOW VOLATILITY 30",
 }
 
+_CACHE_KEY_PREFIX = "nse:equity:"
+
 _STATE: dict[str, Any] = {"enabled_override": None}
 _LOCK = asyncio.Lock()
 _LAST_CALL = 0.0
@@ -180,6 +182,60 @@ async def quotes(keys: list[str]) -> dict[str, dict[str, Any]]:
         return out
 
     return await cache.get_or_set(CACHE_KEY, _ttl_for_now(), fetch)
+
+
+async def stock_quote(key: str) -> dict[str, Any] | None:
+    """Live on-demand quote for an NSE equity (e.g. RELIANCE, TCS) — one polite
+    request per window, cached session-aware. Returns None when NSE fails so the
+    caller can answer honestly instead of fabricating."""
+    if not _enabled():
+        return None
+    symbol_name = key.strip().upper()
+    if not symbol_name or not symbol_name.isalnum():
+        return None
+
+    from ..cache import cache
+
+    async def fetch() -> dict[str, Any] | None:
+        try:
+            await _guarded_wait()
+            payload = await fetch_json(
+                "nseindia",
+                f"https://www.nseindia.com/api/quote-equity?symbol={symbol_name}",
+                timeout=15.0,
+            )
+        except ProviderError:
+            return None
+        if not isinstance(payload, dict):
+            return None
+        price = payload.get("priceInfo") or {}
+        meta = payload.get("metadata") or {}
+        spec = payload.get("marketDeptOrderRec") or {}
+        last = _to_float(price.get("lastPrice"))
+        if last is None:
+            return None
+        change = _to_float(price.get("change"))
+        pchange = _to_float(price.get("pChange"))
+        session_open = market_session()["is_open"]
+        return {
+            "value": last,
+            "change": round(change, 2) if change is not None else None,
+            "change_pct": round(pchange, 2) if pchange is not None else None,
+            "open": _to_float(price.get("open")),
+            "high": _to_float(price.get("dayHigh") or price.get("high")),
+            "low": _to_float(price.get("dayLow") or price.get("low")),
+            "previous_close": _to_float(price.get("previousClose")),
+            "year_high": _to_float(price.get("52WeekHigh")),
+            "year_low": _to_float(price.get("52WeekLow")),
+            "volume": _to_float(spec.get("totalTradedVolume")),
+            "as_of": meta.get("lastUpdateTime"),
+            "nse_name": symbol_name,
+            "company_name": meta.get("companyName"),
+            "source": "NSE India — live equity page (nseindia.com direct)",
+            "data_status": "live" if session_open else "eod",
+        }
+
+    return await cache.get_or_set(_CACHE_KEY_PREFIX + symbol_name, _ttl_for_now(), fetch)
 
 
 async def probe() -> dict[str, Any]:
