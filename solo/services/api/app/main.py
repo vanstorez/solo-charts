@@ -8,6 +8,7 @@ from . import __version__
 from .config import get_settings
 from .db import get_db
 from .routers import alerts, analysis, advanced_analysis, backtest, calendar, india, lab, macro, market, news, options, paper, scenarios, scanner, system, watchlist, world
+from .routers import indices_scanner
 from .services import market as market_service
 from .timeutil import iso, utc_now
 
@@ -45,6 +46,7 @@ for router in [
     india.router,
     watchlist.router,
     scanner.router,
+    indices_scanner.router,
     world.router,
     news.router,
     macro.router,

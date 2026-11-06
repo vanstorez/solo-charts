@@ -1,11 +1,35 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ErrorNotice, LoadingBlock, PageHeader, Panel, Toast } from "@/components/Ui";
 import { formatNumber, formatPct, timeAgo, toneClass } from "@/lib/format";
 import type { WatchlistItem, WatchlistResponse } from "@/lib/types";
 import { useApi } from "@/lib/useApi";
+
+const WATCHLIST_KEY = "solo:watchlist";
+
+function loadWatchlistStorage(): { key: string; note: string }[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(WATCHLIST_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed as { key: string; note: string }[];
+    return [];
+  } catch {
+    return [];
+  }
+}
+
+function saveWatchlistStorage(items: { key: string; note: string }[]) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(WATCHLIST_KEY, JSON.stringify(items));
+  } catch {
+    // ignore quota errors
+  }
+}
 
 export default function WatchlistPage() {
   const watchlist = useApi<WatchlistResponse>("/api/watchlist", 30_000);
@@ -25,6 +49,39 @@ export default function WatchlistPage() {
       setItems(watchlist.data.watchlist);
     }
   }, [watchlist.data]);
+
+  // Seed once: restore locally saved symbols into the API watchlist after a restart.
+  const seededRef = useRef(false);
+  useEffect(() => {
+    if (seededRef.current || !watchlist.data) return;
+    seededRef.current = true;
+    const existing = new Set(watchlist.data.watchlist.map((item) => item.key));
+    const missing = loadWatchlistStorage().filter((entry) => !existing.has(entry.key));
+    if (!missing.length) return;
+    void (async () => {
+      setError(null);
+      for (const entry of missing) {
+        try {
+          const res = await fetch(
+            `/backend/api/watchlist/add?symbol=${encodeURIComponent(entry.key)}&note=${encodeURIComponent(entry.note || "")}`,
+            { method: "POST", cache: "no-store" }
+          );
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const payload = (await res.json()) as WatchlistResponse;
+          setItems(payload.watchlist);
+        } catch (err) {
+          setError(err instanceof Error ? err.message : "Failed to restore watchlist");
+          break;
+        }
+      }
+    })();
+  }, [watchlist.data]);
+
+  // Persist every confirmed change so the list survives server restarts.
+  useEffect(() => {
+    if (!items.length) return;
+    saveWatchlistStorage(items.map((item) => ({ key: item.key, note: item.note || "" })));
+  }, [items]);
 
   useEffect(() => {
     const timer = setTimeout(() => setToast(null), 3000);

@@ -9,9 +9,11 @@ const groups = [
     items: [
       { href: "/", label: "Overview", note: "Command centre" },
       { href: "/global", label: "Global Markets", note: "World tape + crypto" },
+      { href: "/crude-wallstreet", label: "Crude & Wall Street", note: "WTI · Brent · SPX · NDX · DJI" },
       { href: "/india", label: "Indian Markets", note: "Day trading plan" },
       { href: "/daily", label: "Daily Summary", note: "All markets in one" },
       { href: "/analysis", label: "Analysis", note: "Advanced indicators" },
+      { href: "/index-scanner", label: "Index Scanner 1Y", note: "All Indian indices scanned" },
       { href: "/charts", label: "Charts", note: "Candles & levels" },
       { href: "/tradingview", label: "TradingView", note: "Official embed" },
       { href: "/bank-nifty", label: "Bank Nifty", note: "Scenario desk" }

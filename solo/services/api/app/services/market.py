@@ -34,6 +34,22 @@ SYMBOLS: dict[str, dict] = {
     "ITC": {"name": "ITC", "short": "ITC", "tv": "NSE:ITC", "yahoo": "ITC.NS", "exchange": "NSE", "type": "stock", "currency": "INR"},
     "LT": {"name": "Larsen & Toubro", "short": "LT", "tv": "NSE:LT", "yahoo": "LT.NS", "exchange": "NSE", "type": "stock", "currency": "INR"},
     "TATASTEEL": {"name": "Tata Steel", "short": "TATASTEEL", "tv": "NSE:TATASTEEL", "yahoo": "TATASTEEL.NS", "exchange": "NSE", "type": "stock", "currency": "INR"},
+    # --- Indian index universe (public Yahoo daily history; quotes use Yahoo fallback) ---
+    "NIFTY_NEXT50": {"name": "Nifty Next 50", "short": "NEXT50", "tv": None, "yahoo": "^NSMIDCP", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY100": {"name": "Nifty 100", "short": "N100", "tv": None, "yahoo": "^CNX100", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_MIDCAP50": {"name": "Nifty Midcap 50", "short": "MID50", "tv": None, "yahoo": "^CRSLDX", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_MIDCAP150": {"name": "Nifty Midcap 150", "short": "MID150", "tv": None, "yahoo": "NIFTYMIDCAP150.NS", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_IT": {"name": "Nifty IT", "short": "NIFTYIT", "tv": None, "yahoo": "^CNXIT", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_AUTO": {"name": "Nifty Auto", "short": "NIFTYAUTO", "tv": None, "yahoo": "^CNXAUTO", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_PHARMA": {"name": "Nifty Pharma", "short": "NIFTYPHARMA", "tv": None, "yahoo": "^CNXPHARMA", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_FMCG": {"name": "Nifty FMCG", "short": "NIFTYFMCG", "tv": None, "yahoo": "^CNXFMCG", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_METAL": {"name": "Nifty Metal", "short": "NIFTYMETAL", "tv": None, "yahoo": "^CNXMETAL", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_ENERGY": {"name": "Nifty Energy", "short": "NIFTYENERGY", "tv": None, "yahoo": "^CNXENERGY", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_INFRA": {"name": "Nifty Infrastructure", "short": "NIFTYINFRA", "tv": None, "yahoo": "^CNXINFRA", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_PSU_BANK": {"name": "Nifty PSU Bank", "short": "PSUBANK", "tv": None, "yahoo": "^CNXPSUBANK", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "NIFTY_REALTY": {"name": "Nifty Realty", "short": "NIFTYREALTY", "tv": None, "yahoo": "^CNXREALTY", "exchange": "NSE", "type": "index", "currency": "INR"},
+    "BSE100": {"name": "S&P BSE 100", "short": "BSE100", "tv": None, "yahoo": "BSE-100.BO", "exchange": "BSE", "type": "index", "currency": "INR"},
+    "BSE500": {"name": "S&P BSE 500", "short": "BSE500", "tv": None, "yahoo": "BSE-500.BO", "exchange": "BSE", "type": "index", "currency": "INR"},
 }
 
 INTERVALS = ["5m", "15m", "30m", "1h", "1d", "1wk"]
