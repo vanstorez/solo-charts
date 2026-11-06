@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { ErrorNotice, LoadingBlock, PageHeader, Panel, Toast } from "@/components/Ui";
 import { formatNumber, formatPct, timeAgo, toneClass } from "@/lib/format";
@@ -38,6 +39,14 @@ export default function ScannerPage() {
   const [scanning, setScanning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type?: "error" | "success" } | null>(null);
+  const router = useRouter();
+
+  const openAnalysis = useCallback(
+    (key: string) => {
+      router.push(`/analysis?symbol=${encodeURIComponent(key)}&interval=1d`);
+    },
+    [router]
+  );
 
   const runScan = useCallback(async () => {
     setScanning(true);
@@ -200,7 +209,7 @@ export default function ScannerPage() {
                     <td>
                       <button
                         className="button ghost small"
-                        onClick={() => {}}
+                        onClick={() => openAnalysis(m.key)}
                         type="button"
                       >
                         Analyze

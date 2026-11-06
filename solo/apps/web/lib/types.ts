@@ -22,8 +22,7 @@ export interface Quote {
   currency: string;
   value: number | null;
   change: number | null;
-  volume: number | null;
-  rsi: number | null;
+  volume: number | null;  rsi: number | null;
   rating: number | null;
   as_of: string | null;
   source: string;
@@ -346,19 +345,64 @@ export interface AdvancedIndicatorValues {
   atr14: number | null;
   pivot: Record<string, number> | null;
   drawdown: { amount: number; pct: number; peak: number | null; trough: number | null };
+  wma20: number | null;
+  cci14: number | null;
+  williams_r: number | null;
+  roc12: number | null;
+  supertrend: number | null;
+  supertrend_dir: number | null;
+  kc_upper: number | null;
+  kc_middle: number | null;
+  kc_lower: number | null;
+  donchian_upper: number | null;
+  donchian_middle: number | null;
+  donchian_lower: number | null;
 }
 
 export interface AdvancedSeries {
   closes: (number | null)[];
+  opens: (number | null)[];
+  highs: (number | null)[];
+  lows: (number | null)[];
+  volumes: number[];
   times: number[];
   sma20: (number | null)[];
+  sma50: (number | null)[];
   ema20: (number | null)[];
+  ema50: (number | null)[];
   bb_upper: (number | null)[];
   bb_lower: (number | null)[];
   rsi14: (number | null)[];
   macd_hist: (number | null)[];
   stoch_k: (number | null)[];
   stoch_d: (number | null)[];
+  vwap: (number | null)[];
+  wma20: (number | null)[];
+  cci14: (number | null)[];
+  williams_r: (number | null)[];
+  roc12: (number | null)[];
+  supertrend: (number | null)[];
+  kc_upper: (number | null)[];
+  kc_middle: (number | null)[];
+  kc_lower: (number | null)[];
+  donchian_upper: (number | null)[];
+  donchian_middle: (number | null)[];
+  donchian_lower: (number | null)[];
+  candlestick_signals: ChartSignal[];
+}
+
+export interface ChartSignal {
+  time: number;
+  position: number;
+  color: string;
+  shape: "arrow_up" | "arrow_down";
+  text: string;
+  size: number;
+  external: {
+    pattern: string;
+    side: "bullish" | "bearish" | "neutral";
+    strength: string;
+  };
 }
 
 export interface AdvancedAnalysisResponse {
@@ -1171,4 +1215,50 @@ export interface ScannerCondition {
   key: string;
   label: string;
   description: string;
+}
+
+export interface IndexScanRow {
+  key: string;
+  name: string;
+  short: string;
+  exchange: string;
+  category: string;
+  currency: string;
+  available: boolean;
+  last_close?: number;
+  previous_close?: number;
+  day_change_pct?: number | null;
+  year_change_pct?: number | null;
+  high_52w?: number;
+  low_52w?: number;
+  pct_from_52w_high?: number | null;
+  rsi14?: number | null;
+  sma50?: number | null;
+  sma200?: number | null;
+  trend?: string;
+  atr14?: number | null;
+  atr_pct?: number | null;
+  signals_bullish_total?: number;
+  signals_bearish_total?: number;
+  signals_recent_bullish?: number;
+  signals_recent_bearish?: number;
+  last_signal?: string | null;
+  last_signal_side?: string | null;
+  bar_count?: number;
+  spark_times?: number[];
+  spark_closes?: number[];
+}
+
+export interface IndicesScannerResponse {
+  available: boolean;
+  scanned: number;
+  returned: number;
+  advancing_1y: number;
+  declining_1y: number;
+  advancing_today: number;
+  declining_today: number;
+  strongest: { key: string; name: string; year_change_pct: number | null } | null;
+  weakest: { key: string; name: string; year_change_pct: number | null } | null;
+  indices: IndexScanRow[];
+  meta: Record<string, unknown>;
 }

@@ -688,3 +688,148 @@ def detect_chart_patterns(bars: list[dict], swings: list[dict] | None = None) ->
             )
     return patterns[-6:]
 
+
+def wma(values: list[float], period: int = 20) -> list[float | None]:
+    """Weighted Moving Average: more recent bars weigh more."""
+    out: list[float | None] = [None] * len(values)
+    if period <= 0 or len(values) < period:
+        return out
+    weights = list(range(1, period + 1))
+    weight_sum = sum(weights)
+    for index in range(period - 1, len(values)):
+        window = values[index - period + 1 : index + 1]
+        out[index] = sum(v * w for v, w in zip(window, weights)) / weight_sum
+    return out
+
+
+def cci(bars: list[dict], period: int = 20) -> list[float | None]:
+    """Commodity Channel Index: measures deviation from typical price mean."""
+    typical = [(bar["h"] + bar["l"] + bar["c"]) / 3 for bar in bars]
+    sma_t = sma(typical, period)
+    out: list[float | None] = [None] * len(bars)
+    if period <= 0 or len(bars) < period:
+        return out
+    for index in range(period - 1, len(bars)):
+        window = typical[index - period + 1 : index + 1]
+        mean_dev = sum(abs(v - sma_t[index]) for v in window) / period
+        if mean_dev == 0:
+            out[index] = 0.0
+        else:
+            out[index] = (typical[index] - sma_t[index]) / (0.015 * mean_dev)
+    return out
+
+
+def williams_r(bars: list[dict], period: int = 14) -> list[float | None]:
+    """Williams %R: (highest high - close) / (highest high - lowest low) * -100."""
+    out: list[float | None] = [None] * len(bars)
+    if period <= 0 or len(bars) < period:
+        return out
+    for index in range(period - 1, len(bars)):
+        window = bars[index - period + 1 : index + 1]
+        hh = max(bar["h"] for bar in window)
+        ll = min(bar["l"] for bar in window)
+        if hh == ll:
+            out[index] = -100.0
+        else:
+            out[index] = (hh - bars[index]["c"]) / (hh - ll) * -100
+    return out
+
+
+def supertrend(
+    bars: list[dict], period: int = 10, multiplier: float = 3.0
+) -> dict[str, list[float | None]]:
+    """Supertrend: trend-following indicator based on ATR and median price."""
+    n = len(bars)
+    atr_values = atr(bars, period)
+    hl2 = [(bar["h"] + bar["l"]) / 2 for bar in bars]
+    basic_ub: list[float | None] = [None] * n
+    basic_lb: list[float | None] = [None] * n
+    final_ub: list[float | None] = [None] * n
+    final_lb: list[float | None] = [None] * n
+    supertrend_out: list[float | None] = [None] * n
+    direction: list[str | None] = [None] * n
+    for index in range(period, n):
+        atr_v = atr_values[index] if atr_values[index] is not None else 0
+        basic_ub[index] = hl2[index] + multiplier * atr_v
+        basic_lb[index] = hl2[index] - multiplier * atr_v
+    for index in range(period, n):
+        if index == period:
+            final_ub[index] = basic_ub[index]
+            final_lb[index] = basic_lb[index]
+        else:
+            prev_close = bars[index - 1]["c"]
+            prev_final_ub = final_ub[index - 1] if final_ub[index - 1] is not None else basic_ub[index]
+            prev_final_lb = final_lb[index - 1] if final_lb[index - 1] is not None else basic_lb[index]
+            final_ub[index] = (
+                basic_ub[index] if basic_ub[index] < prev_final_ub or prev_close > prev_final_ub else prev_final_ub
+            )
+            final_lb[index] = (
+                basic_lb[index] if basic_lb[index] > prev_final_lb or prev_close < prev_final_lb else prev_final_lb
+            )
+        if index == period:
+            direction[index] = -1 if bars[index]["c"] <= final_ub[index] else 1
+            supertrend_out[index] = final_ub[index] if direction[index] == -1 else final_lb[index]
+        else:
+            prev_st = supertrend_out[index - 1] if supertrend_out[index - 1] is not None else hl2[index]
+            prev_dir = direction[index - 1] if direction[index - 1] is not None else 1
+            if prev_dir == 1:
+                if bars[index]["c"] <= final_lb[index]:
+                    direction[index] = -1
+                    supertrend_out[index] = final_ub[index]
+                else:
+                    direction[index] = 1
+                    supertrend_out[index] = max(final_lb[index], prev_st)
+            else:
+                if bars[index]["c"] >= final_ub[index]:
+                    direction[index] = 1
+                    supertrend_out[index] = final_lb[index]
+                else:
+                    direction[index] = -1
+                    supertrend_out[index] = min(final_ub[index], prev_st)
+    return {"supertrend": supertrend_out, "direction": direction}
+
+
+def keltner_channels(
+    bars: list[dict], period: int = 20, multiplier: float = 2.0
+) -> dict[str, list[float | None]]:
+    """Keltner Channels: EMA ± multiplier * ATR."""
+    typical = [(bar["h"] + bar["l"] + bar["c"]) / 3 for bar in bars]
+    ema_typical = ema(typical, period)
+    atr_values = atr(bars, period)
+    upper: list[float | None] = [None] * len(bars)
+    lower: list[float | None] = [None] * len(bars)
+    for index in range(len(bars)):
+        if ema_typical[index] is not None and atr_values[index] is not None:
+            upper[index] = ema_typical[index] + multiplier * atr_values[index]
+            lower[index] = ema_typical[index] - multiplier * atr_values[index]
+    return {"middle": ema_typical, "upper": upper, "lower": lower}
+
+
+def donchian_channels(bars: list[dict], period: int = 20) -> dict[str, list[float | None]]:
+    """Donchian Channels: highest high / lowest low over period."""
+    upper: list[float | None] = [None] * len(bars)
+    lower: list[float | None] = [None] * len(bars)
+    middle: list[float | None] = [None] * len(bars)
+    for index in range(period - 1, len(bars)):
+        window = bars[index - period + 1 : index + 1]
+        hh = max(bar["h"] for bar in window)
+        ll = min(bar["l"] for bar in window)
+        upper[index] = hh
+        lower[index] = ll
+        middle[index] = (hh + ll) / 2
+    return {"upper": upper, "middle": middle, "lower": lower}
+
+
+def rate_of_change(values: list[float], period: int = 12) -> list[float | None]:
+    """Rate of Change: (current - previous) / previous * 100."""
+    out: list[float | None] = [None] * len(values)
+    if period <= 0 or len(values) <= period:
+        return out
+    for index in range(period, len(values)):
+        prev = values[index - period]
+        if prev == 0:
+            out[index] = None
+        else:
+            out[index] = (values[index] - prev) / prev * 100
+    return out
+

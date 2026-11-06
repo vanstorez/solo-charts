@@ -153,7 +153,7 @@ export default function GlobalMarketsPage() {
     setMarketsLoading(true);
     setMarketsError(null);
     try {
-      const res = await fetch("/api/global/markets", { cache: "no-store" });
+      const res = await fetch("/backend/api/global/markets", { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = (await res.json()) as GlobalMarketsResponse;
       setMarketsData(data);
@@ -171,6 +171,11 @@ export default function GlobalMarketsPage() {
     crypto.refresh();
     void fetchMarkets();
   };
+
+  // Load the world tape on mount (or from cache), then keep it fresh via R / Refresh.
+  useEffect(() => {
+    void fetchMarkets();
+  }, []);
 
   // Keyboard shortcuts: R = refresh, / = focus search (future)
   useEffect(() => {
@@ -192,6 +197,35 @@ export default function GlobalMarketsPage() {
   const data = marketsData;
   const coverage = data?.coverage;
   const failedEntries = Object.entries(coverage?.errors || {});
+  const allQuotes = [
+    ...(data?.indices.flatMap((g) => g.quotes) ?? []),
+    ...(data?.fx ?? []),
+    ...(data?.commodities ?? []),
+    ...(data?.rates ?? []),
+  ];
+  const advancingCount = allQuotes.filter((q) => q.change !== null && q.change > 0).length;
+  const decliningCount = allQuotes.filter((q) => q.change !== null && q.change < 0).length;
+  const totalWithChange = allQuotes.filter((q) => q.change !== null).length;
+  const soloMood =
+    totalWithChange === 0
+      ? "no data"
+      : advancingCount / totalWithChange > 0.6
+        ? "bullish"
+        : decliningCount / totalWithChange > 0.6
+          ? "bearish"
+          : "mixed";
+  const moodLine =
+    totalWithChange === 0
+      ? "No instruments returned a value."
+      : advancingCount === totalWithChange
+        ? "Everything returned is higher."
+        : decliningCount === totalWithChange
+          ? "Everything returned is lower."
+          : `${advancingCount} up · ${decliningCount} down · ${totalWithChange - advancingCount - decliningCount} flat`;
+
+  function unavailableCell(q: GlobalQuote): boolean {
+    return q.value === null || q.change === null;
+  }
 
   return (
     <>
@@ -232,6 +266,62 @@ export default function GlobalMarketsPage() {
         </div>
       </div>
 
+      {data && (
+        <>
+          <Panel title="Solo Read — world tape at a glance" kicker="Simple verdict · not a trade signal" style={{ marginBottom: 12 }}>
+            <div className="grid-4">
+              <div className="stat-card">
+                <div className="stat-label">Instruments returned</div>
+                <div className="stat-value">{coverage?.returned}</div>
+                <div className="stat-foot"><span>{coverage?.requested} requested · {coverage?.failed} unavailable</span></div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-label">Advancing</div>
+                <div className={`stat-value ${advancingCount ? "positive" : "muted"}`}>{advancingCount}</div>
+                <div className="stat-foot"><span>higher vs previous close</span></div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-label">Declining</div>
+                <div className={`stat-value ${decliningCount ? "negative" : "muted"}`}>{decliningCount}</div>
+                <div className="stat-foot"><span>lower vs previous close</span></div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-label">Mood</div>
+                <div className="stat-value">{soloMood}</div>
+                <div className="stat-foot"><span>{moodLine}</span></div>
+              </div>
+            </div>
+            <p className="small muted" style={{ marginTop: 10 }}>
+              Solo Read is a transparent, plain-language read of direction across the returned universe. It weighs only
+              the most recent public snapshot (delayed/unknown for equities/FX/commodities; live snapshot for crypto).
+              It is not a recommendation and it does not predict the next move.
+            </p>
+          </Panel>
+
+          <Panel title="World heatmap" kicker="Color = 1-day change · green up, red down · gray unavailable" style={{ marginBottom: 12 }}>
+            <div className="heatmap-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: 8, padding: 4 }}>
+              {allQuotes.map((quote) => (
+                <div
+                  key={quote.key}
+                  className={`heatmap-cell ${unavailableCell(quote) ? "heatmap-unavailable" : quote.change !== null && quote.change > 0 ? "heatmap-up" : quote.change !== null && quote.change < 0 ? "heatmap-down" : "heatmap-flat"}`}
+                  title={`${quote.short} · ${formatNumber(quote.value, 2)} · ${formatPct(quote.change)}`}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, fontFamily: "var(--mono)", color: "var(--muted)" }}>
+                    <strong>{quote.short}</strong>
+                    <span>{formatPct(quote.change)}</span>
+                  </div>
+                  <div style={{ fontSize: 11, fontFamily: "var(--mono)", color: "var(--text)" }}>{formatNumber(quote.value, 2)}</div>
+                  <div style={{ fontSize: 9, color: "var(--muted-2)" }}>{quote.exchange}</div>
+                </div>
+              ))}
+            </div>
+            <p className="small muted" style={{ marginTop: 8 }}>
+              Cells are grouped by asset class below. Unavailable means the public provider returned no value — it is
+              never shown as zero or a guessed price.
+            </p>
+          </Panel>
+        </>
+      )}
       <div className="grid-2" style={{ marginBottom: 13 }}>
         <Panel
           title="Provider contract"

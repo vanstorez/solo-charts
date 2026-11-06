@@ -6,22 +6,30 @@ from datetime import datetime, timezone
 from typing import Any
 
 from ..cache import cache
+from ..candlestick_patterns import pattern_signals_for_chart
 from ..indicators import (
     adx,
     atr,
     bollinger_bands,
+    cci,
     detect_chart_patterns,
     detect_support_resistance,
+    donchian_channels,
     ema,
     find_swings,
+    keltner_channels,
     macd,
     max_drawdown,
     obv,
     pivot_points,
+    rate_of_change,
     rsi,
     sma,
     stochastic,
+    supertrend,
     vwap,
+    wma,
+    williams_r,
 )
 from ..provenance import feed_meta
 from ..timeutil import iso
@@ -138,6 +146,13 @@ async def advanced_analysis(symbol_input: str = "NIFTY", interval_input: str = "
     atr14 = atr(bars, 14)
     pivot = pivot_points(bars[-1]) if bars else {}
     drawdown = max_drawdown(closes)
+    wma20 = wma(closes, 20)
+    cci14 = cci(bars, 14)
+    willr14 = williams_r(bars, 14)
+    roc12 = rate_of_change(closes, 12)
+    st = supertrend(bars, 10, 3.0)
+    kc = keltner_channels(bars, 20, 2.0)
+    dc = donchian_channels(bars, 20)
 
     swings = find_swings(bars, 2, 2)
     sr = detect_support_resistance(bars, swings)
@@ -245,6 +260,18 @@ async def advanced_analysis(symbol_input: str = "NIFTY", interval_input: str = "
             "atr14": _round_clean(_last_value(atr14), 4),
             "pivot": {k: _round_clean(v) for k, v in pivot.items()} if pivot else {},
             "drawdown": drawdown,
+            "wma20": _round_clean(_last_value(wma20)),
+            "cci14": _round_clean(_last_value(cci14), 2),
+            "williams_r": _round_clean(_last_value(willr14), 2),
+            "roc12": _round_clean(_last_value(roc12), 2),
+            "supertrend": _round_clean(_last_value(st["supertrend"]), 4),
+            "supertrend_dir": _last_value(st["direction"]) if st["direction"] else None,
+            "kc_upper": _round_clean(_last_value(kc["upper"])),
+            "kc_middle": _round_clean(_last_value(kc["middle"])),
+            "kc_lower": _round_clean(_last_value(kc["lower"])),
+            "donchian_upper": _round_clean(_last_value(dc["upper"])),
+            "donchian_middle": _round_clean(_last_value(dc["middle"])),
+            "donchian_lower": _round_clean(_last_value(dc["lower"])),
         },
         "levels": sr,
         "patterns": patterns,
@@ -252,15 +279,34 @@ async def advanced_analysis(symbol_input: str = "NIFTY", interval_input: str = "
         "timeframes": timeframes,
         "series": {
             "closes": [_round_clean(c) for c in closes[-200:]],
+            "opens": [_round_clean(b.get("o", b["c"])) for b in bars[-200:]],
+            "highs": [_round_clean(b["h"]) for b in bars[-200:]],
+            "lows": [_round_clean(b["l"]) for b in bars[-200:]],
+            "volumes": [int(b.get("v", 0) or 0) for b in bars[-200:]],
             "times": [int(b["t"]) for b in bars[-200:]],
             "sma20": [_round_clean(v) for v in sma20[-200:]],
+            "sma50": [_round_clean(v) for v in sma50[-200:]],
             "ema20": [_round_clean(v) for v in ema20[-200:]],
+            "ema50": [_round_clean(v) for v in ema50[-200:]],
             "bb_upper": [_round_clean(v) for v in bb["upper"][-200:]],
             "bb_lower": [_round_clean(v) for v in bb["lower"][-200:]],
             "rsi14": [_round_clean(v, 2) for v in rsi14[-200:]],
             "macd_hist": [_round_clean(v, 5) for v in macd_data["hist"][-200:]],
             "stoch_k": [_round_clean(v, 2) for v in stoch["k"][-200:]],
             "stoch_d": [_round_clean(v, 2) for v in stoch["d"][-200:]],
+            "vwap": [_round_clean(v, 4) for v in vwap_series[-200:]],
+            "wma20": [_round_clean(v) for v in wma20[-200:]],
+            "cci14": [_round_clean(v, 2) for v in cci14[-200:]],
+            "williams_r": [_round_clean(v, 2) for v in willr14[-200:]],
+            "roc12": [_round_clean(v, 2) for v in roc12[-200:]],
+            "supertrend": [_round_clean(v, 4) for v in st["supertrend"][-200:]],
+            "kc_upper": [_round_clean(v) for v in kc["upper"][-200:]],
+            "kc_middle": [_round_clean(v) for v in kc["middle"][-200:]],
+            "kc_lower": [_round_clean(v) for v in kc["lower"][-200:]],
+            "donchian_upper": [_round_clean(v) for v in dc["upper"][-200:]],
+            "donchian_middle": [_round_clean(v) for v in dc["middle"][-200:]],
+            "donchian_lower": [_round_clean(v) for v in dc["lower"][-200:]],
+            "candlestick_signals": pattern_signals_for_chart(bars[-200:]),
         },
         "note": (
             "All indicators are public formulas calculated locally. The signal score is a transparent "

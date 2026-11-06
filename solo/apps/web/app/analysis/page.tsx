@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FreshnessBadge, ProvenanceLine } from "@/components/Provenance";
 import { ErrorNotice, LoadingBlock, PageHeader, Panel, Toast } from "@/components/Ui";
@@ -10,13 +10,88 @@ import type {
   AdvancedIndicatorValues,
   AdvancedSignal,
   AdvancedTimeframe,
+  ChartSignal,
   SupportResistanceLevel,
 } from "@/lib/types";
 import { useApi } from "@/lib/useApi";
-import { createChart, IChartApi, ISeriesApi, UTCTimestamp, ColorType, CrosshairMode } from "lightweight-charts";
+import { createChart, IChartApi, IPriceLine, ISeriesApi, UTCTimestamp, ColorType, CrosshairMode, LineStyle } from "lightweight-charts";
 
-const CACHE_KEY = "solo:analysis:advanced";
+const CACHE_KEY = "solo:analysis:advanced:v2";
 const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes for analysis
+const SYMBOL_KEY = "solo:analysis:symbol";
+const INTERVAL_KEY = "solo:analysis:interval";
+const TOGGLES_KEY = "solo:analysis:toggles";
+
+type OverlayToggles = {
+  sma20: boolean;
+  ema20: boolean;
+  sma50: boolean;
+  ema50: boolean;
+  bb: boolean;
+  vwap: boolean;
+  volume: boolean;
+  sr: boolean;
+  signals: boolean;
+  wma20: boolean;
+  supertrend: boolean;
+  keltner: boolean;
+  donchian: boolean;
+};
+
+const DEFAULT_TOGGLES: OverlayToggles = {
+  sma20: true,
+  ema20: true,
+  sma50: false,
+  ema50: false,
+  bb: true,
+  vwap: false,
+  volume: true,
+  sr: true,
+  signals: false,
+  wma20: false,
+  supertrend: false,
+  keltner: false,
+  donchian: false,
+};
+
+const OVERLAY_LABELS: Record<keyof OverlayToggles, string> = {
+  sma20: "SMA 20",
+  ema20: "EMA 20",
+  sma50: "SMA 50",
+  ema50: "EMA 50",
+  bb: "Bollinger",
+  vwap: "VWAP",
+  volume: "Volume",
+  sr: "S/R",
+  signals: "Signals",
+  wma20: "WMA 20",
+  supertrend: "Supertrend",
+  keltner: "Keltner",
+  donchian: "Donchian",
+};
+
+type ChartPoint = { time: UTCTimestamp; value: number };
+type CandlePoint = { time: UTCTimestamp; open: number; high: number; low: number; close: number };
+type VolumePoint = { time: UTCTimestamp; value: number; color: string };
+
+function compactVolume(value: number): string {
+  if (!Number.isFinite(value)) return "—";
+  if (value >= 1_00_00_000) return `${(value / 1_00_00_000).toFixed(2)} Cr`;
+  if (value >= 1_00_000) return `${(value / 1_00_000).toFixed(2)} L`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)} K`;
+  return String(Math.round(value));
+}
+
+function formatChartTime(time?: UTCTimestamp, intraday = true): string {
+  if (!time) return "—";
+  const options: Intl.DateTimeFormatOptions = {
+    timeZone: "Asia/Kolkata",
+    day: "2-digit",
+    month: "short",
+    ...(intraday ? { hour: "2-digit", minute: "2-digit", hour12: false } : {}),
+  };
+  return new Date((time as number) * 1000).toLocaleString("en-IN", options);
+}
 
 function loadCache<T>(key: string): T | null {
   if (typeof window === "undefined") return null;
@@ -91,35 +166,88 @@ function LineChartPanel({
 
 function CandleChartPanel({
   title,
-  height = 200,
+  height = 340,
   candleData,
+  volumeData,
   overlayData,
+  candlestickSignals,
+  toggles,
+  onToggle,
+  expanded,
+  onToggleExpand,
+  levels,
 }: {
   title: string;
   height?: number;
-  candleData: { time: UTCTimestamp; open: number; high: number; low: number; close: number }[];
-  overlayData?: { sma?: { time: UTCTimestamp; value: number }[]; ema?: { time: UTCTimestamp; value: number }[]; bbUpper?: { time: UTCTimestamp; value: number }[]; bbLower?: { time: UTCTimestamp; value: number }[] };
+  candleData: CandlePoint[];
+  volumeData?: VolumePoint[];
+  overlayData?: {
+    sma20?: ChartPoint[];
+    ema20?: ChartPoint[];
+    sma50?: ChartPoint[];
+    ema50?: ChartPoint[];
+    bbUpper?: ChartPoint[];
+    bbLower?: ChartPoint[];
+    vwap?: ChartPoint[];
+    wma20?: ChartPoint[];
+    supertrend?: ChartPoint[];
+    kcUpper?: ChartPoint[];
+    kcMiddle?: ChartPoint[];
+    kcLower?: ChartPoint[];
+    dcUpper?: ChartPoint[];
+    dcMiddle?: ChartPoint[];
+    dcLower?: ChartPoint[];
+  };
+  candlestickSignals?: ChartSignal[];
+  levels?: {
+    support: { price: number; touches: number }[];
+    resistance: { price: number; touches: number }[];
+  };
+  toggles: OverlayToggles;
+  onToggle: (key: keyof OverlayToggles) => void;
+  expanded: boolean;
+  onToggleExpand: () => void;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const candleRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
-  const smaRef = useRef<ISeriesApi<"Line"> | null>(null);
-  const emaRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const volumeRef = useRef<ISeriesApi<"Histogram"> | null>(null);
+  const sma20Ref = useRef<ISeriesApi<"Line"> | null>(null);
+  const ema20Ref = useRef<ISeriesApi<"Line"> | null>(null);
+  const sma50Ref = useRef<ISeriesApi<"Line"> | null>(null);
+  const ema50Ref = useRef<ISeriesApi<"Line"> | null>(null);
   const bbUpperRef = useRef<ISeriesApi<"Line"> | null>(null);
   const bbLowerRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const vwapRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const signalRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const wma20Ref = useRef<ISeriesApi<"Line"> | null>(null);
+  const supertrendRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const keltnerUpperRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const keltnerMiddleRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const keltnerLowerRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const donchianUpperRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const donchianMiddleRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const donchianLowerRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const priceLinesRef = useRef<IPriceLine[]>([]);
+  const [hover, setHover] = useState<{ time: UTCTimestamp; open: number; high: number; low: number; close: number; volume: number } | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
     const chart = createChart(containerRef.current, {
-      height,
-      width: containerRef.current.clientWidth,
-      layout: { background: { type: ColorType.Solid, color: "transparent" }, textColor: "#8a9ab0" },
-      grid: { vertLines: { visible: false }, horzLines: { visible: true } },
-      rightPriceScale: { visible: true, scaleMargins: { top: 0.2, bottom: 0.2 } },
-      leftPriceScale: { visible: true, scaleMargins: { top: 0.2, bottom: 0.2 } },
-      timeScale: { visible: false },
-      crosshair: { mode: CrosshairMode.Normal, vertLine: { visible: true }, horzLine: { visible: true } },
+      autoSize: true,
+      layout: { background: { type: ColorType.Solid, color: "transparent" }, textColor: "#8a9ab0", fontSize: 10 },
+      grid: { vertLines: { visible: false }, horzLines: { color: "rgba(27, 45, 73, 0.45)" } },
+      rightPriceScale: { visible: true, scaleMargins: { top: 0.08, bottom: 0.26 } },
+      leftPriceScale: { visible: false },
+      timeScale: { visible: true, timeVisible: true, secondsVisible: false, borderColor: "#1b2d49" },
+      crosshair: {
+        mode: CrosshairMode.Normal,
+        vertLine: { visible: true, labelVisible: true, color: "rgba(110, 168, 255, 0.45)" },
+        horzLine: { visible: true, labelVisible: true, color: "rgba(110, 168, 255, 0.45)" },
+      },
+      localization: { locale: "en-IN" },
     });
+
     const candle = chart.addCandlestickSeries({
       upColor: "#38d9a9",
       downColor: "#ff6b81",
@@ -131,53 +259,305 @@ function CandleChartPanel({
     if (candleData.length) candle.setData(candleData);
     candleRef.current = candle;
 
-    if (overlayData?.sma?.length) {
-      const sma = chart.addLineSeries({ color: "#6ea8ff", lineWidth: 1, crosshairMarkerVisible: false, lastValueVisible: true });
-      sma.setData(overlayData.sma);
-      smaRef.current = sma;
+    const volume = chart.addHistogramSeries({
+      priceFormat: { type: "volume" },
+      priceScaleId: "",
+      lastValueVisible: false,
+      priceLineVisible: false,
+    });
+    if (volumeData?.length) volume.setData(volumeData);
+    volume.applyOptions({ visible: toggles.volume });
+    volume.priceScale().applyOptions({ scaleMargins: { top: 0.8, bottom: 0 } });
+    volumeRef.current = volume;
+
+    const addLine = (color: string, style: LineStyle = LineStyle.Solid) =>
+      chart.addLineSeries({
+        color,
+        lineWidth: 1,
+        lineStyle: style,
+        crosshairMarkerVisible: false,
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+
+    const sma20 = addLine("#6ea8ff");
+    const ema20 = addLine("#f4c95d");
+    const sma50 = addLine("#8be9fd");
+    const ema50 = addLine("#ff9f43");
+    const bbUpper = addLine("rgba(196, 167, 255, 0.65)", LineStyle.Dashed);
+    const bbLower = addLine("rgba(196, 167, 255, 0.65)", LineStyle.Dashed);
+    const vwap = addLine("#38d9a9", LineStyle.Dotted);
+
+    const signalSeries = chart.addLineSeries({
+      color: "#ff6b81",
+      lineWidth: 1,
+      lineStyle: LineStyle.Solid,
+      crosshairMarkerVisible: false,
+      lastValueVisible: false,
+      priceLineVisible: false,
+      pointMarkersVisible: true,
+      pointMarkersRadius: 5,
+    });
+
+    const wma20 = addLine("#ff9f43");
+    const supertrend = addLine("#9b8cff");
+    const keltnerUpper = addLine("rgba(196, 167, 255, 0.65)", LineStyle.Dashed);
+    const keltnerMiddle = addLine("rgba(196, 167, 255, 0.4)");
+    const keltnerLower = addLine("rgba(196, 167, 255, 0.65)", LineStyle.Dashed);
+    const donchianUpper = addLine("rgba(56, 217, 169, 0.65)", LineStyle.Dashed);
+    const donchianMiddle = addLine("rgba(56, 217, 169, 0.4)");
+    const donchianLower = addLine("rgba(56, 217, 169, 0.65)", LineStyle.Dashed);
+
+    if (overlayData?.sma20?.length) sma20.setData(overlayData.sma20);
+    if (overlayData?.ema20?.length) ema20.setData(overlayData.ema20);
+    if (overlayData?.sma50?.length) sma50.setData(overlayData.sma50);
+    if (overlayData?.ema50?.length) ema50.setData(overlayData.ema50);
+    if (overlayData?.bbUpper?.length) bbUpper.setData(overlayData.bbUpper);
+    if (overlayData?.bbLower?.length) bbLower.setData(overlayData.bbLower);
+    if (overlayData?.vwap?.length) vwap.setData(overlayData.vwap);
+    if (overlayData?.wma20?.length) wma20.setData(overlayData.wma20);
+    if (overlayData?.supertrend?.length) supertrend.setData(overlayData.supertrend);
+    if (overlayData?.kcUpper?.length) keltnerUpper.setData(overlayData.kcUpper);
+    if (overlayData?.kcMiddle?.length) keltnerMiddle.setData(overlayData.kcMiddle);
+    if (overlayData?.kcLower?.length) keltnerLower.setData(overlayData.kcLower);
+    if (overlayData?.dcUpper?.length) donchianUpper.setData(overlayData.dcUpper);
+    if (overlayData?.dcMiddle?.length) donchianMiddle.setData(overlayData.dcMiddle);
+    if (overlayData?.dcLower?.length) donchianLower.setData(overlayData.dcLower);
+    if (candlestickSignals?.length && toggles.signals) {
+      signalSeries.setData(
+        candlestickSignals.map((s) => ({
+          time: s.time as UTCTimestamp,
+          value: s.position,
+          color: s.color,
+        })) as { time: UTCTimestamp; value: number; color?: string }[]
+      );
     }
-    if (overlayData?.ema?.length) {
-      const ema = chart.addLineSeries({ color: "#f4c95d", lineWidth: 1, crosshairMarkerVisible: false, lastValueVisible: true });
-      ema.setData(overlayData.ema);
-      emaRef.current = ema;
-    }
-    if (overlayData?.bbUpper?.length) {
-      const bbU = chart.addLineSeries({ color: "rgba(196, 167, 255, 0.5)", lineWidth: 1, lineStyle: 2, crosshairMarkerVisible: false, lastValueVisible: false });
-      bbU.setData(overlayData.bbUpper);
-      bbUpperRef.current = bbU;
-    }
-    if (overlayData?.bbLower?.length) {
-      const bbL = chart.addLineSeries({ color: "rgba(196, 167, 255, 0.5)", lineWidth: 1, lineStyle: 2, crosshairMarkerVisible: false, lastValueVisible: false });
-      bbL.setData(overlayData.bbLower);
-      bbLowerRef.current = bbL;
-    }
+
+    sma20.applyOptions({ visible: toggles.sma20 });
+    ema20.applyOptions({ visible: toggles.ema20 });
+    sma50.applyOptions({ visible: toggles.sma50 });
+    ema50.applyOptions({ visible: toggles.ema50 });
+    bbUpper.applyOptions({ visible: toggles.bb });
+    bbLower.applyOptions({ visible: toggles.bb });
+    vwap.applyOptions({ visible: toggles.vwap });
+    wma20.applyOptions({ visible: toggles.wma20 });
+    supertrend.applyOptions({ visible: toggles.supertrend });
+    keltnerUpper.applyOptions({ visible: toggles.keltner });
+    keltnerMiddle.applyOptions({ visible: toggles.keltner });
+    keltnerLower.applyOptions({ visible: toggles.keltner });
+    donchianUpper.applyOptions({ visible: toggles.donchian });
+    donchianMiddle.applyOptions({ visible: toggles.donchian });
+    donchianLower.applyOptions({ visible: toggles.donchian });
+    signalSeries.applyOptions({ visible: toggles.signals });
+
+    sma20Ref.current = sma20;
+    ema20Ref.current = ema20;
+    sma50Ref.current = sma50;
+    ema50Ref.current = ema50;
+    bbUpperRef.current = bbUpper;
+    bbLowerRef.current = bbLower;
+    vwapRef.current = vwap;
+    signalRef.current = signalSeries;
+    wma20Ref.current = wma20;
+    supertrendRef.current = supertrend;
+    keltnerUpperRef.current = keltnerUpper;
+    keltnerMiddleRef.current = keltnerMiddle;
+    keltnerLowerRef.current = keltnerLower;
+    donchianUpperRef.current = donchianUpper;
+    donchianMiddleRef.current = donchianMiddle;
+    donchianLowerRef.current = donchianLower;
+
+    chart.subscribeCrosshairMove((param) => {
+      if (!param.time || !param.point) {
+        setHover(null);
+        return;
+      }
+      const bar = param.seriesData.get(candle) as { open?: number; high?: number; low?: number; close?: number } | undefined;
+      if (!bar || bar.open == null || bar.high == null || bar.low == null || bar.close == null) {
+        setHover(null);
+        return;
+      }
+      const vol = param.seriesData.get(volume) as { value?: number } | undefined;
+      setHover({
+        time: param.time as UTCTimestamp,
+        open: bar.open,
+        high: bar.high,
+        low: bar.low,
+        close: bar.close,
+        volume: vol?.value ?? 0,
+      });
+    });
 
     chartRef.current = chart;
     return () => chart.remove();
-  }, [height]);
+    // Chart is created once; data and visibility are updated in the effects below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    if (candleRef.current && candleData.length) {
-      candleRef.current.setData(candleData);
+    if (candleRef.current && candleData.length) candleRef.current.setData(candleData);
+  }, [candleData]);
+
+  useEffect(() => {
+    if (volumeRef.current && volumeData?.length) volumeRef.current.setData(volumeData);
+  }, [volumeData]);
+
+  useEffect(() => {
+    if (sma20Ref.current && overlayData?.sma20?.length) sma20Ref.current.setData(overlayData.sma20);
+    if (ema20Ref.current && overlayData?.ema20?.length) ema20Ref.current.setData(overlayData.ema20);
+    if (sma50Ref.current && overlayData?.sma50?.length) sma50Ref.current.setData(overlayData.sma50);
+    if (ema50Ref.current && overlayData?.ema50?.length) ema50Ref.current.setData(overlayData.ema50);
+    if (bbUpperRef.current && overlayData?.bbUpper?.length) bbUpperRef.current.setData(overlayData.bbUpper);
+    if (bbLowerRef.current && overlayData?.bbLower?.length) bbLowerRef.current.setData(overlayData.bbLower);
+    if (vwapRef.current && overlayData?.vwap?.length) vwapRef.current.setData(overlayData.vwap);
+    if (wma20Ref.current && overlayData?.wma20?.length) wma20Ref.current.setData(overlayData.wma20);
+    if (supertrendRef.current && overlayData?.supertrend?.length) supertrendRef.current.setData(overlayData.supertrend);
+    if (keltnerUpperRef.current && overlayData?.kcUpper?.length) keltnerUpperRef.current.setData(overlayData.kcUpper);
+    if (keltnerMiddleRef.current && overlayData?.kcMiddle?.length) keltnerMiddleRef.current.setData(overlayData.kcMiddle);
+    if (keltnerLowerRef.current && overlayData?.kcLower?.length) keltnerLowerRef.current.setData(overlayData.kcLower);
+    if (donchianUpperRef.current && overlayData?.dcUpper?.length) donchianUpperRef.current.setData(overlayData.dcUpper);
+    if (donchianMiddleRef.current && overlayData?.dcMiddle?.length) donchianMiddleRef.current.setData(overlayData.dcMiddle);
+    if (donchianLowerRef.current && overlayData?.dcLower?.length) donchianLowerRef.current.setData(overlayData.dcLower);
+    if (signalRef.current && candlestickSignals?.length && toggles.signals) {
+      signalRef.current.setData(
+        candlestickSignals.map((s) => ({
+          time: s.time as UTCTimestamp,
+          value: s.position,
+          color: s.color,
+        })) as { time: UTCTimestamp; value: number; color?: string }[]
+      );
     }
-    if (smaRef.current && overlayData?.sma?.length) {
-      smaRef.current.setData(overlayData.sma);
+  }, [overlayData, candlestickSignals, toggles.signals]);
+
+  useEffect(() => {
+    sma20Ref.current?.applyOptions({ visible: toggles.sma20 });
+    ema20Ref.current?.applyOptions({ visible: toggles.ema20 });
+    sma50Ref.current?.applyOptions({ visible: toggles.sma50 });
+    ema50Ref.current?.applyOptions({ visible: toggles.ema50 });
+    bbUpperRef.current?.applyOptions({ visible: toggles.bb });
+    bbLowerRef.current?.applyOptions({ visible: toggles.bb });
+    vwapRef.current?.applyOptions({ visible: toggles.vwap });
+    volumeRef.current?.applyOptions({ visible: toggles.volume });
+    signalRef.current?.applyOptions({ visible: toggles.signals });
+    wma20Ref.current?.applyOptions({ visible: toggles.wma20 });
+    supertrendRef.current?.applyOptions({ visible: toggles.supertrend });
+    keltnerUpperRef.current?.applyOptions({ visible: toggles.keltner });
+    keltnerMiddleRef.current?.applyOptions({ visible: toggles.keltner });
+    keltnerLowerRef.current?.applyOptions({ visible: toggles.keltner });
+    donchianUpperRef.current?.applyOptions({ visible: toggles.donchian });
+    donchianMiddleRef.current?.applyOptions({ visible: toggles.donchian });
+    donchianLowerRef.current?.applyOptions({ visible: toggles.donchian });
+  }, [toggles]);
+
+  useEffect(() => {
+    const series = candleRef.current;
+    if (!series) return;
+    for (const line of priceLinesRef.current) {
+      try {
+        series.removePriceLine(line);
+      } catch {
+        // chart may already be disposed
+      }
     }
-    if (emaRef.current && overlayData?.ema?.length) {
-      emaRef.current.setData(overlayData.ema);
-    }
-    if (bbUpperRef.current && overlayData?.bbUpper?.length) {
-      bbUpperRef.current.setData(overlayData.bbUpper);
-    }
-    if (bbLowerRef.current && overlayData?.bbLower?.length) {
-      bbLowerRef.current.setData(overlayData.bbLower);
-    }
-  }, [candleData, overlayData]);
+    priceLinesRef.current = [];
+    if (!toggles.sr || !levels) return;
+
+    const lastClose = candleData[candleData.length - 1]?.close ?? 0;
+    const nearest = (items: { price: number; touches: number }[], count: number) =>
+      [...items]
+        .sort((a, b) => Math.abs(a.price - lastClose) - Math.abs(b.price - lastClose))
+        .slice(0, count);
+
+    const support = nearest(levels.support, 3);
+    const resistance = nearest(levels.resistance, 3);
+    priceLinesRef.current = [
+      ...support.map((level) =>
+        series.createPriceLine({
+          price: level.price,
+          color: "rgba(56, 217, 169, 0.45)",
+          lineWidth: 1,
+          lineStyle: LineStyle.Dotted,
+          axisLabelVisible: false,
+          title: `S ${level.touches}`,
+        })
+      ),
+      ...resistance.map((level) =>
+        series.createPriceLine({
+          price: level.price,
+          color: "rgba(255, 107, 129, 0.45)",
+          lineWidth: 1,
+          lineStyle: LineStyle.Dotted,
+          axisLabelVisible: false,
+          title: `R ${level.touches}`,
+        })
+      ),
+    ];
+  }, [levels, toggles.sr, candleData]);
+
+  const intraday = candleData.length > 1 && (candleData[1].time as number) - (candleData[0].time as number) < 4 * 3_600;
+
+  useEffect(() => {
+    chartRef.current?.applyOptions({ timeScale: { timeVisible: intraday } });
+  }, [intraday]);
+
+  const resetZoom = useCallback(() => {
+    chartRef.current?.timeScale().fitContent();
+  }, []);
+
+  const downloadPng = useCallback(() => {
+    const canvas = chartRef.current?.takeScreenshot();
+    if (!canvas) return;
+    const link = document.createElement("a");
+    const name = title.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase();
+    link.download = `solo-${name || "chart"}-${Date.now()}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  }, [title]);
+
+  const last = candleData[candleData.length - 1];
+  const shown = hover ?? (last ? { ...last, volume: volumeData?.[volumeData.length - 1]?.value ?? 0 } : null);
 
   return (
-    <div style={{ height, width: "100%", overflow: "hidden" }}>
-      <div style={{ fontSize: "10px", color: "#6b7c8e", marginBottom: 4, paddingLeft: 2 }}>{title}</div>
-      <div ref={containerRef} style={{ height: height - 24, width: "100%" }} />
+    <div className={expanded ? "chart-shell chart-shell-expanded" : "chart-shell"} style={expanded ? undefined : { height }}>
+      <div className="chart-toolbar">
+        <div className="chart-legend">
+          {shown ? (
+            <>
+              <span className="chart-legend-time">{formatChartTime(shown.time, intraday)}</span>
+              <span>O <b>{formatNumber(shown.open, 2)}</b></span>
+              <span>H <b>{formatNumber(shown.high, 2)}</b></span>
+              <span>L <b>{formatNumber(shown.low, 2)}</b></span>
+              <span>C <b style={{ color: shown.close >= shown.open ? "var(--positive)" : "var(--negative)" }}>{formatNumber(shown.close, 2)}</b></span>
+              <span>Vol <b>{compactVolume(shown.volume)}</b></span>
+            </>
+          ) : (
+            <span>No data</span>
+          )}
+        </div>
+        <div className="chart-actions">
+          {(Object.keys(OVERLAY_LABELS) as (keyof OverlayToggles)[]).map((key) => (
+            <button
+              key={key}
+              type="button"
+              className={`chart-chip${toggles[key] ? " active" : ""}`}
+              onClick={() => onToggle(key)}
+              aria-pressed={toggles[key]}
+            >
+              {OVERLAY_LABELS[key]}
+            </button>
+          ))}
+          <button type="button" className="chart-chip" onClick={resetZoom} aria-label="Reset chart zoom">
+            Reset
+          </button>
+          <button type="button" className="chart-chip" onClick={downloadPng} aria-label="Download chart as PNG">
+            PNG
+          </button>
+          <button type="button" className="chart-chip" onClick={onToggleExpand} aria-label={expanded ? "Exit fullscreen" : "Fullscreen chart"}>
+            {expanded ? "✕ Exit" : "⛶ Fullscreen"}
+          </button>
+        </div>
+      </div>
+      <div ref={containerRef} className="chart-canvas" aria-label={title} />
     </div>
   );
 }
@@ -189,25 +569,76 @@ export default function AnalysisPage() {
   );
   const [selectedSymbol, setSelectedSymbol] = useState<string>("NIFTY");
   const [selectedInterval, setSelectedInterval] = useState<string>("1d");
+  const [toggles, setToggles] = useState<OverlayToggles>(DEFAULT_TOGGLES);
+  const [expanded, setExpanded] = useState(false);
+  const [prefsReady, setPrefsReady] = useState(false);
   const analysis = useApi<AdvancedAnalysisResponse>(
     `/api/analysis-advanced?symbol=${encodeURIComponent(selectedSymbol)}&interval=${selectedInterval}&range=1y`,
     60_000
   );
-  const [cacheData, setCacheData] = useState<AdvancedAnalysisResponse | null>(loadCache<AdvancedAnalysisResponse>(CACHE_KEY));
-  const [manualLoading, setManualLoading] = useState(!cacheData);
+  const [cacheData, setCacheData] = useState<AdvancedAnalysisResponse | null>(null);
+  const [manualLoading, setManualLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type?: "error" | "success" } | null>(null);
 
-  const data = analysis.data ?? cacheData;
+  const matchesSelection = (candidate: AdvancedAnalysisResponse | null) =>
+    candidate && candidate.symbol === selectedSymbol && candidate.interval === selectedInterval ? candidate : null;
+  const data = matchesSelection(analysis.data) ?? matchesSelection(cacheData);
   const loading = analysis.loading || manualLoading;
 
+  // Load cache and saved preferences after mount (avoids hydration mismatch).
   useEffect(() => {
-    if (analysis.data) {
-      setCacheData(analysis.data);
-      saveCache(CACHE_KEY, analysis.data);
+    const cached = loadCache<AdvancedAnalysisResponse>(CACHE_KEY);
+    if (cached) {
+      setCacheData(cached);
       setManualLoading(false);
     }
-  }, [analysis.data]);
+    try {
+      const savedSymbol = window.localStorage.getItem(SYMBOL_KEY);
+      if (savedSymbol) setSelectedSymbol(savedSymbol);
+      const savedInterval = window.localStorage.getItem(INTERVAL_KEY);
+      if (savedInterval) setSelectedInterval(savedInterval);
+      // URL params (e.g. from the index scanner's "Full chart" links) win over saved prefs.
+      const params = new URLSearchParams(window.location.search);
+      const urlSymbol = params.get("symbol");
+      const urlInterval = params.get("interval");
+      if (urlSymbol && urlSymbol.trim()) {
+        const key = urlSymbol.trim().toUpperCase();
+        setSelectedSymbol(key);
+        window.localStorage.setItem(SYMBOL_KEY, key);
+      }
+      if (urlInterval && ["5m", "15m", "30m", "1h", "1d", "1wk"].includes(urlInterval)) {
+        setSelectedInterval(urlInterval);
+        window.localStorage.setItem(INTERVAL_KEY, urlInterval);
+      }
+      const savedToggles = window.localStorage.getItem(TOGGLES_KEY);
+      if (savedToggles) {
+        setToggles({ ...DEFAULT_TOGGLES, ...(JSON.parse(savedToggles) as Partial<OverlayToggles>) });
+      }
+    } catch {
+      // ignore corrupt preferences
+    }
+    setPrefsReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!prefsReady) return;
+    try {
+      window.localStorage.setItem(SYMBOL_KEY, selectedSymbol);
+      window.localStorage.setItem(INTERVAL_KEY, selectedInterval);
+      window.localStorage.setItem(TOGGLES_KEY, JSON.stringify(toggles));
+    } catch {
+      // ignore quota errors
+    }
+  }, [selectedSymbol, selectedInterval, toggles, prefsReady]);
+
+  useEffect(() => {
+    if (!analysis.data) return;
+    if (analysis.data.symbol !== selectedSymbol || analysis.data.interval !== selectedInterval) return;
+    setCacheData(analysis.data);
+    saveCache(CACHE_KEY, analysis.data);
+    setManualLoading(false);
+  }, [analysis.data, selectedSymbol, selectedInterval]);
 
   const fetchAnalysis = useCallback(async () => {
     setManualLoading(true);
@@ -228,10 +659,118 @@ export default function AnalysisPage() {
     }
   }, [selectedSymbol, selectedInterval]);
 
-  const refreshAll = () => {
+  const refreshAll = useCallback(() => {
     analysis.refresh();
     void fetchAnalysis();
-  };
+  }, [analysis.refresh, fetchAnalysis]);
+
+  const toggleOverlay = useCallback((key: keyof OverlayToggles) => {
+    setToggles((current) => ({ ...current, [key]: !current[key] }));
+  }, []);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [expanded]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target && ["INPUT", "SELECT", "TEXTAREA"].includes(target.tagName)) return;
+      if (event.key === "r" || event.key === "R") {
+        event.preventDefault();
+        refreshAll();
+      } else if (event.key === "f" || event.key === "F") {
+        event.preventDefault();
+        setExpanded((value) => !value);
+      } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        const list = symbols.data?.symbols ?? [];
+        if (!list.length) return;
+        event.preventDefault();
+        const index = list.findIndex((item) => item.key === selectedSymbol);
+        const step = event.key === "ArrowDown" ? 1 : -1;
+        const next = list[(index + step + list.length) % list.length];
+        if (next) {
+          setManualLoading(true);
+          setSelectedSymbol(next.key);
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [refreshAll, selectedSymbol, symbols.data]);
+
+  const chartData = useMemo(() => {
+    const source = data?.series;
+    // The API returns epoch milliseconds; lightweight-charts expects epoch seconds.
+    const times: UTCTimestamp[] = (source?.times ?? []).map((time) => Math.floor(time / 1000) as UTCTimestamp);
+    const closes = source?.closes ?? [];
+    const opens = source?.opens ?? closes;
+    const highs = source?.highs ?? closes;
+    const lows = source?.lows ?? closes;
+    const volumes = source?.volumes ?? [];
+
+    const candles: CandlePoint[] = times.map((time, index) => ({
+      time,
+      open: opens[index] ?? closes[index] ?? 0,
+      high: highs[index] ?? closes[index] ?? 0,
+      low: lows[index] ?? closes[index] ?? 0,
+      close: closes[index] ?? 0,
+    }));
+
+    const volumePoints: VolumePoint[] = times.map((time, index) => {
+      const close = closes[index] ?? 0;
+      const open = opens[index] ?? close;
+      return {
+        time,
+        value: volumes[index] ?? 0,
+        color: close >= open ? "rgba(56, 217, 169, 0.35)" : "rgba(255, 107, 129, 0.35)",
+      };
+    });
+
+    const line = (values?: (number | null)[]): ChartPoint[] =>
+      (values ?? []).flatMap((value, index) =>
+        value == null || times[index] == null ? [] : [{ time: times[index], value }]
+      );
+
+    return {
+      candles,
+      volumes: volumePoints,
+      overlays: {
+        sma20: line(source?.sma20),
+        ema20: line(source?.ema20),
+        sma50: line(source?.sma50),
+        ema50: line(source?.ema50),
+        bbUpper: line(source?.bb_upper),
+        bbLower: line(source?.bb_lower),
+        vwap: line(source?.vwap),
+        wma20: line(source?.wma20),
+        supertrend: line(source?.supertrend),
+        kcUpper: line(source?.kc_upper),
+        kcMiddle: line(source?.kc_middle),
+        kcLower: line(source?.kc_lower),
+        dcUpper: line(source?.donchian_upper),
+        dcMiddle: line(source?.donchian_middle),
+        dcLower: line(source?.donchian_lower),
+      },
+      signals: (source?.candlestick_signals ?? []).map((s) => ({
+        time: s.time as UTCTimestamp,
+        position: s.position,
+        color: s.color,
+        shape: s.shape as "arrow_up" | "arrow_down",
+        text: s.text,
+        size: s.size,
+        external: s.external,
+      })),
+      rsi: line(source?.rsi14),
+      macd: line(source?.macd_hist),
+      stoch: line(source?.stoch_k),
+    };
+  }, [data]);
 
   useEffect(() => {
     const timer = setTimeout(() => setToast(null), 3000);
@@ -246,8 +785,9 @@ export default function AnalysisPage() {
             <button className="button" onClick={refreshAll} type="button">Refresh</button>
           </>
         } />
-        {error && <ErrorNotice error={error ?? analysis.error ?? "Analysis unavailable"} retry={refreshAll} />}
-        {loading && !data && <LoadingBlock rows={6} label="Calculating advanced indicators..." />}
+        {(error || data?.reason) && <ErrorNotice error={error ?? data?.reason ?? "Analysis unavailable"} retry={refreshAll} />}
+        {loading && <LoadingBlock rows={6} label="Calculating advanced indicators..." />}
+        {!loading && !error && !data && <ErrorNotice error="No analysis data for this symbol and interval." retry={refreshAll} />}
       </>
     );
   }
@@ -260,21 +800,12 @@ export default function AnalysisPage() {
     patterns,
     signal,
     timeframes,
-    series,
     meta,
     generated_at,
     input_provider,
   } = data;
 
   const { sma20, sma50, ema20, ema50, rsi14, macd_hist, bb_upper, bb_lower, atr14, vwap, adx, stoch_k, stoch_d } = indicators;
-
-  const closeSeries = series.closes.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
-  const smaSeries = series.sma20.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
-  const bbUpperSeries = series.bb_upper.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
-  const bbLowerSeries = series.bb_lower.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
-  const rsiSeries = series.rsi14.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
-  const macdSeries = series.macd_hist.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
-  const stochSeries = (series.stoch_k ?? []).map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 }));
 
   const signalColor = signal.bias === "bullish" ? "var(--positive)" : signal.bias === "bearish" ? "var(--negative)" : "var(--muted)";
 
@@ -297,14 +828,17 @@ export default function AnalysisPage() {
 
       <PageHeader
         kicker="Advanced Market Analysis"
-        title={`${data.symbol} — Live Technical Analysis`}
+        title={`${data.symbol} — Technical Analysis`}
         subtitle="RSI · MACD · Bollinger Bands · Stochastic · ADX · OBV · VWAP · Support/Resistance · Patterns — all inside Solo Trading Charts"
         actions={
           <>
             <select
               className="range-select"
               value={selectedSymbol}
-              onChange={(e) => setSelectedSymbol(e.target.value)}
+              onChange={(e) => {
+                setManualLoading(true);
+                setSelectedSymbol(e.target.value);
+              }}
               style={{ fontSize: 11, fontFamily: "var(--mono)", padding: "4px 6px", borderRadius: 3, border: "1px solid var(--line)" }}
             >
               {symbolOptions.map((o) => (
@@ -314,7 +848,10 @@ export default function AnalysisPage() {
             <select
               className="range-select"
               value={selectedInterval}
-              onChange={(e) => setSelectedInterval(e.target.value)}
+              onChange={(e) => {
+                setManualLoading(true);
+                setSelectedInterval(e.target.value);
+              }}
               style={{ fontSize: 11, fontFamily: "var(--mono)", padding: "4px 6px", borderRadius: 3, border: "1px solid var(--line)" }}
             >
               {intervalOptions.map((o) => (
@@ -354,22 +891,24 @@ export default function AnalysisPage() {
       </Panel>
 
       {/* Mobile-Optimized Charts */}
-      <Panel title="Live Charts" kicker="Price · RSI · MACD · Stochastic" style={{ marginBottom: 10 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 6, height: "min(600px, 90vh)" }}>
+      <Panel title="Price, Volume & Indicators" kicker="Real OHLC candles · R refresh · F fullscreen · ↑/↓ change symbol" style={{ marginBottom: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, height: "min(620px, 92vh)" }}>
           <CandleChartPanel
-            title="Price · SMA20 · EMA20 · Bollinger Bands"
-            height={200}
-            candleData={series.closes.map((v, i) => ({ time: series.times[i] as UTCTimestamp, open: v ?? 0, high: v ?? 0, low: v ?? 0, close: v ?? 0 }))}
-            overlayData={{
-              sma: series.sma20.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 })).filter(d => d.value !== 0),
-              ema: series.ema20.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 })).filter(d => d.value !== 0),
-              bbUpper: series.bb_upper.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 })).filter(d => d.value !== 0),
-              bbLower: series.bb_lower.map((v, i) => ({ time: series.times[i] as UTCTimestamp, value: v ?? 0 })).filter(d => d.value !== 0),
-            }}
+            title="Price · Volume · Overlays"
+            height={360}
+            candleData={chartData.candles}
+            volumeData={chartData.volumes}
+            overlayData={chartData.overlays}
+            candlestickSignals={chartData.signals}
+            levels={levels}
+            toggles={toggles}
+            onToggle={toggleOverlay}
+            expanded={expanded}
+            onToggleExpand={() => setExpanded((value) => !value)}
           />
-          <LineChartPanel title="RSI (14)" color="#6ea8ff" height={110} data={rsiSeries} />
-          <LineChartPanel title="MACD Histogram" color="#f4c95d" height={100} data={macdSeries} />
-          <LineChartPanel title="Stochastic %K" color="#c4a7ff" height={100} data={stochSeries} />
+          <LineChartPanel title="RSI (14)" color="#6ea8ff" height={110} data={chartData.rsi} />
+          <LineChartPanel title="MACD Histogram" color="#f4c95d" height={100} data={chartData.macd} />
+          <LineChartPanel title="Stochastic %K" color="#c4a7ff" height={100} data={chartData.stoch} />
         </div>
       </Panel>
 
