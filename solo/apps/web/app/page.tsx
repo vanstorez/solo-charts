@@ -43,6 +43,16 @@ export default function OverviewPage() {
       {overview.error && <ErrorNotice error={overview.error} retry={overview.refresh} />}
       {overview.loading && !overview.data && <LoadingBlock rows={4} label="Connecting to market and macro providers" />}
 
+      {overview.data && !overview.data.market_session?.is_open && (
+        <div className="warning-box" style={{ marginBottom: 13 }}>
+          <strong>Market is closed now.</strong> NSE/BSE trade 09:15–15:30 IST on weekdays; values below are the latest
+          delayed public snapshots (likely today's close), not a live tape. Movement resumes at 09:15 IST — Solo never
+          fakes live ticks from free public data. {overview.data.market_session?.next_open_at
+            ? `Next estimated open: ${new Date(overview.data.market_session.next_open_at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} (holidays not inferred).`
+            : ""}
+        </div>
+      )}
+
       {overview.data && (
         <>
           <div className="grid-4" style={{ marginBottom: 13 }}>

@@ -44,6 +44,10 @@ async def quotes(
 ):
     requested = [key.strip() for key in keys.split(",") if key.strip()][:24]
     cache_key = "quotes:" + ",".join(requested)
+    # During the open session refresh aggressively (near-live free data);
+    # outside hours the last close doesn't change, so cache longer.
+    session_open = market_session()["is_open"]  # noqa: F841
+    ttl = 15 if session_open else 60
 
     async def fetch():
         rows, meta = await market.get_quotes(requested)
@@ -58,7 +62,7 @@ async def quotes(
         return {"quotes": rows, "meta": meta}
 
     try:
-        return await cache.get_or_set(cache_key, 60, fetch)
+        return await cache.get_or_set(cache_key, ttl, fetch)
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"Quote provider unavailable: {str(exc)[:240]}") from exc
 

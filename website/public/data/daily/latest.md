@@ -1,76 +1,76 @@
 # Solo Trading Charts — daily desk brief
 
-Thursday, 29 October 2026 at 08:00 am IST
+Friday, 06 November 2026 at 07:02 pm IST
 
 **Research only. Not investment advice. No live orders are placed.**
 
 ## Market pulse
 
-- **Bias**: Bearish · **Score**: -4 · **Market**: Closed
-- **India VIX**: 16.25 (Normal) · **Brent**: 110.35 (Oil shock)
-- Nifty 50: 22698.85 (-0.22%) · Bank Nifty: 54267.4 (+0.54%) · Sensex: 73246.03 (-0.48%) · India VIX: 16.25 (-0.96%) · GIFT Nifty: 22672.5 (-0.27%) · Brent crude: 110.35 (-4.31%) · WTI crude: 101.53 (-1.22%) · USD / INR: 95.21 (0.00%) · Dollar index: 102.09 (-0.06%) · US 10-year: 4.982 (-0.42%) · S&P futures: 7745.5 (-0.49%) · Nasdaq futures: 29517.75 (-1.54%)
+- **Bias**: Bullish · **Score**: 6 · **Market**: Closed
+- **India VIX**: 17.47 (Normal) · **Brent**: 98.56 (Elevated)
+- Nifty 50: 25030.35 (+2.01%) · Bank Nifty: 59086 (+2.27%) · Sensex: 81028.02 (+2.17%) · India VIX: 17.46 (+12.10%) · GIFT Nifty: 25025.5 (+1.73%) · Brent crude: 98.56 (+0.27%) · WTI crude: 90.79 (+0.30%) · USD / INR: 93.9 (-0.60%) · Dollar index: 102.19 (+0.61%) · US 10-year: 4.89 (+0.97%) · S&P futures: 7395.25 (+0.17%) · Nasdaq futures: 27150.5 (+1.49%)
 
 ## Index levels
 
-- **SENSEX**: spot 73246.03 · pivot 73125.01 · supports 73000, 72700, 72200 · resistances 73500, 73600, 74000
-- **NIFTY**: spot 22698.85 · pivot 22658.2 · supports 22550, 22500, 22400 · resistances 22800, 22950, 23000
-- **BANKNIFTY**: spot 54267.4 · pivot 54111.27 · supports 54000, 53800, 53600 · resistances 54500, 54600, 54900
+- **SENSEX**: spot 81028.02 · pivot 80357.36 · supports 81000, 79700, 78300 · resistances 81500, 81700, 82400
+- **NIFTY**: spot 25030.35 · pivot 24816.25 · supports 25000, 24600, 24150 · resistances 25050, 25250, 25450
+- **BANKNIFTY**: spot 59086 · pivot 58497.6 · supports 59000, 57900, 56700 · resistances 59100, 59500, 59700
 
 ## Macro radar
 
 - **Regime**: Event-driven / mixed
-- **Bank Nifty dependency**: correlation 0.82 / beta 0.91 / High
-- **Rupee**: Stabilising — USD/INR 95.21 (1M -0.88%, 3M -0.20%)
-- **Crude**: Brent 110.35 (1M +6.59%) — High risk
-- **War / stress gauge**: 41/100 (Watch) — drivers: India VIX at 16.25; Brent at $110.35; 4 conflict headlines in feed
+- **Bank Nifty dependency**: correlation 0.84 / beta 0.91 / High
+- **Rupee**: Stabilising — USD/INR 93.9 (1M -2.95%, 3M -1.57%)
+- **Crude**: Brent 98.56 (1M -5.49%) — Elevated risk
+- **War / stress gauge**: 31/100 (Calm) — drivers: India VIX at 17.46; Brent at $98.56; 2 conflict headlines in feed
 - **Fed 25 bp playbook**: Cut 25 bps / Hold / hawkish pause / Hike 25 bps
 
 ## AI plan — Nifty 50
 
-- **SHORT** · Strong bearish · confidence 78%
-- Entry trigger: **22657.57**
-- Hard stop: **22714.31** (0.25%)
-- Targets: **22586.63 / 22544.07 / 22487.32**
+- **LONG** · Strong bullish · confidence 88%
+- Entry trigger: **25042.87**
+- Hard stop: **24980.29** (0.25%)
+- Targets: **25121.09 / 25168.02 / 25230.59**
 - Risk budget: **₹1,000** · position 1 lot(s) / 75 units
-- Max risk at stop: **₹3,723**
-- Options overlay: **Long put (ATM)** · 03-Nov-2026 · premium 177.3 · stop 127.66 · target 274.82
+- Max risk at stop: **₹2,976**
+- Options overlay: **Long call (ATM)** · 09-Nov-2026 · premium 141.7 · stop 102.02 · target 219.64
 
 > Indian cash market is closed. Levels are based on the last close and can gap on the next open.
 > NSE option-chain snapshot is stale; refresh before using the option plan.
-> One option lot risks about ₹3,723 at the premium stop, above your ₹1,000 budget. Skip the trade, use a spread, or raise capital.
+> One option lot risks about ₹2,976 at the premium stop, above your ₹1,000 budget. Skip the trade, use a spread, or raise capital.
 > This is a research plan, not investment advice. Markets can gap through stops.
 
 ## Scanner leaders
 
-- **KOTAKBANK**: 440 (-0.56%) · RSI 57.7 · Strong uptrend · score 90
-- **TECHM**: 1776.6 (-1.92%) · RSI 65 · Strong uptrend · score 90
-- **BHARTIARTL**: 1948.1 (-1.55%) · RSI 62.7 · Uptrend · score 81
-- **HCLTECH**: 1400.5 (-1.37%) · RSI 66 · Uptrend · score 75
-- **INDIAVIX**: 16.25 (-0.96%) · RSI 60.9 · Uptrend · score 71
-- **ICICIBANK**: 1377.6 (-0.67%) · RSI 51.6 · Uptrend · score 65
-- **TCS**: 2460 (-1.48%) · RSI 64.2 · Mixed · score 63
-- **INFY**: 1123.15 (-3.43%) · RSI 55.4 · Mixed · score 63
-- **WIPRO**: 184.5 (-1.34%) · RSI 62.6 · Mixed · score 63
-- **LT**: 3801.3 (+3.72%) · RSI 56.2 · Strong downtrend · score 44
+- **ICICIBANK**: 1571.2 (+4.75%) · RSI 79.6 · Strong uptrend · score 93
+- **KOTAKBANK**: 480 (+2.78%) · RSI 72.7 · Strong uptrend · score 90
+- **TECHM**: 1831 (+0.46%) · RSI 69.1 · Strong uptrend · score 90
+- **INDIAVIX**: 17.47 (+12.10%) · RSI 64.6 · Strong uptrend · score 86
+- **BHARTIARTL**: 2107.2 (+2.45%) · RSI 75.4 · Strong uptrend · score 83
+- **TITAN**: 5000 (+3.42%) · RSI 73.9 · Uptrend · score 81
+- **HCLTECH**: 1440 (+0.66%) · RSI 66.5 · Uptrend · score 81
+- **NIFTY**: 25030.35 (+2.01%) · RSI 78.6 · Uptrend · score 78
+- **LT**: 4117.7 (+1.67%) · RSI 75.1 · Uptrend · score 78
+- **ULTRACEMCO**: 12450 (+1.63%) · RSI 76.6 · Uptrend · score 78
 
 ## India headlines
 
-- **Reuters** — Indian shares set for positive start after Fed holds rates steady; elevated oil weighs - Reuters (18m ago)
-- **Livemint** — Stock market outlook today, 29 Oct: Sensex, Nifty prediction - DJIA, S&P, NASDAQ, GIFT Nifty, Kospi, Nikkei, Taiwan cues - Livemint (1h ago)
-- **The Core** — Are Record IPOs Behind India's Stagnant Secondary Stock Market? - The Core (2h ago)
-- **Equitymaster** — Baja Auto Q2 FY27 Results | Cipla Q2 FY27 Results | Top Buzzing Stocks Today - Equitymaster (2h ago)
-- **Anadolu Ajansı** — Telecom giant Jio makes debut on Indian stock market - Anadolu Ajansı (14h ago)
-- **DD India** — Sensex ends in red on selling in IT stocks, rising crude oil prices - DD India (15h ago)
-- **NDTV** — Why Is Stock Market Falling Today? 4 Key Reasons Behind Sensex, Nifty Crash - NDTV (21h ago)
+- **Rediff** — Sensex Jumps 1,718 Points, Nifty Reclaims 25,000 Amid Global Turmoil - Rediff (2h ago)
+- **Multibagg AI** — Stock Market Today: Sensex gains 543 points, Nifty rises - Multibagg AI (3h ago)
+- **Equitymaster** — Sensex Today Rallies 1,718 Points | Nifty Above 25,000 | 5 Reasons Why Indian Share Markets Are Rising - Equitymaster (3h ago)
+- **Zee Business** — Stock Market: Why is the Nifty, Sensex rising despite global sell-off? 5 key factors, red alerts and levels to watch - Zee Business (5h ago)
+- **Telegraph India** — Sensex jumps over 400 points, Nifty reclaims 24,600 amid foreign fund inflows - Telegraph India (8h ago)
+- **ETV Bharat** — Stock Market Today: Sensex, Nifty Trade Flat Amid Bloodbath In Global Markets - ETV Bharat (9h ago)
+- **Reuters** — Indian stocks buck global tech rout, post best week in 6 years - Reuters (11h ago)
 
 ## Global headlines
 
-- **Yahoo Finance** — S&P 500, Nasdaq Futures Dip As Weaker-Than-Expected Alphabet Earnings Reignite AI Spending Worries — GOOGL, MSFT, ORCL, NVDA, MRVL In Focus - Yahoo Finance (2h ago)
-- **Reuters** — Wall Street ends higher as Fed holds key rate steady, focus turns to earnings - Reuters (3h ago)
-- **WSJ** — Exclusive | Vance Reaches Out to Iranian Hard-Liner in Bid to Restart Peace Talks - WSJ (3h ago)
-- **Reuters** — COMMENTARY: Wall Street's wider weakness keeps AI trade rolling: McGeever - Reuters (3h ago)
-- **WSJ** — France’s Nuclear Forces Bring In Neighbors to Keep Russia in Check - WSJ (4h ago)
-- **WSJ** — U.S. Stocks Fall as Tech Selloff Deepens - WSJ (5h ago)
+- **Investor's Business Daily** — Futures Split After Market Sell-Off. What To Do Now. - Investor's Business Daily (31m ago)
+- **Reuters** — Nasdaq futures rise after steep AI selloff as chip stocks stabilize - Reuters (48m ago)
+- **Bloomberg.com** — Wall Street’s Script Gets Flipped by Post-Election Rout - Bloomberg.com (2h ago)
+- **Reuters** — Wall Street critic Elizabeth Warren could be at the height of her power in new Congress - Reuters (2h ago)
+- **The Guardian** — Global stocks plunge amid AI slowdown fears after Democrats’ midterm triumph - The Guardian (2h ago)
+- **Politico** — ‘Total bloodbath’: Democrats‘ sweeping wins rock Wall Street over AI fears - Politico (4h ago)
 
 ## Risk checklist
 

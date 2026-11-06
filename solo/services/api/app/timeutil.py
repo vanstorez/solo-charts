@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 IST = ZoneInfo("Asia/Kolkata")
@@ -42,6 +42,17 @@ def age_seconds(as_of: datetime | None, now: datetime | None = None) -> int | No
     return max(0, int((current - as_of.astimezone(UTC)).total_seconds()))
 
 
+def _next_open(now) -> str | None:
+    """Estimate the next regular session open (09:15 IST). Weekends skipped;
+    exchange holidays are NOT inferred — see note."""
+    candidate = now.replace(hour=9, minute=15, second=0, microsecond=0)
+    for _ in range(0, 8):
+        if candidate.weekday() < 5 and candidate > now:
+            return candidate.isoformat()
+        candidate = candidate + timedelta(days=1)
+    return None
+
+
 def market_session() -> dict:
     now = utc_now().astimezone(IST)
     minutes = now.hour * 60 + now.minute
@@ -65,6 +76,7 @@ def market_session() -> dict:
         "reason": reason,
         "ist_time": now.isoformat(),
         "timezone": "Asia/Kolkata",
+        "next_open_at": _next_open(now),
         "holiday_calendar": "not_configured",
         "note": "Exchange holidays are not inferred. Verify against NSE/BSE notices.",
     }

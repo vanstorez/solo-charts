@@ -123,6 +123,7 @@ export interface MarketSession {
   reason: string;
   ist_time: string;
   timezone: string;
+  next_open_at?: string | null;
   holiday_calendar: string;
   note: string;
 }
