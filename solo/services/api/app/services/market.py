@@ -4,7 +4,7 @@ from datetime import datetime
 from ..config import get_settings
 from ..indicators import atr, ema, macd, max_drawdown, pivot_points, round_values, rsi
 from ..provenance import feed_meta, unavailable_meta
-from ..providers import globaldatafeeds as gdf
+from ..providers import dhan, globaldatafeeds as gdf
 from ..providers import nseindia, tradingview, yahoo
 from ..timeutil import market_session, utc_now
 
@@ -159,7 +159,21 @@ async def get_quotes(keys: list[str], prefer_licensed: bool = True) -> tuple[lis
             licensed_error = exc
 
     remaining = [symbol for symbol in symbols if symbol["key"] not in licensed_rows]
-    tickers = [symbol["tv"] for symbol in remaining if symbol.get("tv")]
+
+    # Dhan Data API (broker real-time, when configured): highest-priority public-slot
+    # source for NSE/BSE indices and mapped stocks.
+    dhan_rows: dict[str, dict] = {}
+    if dhan._enabled():
+        dhan_keys = [symbol["key"] for symbol in remaining if symbol["key"] in dhan.SECURITY_IDS]
+        if dhan_keys:
+            try:
+                dhan_rows = await dhan.quotes(dhan_keys)
+            except Exception:
+                dhan_rows = {}
+
+    remaining_for_public = [symbol for symbol in remaining if symbol["key"] not in dhan_rows]
+
+    tickers = [symbol["tv"] for symbol in remaining_for_public if symbol.get("tv")]
     rows: dict[str, dict] = {}
     provider_error: Exception | None = None
     if tickers:
@@ -174,7 +188,7 @@ async def get_quotes(keys: list[str], prefer_licensed: bool = True) -> tuple[lis
     if nseindia_enabled():
         nse_keys = [
             symbol["key"]
-            for symbol in remaining
+            for symbol in remaining_for_public
             if symbol.get("key") in nseindia.NSE_INDEX_NAMES
             and symbol.get("exchange") == "NSE"
             and symbol.get("type") == "index"
@@ -225,6 +239,38 @@ async def get_quotes(keys: list[str], prefer_licensed: bool = True) -> tuple[lis
                 }
             )
             used_sources.add("Global Datafeeds")
+            continue
+
+        dhan_quote = dhan_rows.get(symbol["key"])
+        if dhan_quote:
+            public_count += 1
+            quote_rows.append(
+                {
+                    "key": symbol["key"],
+                    "name": symbol["name"],
+                    "short": symbol["short"],
+                    "exchange": symbol["exchange"],
+                    "type": symbol["type"],
+                    "currency": symbol["currency"],
+                    "value": dhan_quote.get("value"),
+                    "change": dhan_quote.get("change"),
+                    "volume": dhan_quote.get("volume"),
+                    "rsi": None,
+                    "rating": None,
+                    "as_of": dhan_quote.get("as_of"),
+                    "source": dhan_quote.get("source", "Dhan Data API (exchange real-time)"),
+                    "data_status": dhan_quote.get("data_status", "delayed"),
+                    "delay_seconds": dhan_quote.get("delay_seconds"),
+                    "open": dhan_quote.get("open"),
+                    "high": dhan_quote.get("high"),
+                    "low": dhan_quote.get("low"),
+                    "previous_close": dhan_quote.get("previous_close"),
+                    "bid": None,
+                    "ask": None,
+                    "open_interest": None,
+                }
+            )
+            used_sources.add("Dhan Data API")
             continue
 
         nse = nse_rows.get(symbol["key"])

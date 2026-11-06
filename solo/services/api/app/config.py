@@ -25,6 +25,10 @@ class Settings(BaseSettings):
     nse_direct_enabled: bool = True
     gdf_base_url: str = ""
     gdf_api_key: SecretStr = SecretStr("")
+    # Dhan Data API (broker-licensed real-time). The token stays server-side; solo/.env
+    dhan_enabled: bool = True
+    dhan_client_id: str = ""
+    dhan_data_token: SecretStr = SecretStr("")
     gdf_request_timeout_seconds: float = 8.0
     gdf_quote_ttl_seconds: float = 3.0
     gdf_history_ttl_seconds: float = 20.0

@@ -3,6 +3,7 @@ from fastapi import APIRouter, Query
 from .. import __version__
 from ..config import get_settings
 from ..db import get_db
+from ..providers import dhan
 from ..providers import globaldatafeeds as gdf
 from ..providers import nseindia
 from ..services import paper, quality, sources
@@ -43,6 +44,7 @@ async def config():
             "polymarket_clob_url": settings.polymarket_clob_url,
             "globaldatafeeds": gdf.status(),
             "nse_direct": nseindia.status(),
+            "dhan": dhan.status(),
         },
         "api_host": settings.api_host,
         "api_port": settings.api_port,
@@ -69,6 +71,12 @@ async def nse_live_status():
     from ..timeutil import market_session
 
     return {**nseindia.status(), "probe": await nseindia.probe(), "session": market_session()}
+
+
+@router.get("/dhan/status")
+async def dhan_live_status():
+    """Live connectivity probe against Dhan Data API (one gated request)."""
+    return {**dhan.status(), "probe": await dhan.probe()}
 
 
 @router.get("/live/status")
